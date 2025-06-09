@@ -111,6 +111,28 @@
     .doc-title { font-size:1.08rem; font-weight:600;}
     .doc-date { font-size:0.93rem; color:#888; margin-top:8px;}
     .doc-box .doc-icon {font-size: 1.6rem; vertical-align:middle; margin-right:6px;}
+    .doc-clicks {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-weight: bold;
+      font-size: 0.98rem;
+      border-radius: 12px;
+      padding: 3px 12px;
+      box-shadow: 0 1px 6px rgba(25, 118, 210, 0.06);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .doc-clicks .click-icon {
+      font-size: 1.08rem;
+      margin-right: 2px;
+    }
     .promo {
       background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
       border: 2px solid #ffb300;
@@ -230,6 +252,24 @@
     let currentClass = "";
     let currentSubject = subjectList[0];
 
+    // Hàm lấy key lưu lượt nhấp, đảm bảo duy nhất theo class+subject+title
+    function getClickKey(doc) {
+      return `clicks_${(doc.class||"")}_${(doc.subject||"")}_${(doc.title||"")}`;
+    }
+
+    // Lấy số lượt nhấp đã lưu, mặc định 0
+    function getClickCount(doc) {
+      const key = getClickKey(doc);
+      return parseInt(localStorage.getItem(key) || "0");
+    }
+
+    // Tăng số lượt nhấp lên 1
+    function increaseClickCount(doc) {
+      const key = getClickKey(doc);
+      const cur = getClickCount(doc);
+      localStorage.setItem(key, cur + 1);
+    }
+
     // Render tab chọn lớp
     function renderClassTabs() {
       const classTabs = document.getElementById("classTabs");
@@ -279,7 +319,13 @@
         div.className = "doc-box";
         // Tạo key duy nhất cho localStorage
         const key = "clicked_" + (doc.title||"") + "_" + (doc.class||"") + "_" + (doc.subject||"");
+        // Lượt nhấp
+        const clickCount = getClickCount(doc);
         div.onclick = () => {
+          // Đếm lượt nhấp
+          increaseClickCount(doc);
+          renderDocs(); // cập nhật lại lượt nhấp ngay
+          // Mở link
           const isFirst = !localStorage.getItem(key);
           if(isFirst && doc.shopee_link){
             localStorage.setItem(key, "true");
@@ -288,7 +334,9 @@
             window.open(doc.drive_link, "_blank");
           }
         };
-        div.innerHTML = `<span class="doc-icon">📄</span>
+        div.innerHTML = `
+          <div class="doc-clicks"><span class="click-icon">👁️</span>${clickCount}</div>
+          <span class="doc-icon">📄</span>
           <span class="doc-title">${doc.title||"(Không có tên tài liệu)"}</span>
           <div class="doc-date">Cập nhật: ${doc.updatedAt||""}</div>
         `;
