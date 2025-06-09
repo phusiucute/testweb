@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kho Tài Liệu - Free Share</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
+  <style>
+    body { font-family: 'Quicksand', sans-serif; background: #f7f9fb; margin:0; color:#222;}
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 28px 10px 10px 10px;
+      background: #fff;
+      border-bottom: 1px solid #e3e3e3;
+    }
+    .logo-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .main-logo {
+      height: 90px;
+      width: 90px;
+      border-radius: 22px;
+      box-shadow: 0 4px 18px rgba(25, 118, 210, 0.17);
+      object-fit: cover;
+      margin-bottom: 8px;
+      background: #f8f8ff;
+      border: 3px solid #1976d2;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      background: #e3f2fd;
+      color: #1976d2;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.04rem;
+      transition: background 0.2s, color 0.2s;
+      border: 1.5px solid #bbdefb;
+    }
+    .contact-chip:hover {
+      background: #1976d2;
+      color: #fff;
+    }
+    .icon {
+      height: 22px;
+      width: 22px;
+      margin-right: 5px;
+      border-radius: 100%;
+      background: #fff;
+      object-fit: contain;
+      display: inline-block;
+    }
+    .icon-svg {
+      height: 22px;
+      width: 22px;
+      margin-right: 5px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .title {
+      margin-top: 12px;
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-align: center;
+      color: #1976d2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 3px 18px rgba(25,118,210,0.08);
+      margin-bottom: 3px;
+    }
+    .container { max-width:1200px; margin:40px auto 0; background:#fff; padding:30px 24px; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.08);}
+    .tabs { display:flex; gap:20px; margin-bottom:24px; flex-wrap: wrap; }
+    .tab { padding:10px 18px; background:#f0f4f8; border-radius:20px; cursor:pointer; font-weight:700;}
+    .tab.active { background: #1976d2; color:#fff;}
+    .subjects { display:flex; gap:14px; margin-bottom:24px; flex-wrap: wrap;}
+    .subject { padding:7px 16px; background:#e0e7ef; border-radius:14px; cursor:pointer; font-weight:700;}
+    .subject.active { background: #43a047; color:#fff;}
+    .doc-list { display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+    .doc-box {
+      background: #fafaff;
+      border: 1.5px solid #d0d6e0;
+      border-radius: 12px;
+      padding: 20px 10px 12px 10px;
+      text-align: left;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      position:relative;
+      min-height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09);}
+    .doc-title { font-size:1.08rem; font-weight:600;}
+    .doc-date { font-size:0.93rem; color:#888; margin-top:8px;}
+    .doc-box .doc-icon {font-size: 1.6rem; vertical-align:middle; margin-right:6px;}
+    .promo {
+      background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
+      border: 2px solid #ffb300;
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin-bottom: 36px;
+      font-size: 1.11rem;
+      line-height: 1.7;
+      box-shadow: 0 2px 10px rgba(255,193,7,0.06);
+    }
+    .promo strong { color:#d84315;}
+    footer {
+      text-align:center;
+      padding:32px 0 16px 0;
+      background: #f4f6fa;
+      color: #444;
+      margin-top:48px;
+      border-top:1px solid #e0e0e0;
+      font-size:1.04rem;
+    }
+    @media (max-width:900px) {
+      .doc-list { grid-template-columns:repeat(2,1fr);}
+    }
+    @media (max-width:600px) {
+      header { flex-direction:column; gap:14px; padding:20px 6px;}
+      .container { padding:12px 4px;}
+      .doc-list { grid-template-columns:1fr;}
+      .tabs, .subjects { flex-wrap:wrap; gap:6px;}
+      .main-logo {height:60px;width:60px;}
+      .title {font-size:1.25rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-contact">
+      <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
+      <div class="contact-info">
+        <!-- Zalo: dùng SVG inline -->
+        <a href="https://zalo.me/0788559492" target="_blank" class="contact-chip" title="Zalo">
+          <span class="icon-svg" style="background:#fff;border-radius:50%;margin-right:5px;">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="24" fill="#008EE6"/>
+              <path d="M34.5,32.5c-2.5,0-3.313-2.625-3.5-4.75c-0.188-2.125-1.75-3.75-4-3.75s-3.813,1.625-4,3.75 c-0.188,2.125-1,4.75-3.5,4.75c-2.5,0-4-2.438-4-5.5c0-7.438,7.5-12,11.5-12S38.5,19.563,38.5,27 C38.5,30.063,37,32.5,34.5,32.5z" fill="#fff"/>
+            </svg>
+          </span>
+          0788.559.9492
+        </a>
+        <!-- TikTok: dùng SVG inline -->
+        <a href="https://www.tiktok.com/@khoahocgiasiure" target="_blank" class="contact-chip" title="TikTok">
+          <span class="icon-svg">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M12.66 2h3.11c.13 1.73 1.44 3.08 3.18 3.23V8.4c-.8.07-1.62-.01-2.41-.24v6.56c0 3.6-2.44 6.24-6.02 6.24-3.19 0-5.77-2.59-5.77-5.78 0-3.2 2.58-5.78 5.77-5.78.12 0 .24.01.36.02V13.3c-.12-.03-.24-.05-.36-.05-1.15 0-2.08.94-2.08 2.1 0 1.13.93 2.06 2.08 2.06 1.3 0 2.13-.83 2.13-2.14V2z" fill="#000"/>
+              </g>
+            </svg>
+          </span>
+          @khoahocgiasiure
+        </a>
+        <!-- Threads: dùng SVG inline -->
+        <a href="https://www.threads.net/@khoahocgiasiure" target="_blank" class="contact-chip" title="Threads">
+          <span class="icon-svg">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M16 2.9c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13-5.8-13-13-13zm0 24c-6.1 0-11-4.9-11-11s4.9-11 11-11 11 4.9 11 11-4.9 11-11 11zm0-18c-3.9 0-7 3.1-7 7 0 3.8 3.1 7 7 7 2.4 0 4.7-1.2 6-3.2-.4-.3-.7-.7-1.2-.7-1.2 0-1.7 1.1-2.5 2.2-.7.9-1.4 1.2-2.2 1.2-1.7 0-2.9-1.2-2.9-2.9 0-.9.5-1.8 1.3-2.3.2-.1.3-.3.3-.5 0-.1 0-.2-.1-.3-.3-.5-.3-1.1.1-1.5.3-.3.7-.4 1.1-.3.3.1.6.1.9.1.5 0 .8-.2 1-.3.3-.3.8-.3 1.1-.1.2.2.3.5.2.8-.3 1.1-.3 2.2.2 3.1.2.3.5.5.8.5.1 0 .3-.1.4-.2.7-.6 1.1-1.4 1.1-2.3 0-2.2-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2s-2-.9-2-2c0-1.1.9-2 2-2z" fill="#000"/>
+              </g>
+            </svg>
+          </span>
+          @khoahocgiasiure
+        </a>
+      </div>
+    </div>
+    <div class="title">
+      <span>Kho Tài Liệu Miễn Phí</span>
+    </div>
+  </header>
+  <div class="container">
+    <div class="promo">
+      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
+      💥 Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!<br>
+      📘 <u>Combo Lớp 12 – dành cho 2K7</u>:<br>
+      &nbsp;&nbsp;&nbsp;✅ Giá: 99K full combo tất cả môn hoặc 50K/môn lẻ<br>
+      &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
+      📘 <u>Combo Lớp 12 – dành cho 2K8</u>:<br>
+      &nbsp;&nbsp;&nbsp;✅ Giá: 299K full combo tất cả môn hoặc 100K/môn lẻ<br>
+      &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
+      📗 <u>Combo Lớp 11/10 – dành cho 2K9/2K10</u>:<br>
+      &nbsp;&nbsp;&nbsp;✅ Giá: 199K full combo, hoặc 50K/môn lẻ<br>
+      &nbsp;&nbsp;&nbsp;📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH<br>
+      &nbsp;&nbsp;&nbsp;📌 TẶNG: Khóa học lớp 10 bản 2025<br>
+      🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký<br>
+      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
+      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
+      Khóa TOEIC cô Mai Phương: 199K<br>
+      Khóa IELTS nền tảng – nâng band: 299K<br>
+      Khóa sinh viên ôn lại gốc lớp 12: 199K<br>
+      ⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
+    </div>
+    <div class="tabs" id="classTabs"></div>
+    <div class="subjects" id="subjectTabs"></div>
+    <div class="doc-list" id="documentList"></div>
+  </div>
+  <footer>
+    <b>Liên hệ:</b> Zalo 0788559492 &bull; TikTok @khoahocgiasiure &bull; Threads @khoahocgiasiure<br>
+    &copy; 2025 <b> by @phusiucute</b> - Share tài liệu khóa học 10, 11, 12 giá rẻ.
+  </footer>
+  <script>
+    // Thông tin Google Sheet
+    const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
+
+    // Danh sách môn ưu tiên trên giao diện (có thể chỉnh lại nếu muốn)
+    const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn"];
+
+    // Dữ liệu lấy từ sheet
+    let allDocs = [];
+    let classList = [];
+    let currentClass = "";
+    let currentSubject = subjectList[0];
+
+    // Render tab chọn lớp
+    function renderClassTabs() {
+      const classTabs = document.getElementById("classTabs");
+      classTabs.innerHTML = "";
+      classList.forEach(cls => {
+        const tab = document.createElement("div");
+        tab.className = "tab" + (cls===currentClass ? " active" : "");
+        tab.innerText = "Lớp " + cls;
+        tab.onclick = () => {
+          currentClass = cls;
+          // Khi đổi lớp, mặc định về môn đầu tiên có tài liệu
+          let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
+          currentSubject = found || subjectList[0];
+          renderClassTabs(); renderSubjectTabs(); renderDocs();
+        };
+        classTabs.appendChild(tab);
+      });
+    }
+
+    // Render tab chọn môn
+    function renderSubjectTabs() {
+      const subjectTabs = document.getElementById("subjectTabs");
+      subjectTabs.innerHTML = "";
+      subjectList.forEach(sub => {
+        // Chỉ hiện tab nếu có dữ liệu ở lớp hiện tại
+        if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
+          const tab = document.createElement("div");
+          tab.className = "subject" + (sub===currentSubject ? " active" : "");
+          tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
+          tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
+          subjectTabs.appendChild(tab);
+        }
+      });
+    }
+
+    // Render danh sách tài liệu
+    function renderDocs() {
+      const docList = document.getElementById("documentList");
+      docList.innerHTML = "";
+      const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      if (!docs || docs.length === 0) {
+        docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
+        return;
+      }
+      docs.forEach((doc, idx) => {
+        const div = document.createElement("div");
+        div.className = "doc-box";
+        // Tạo key duy nhất cho localStorage
+        const key = "clicked_" + (doc.title||"") + "_" + (doc.class||"") + "_" + (doc.subject||"");
+        div.onclick = () => {
+          const isFirst = !localStorage.getItem(key);
+          if(isFirst && doc.shopee_link){
+            localStorage.setItem(key, "true");
+            window.open(doc.shopee_link, "_blank");
+          } else if(doc.drive_link) {
+            window.open(doc.drive_link, "_blank");
+          }
+        };
+        div.innerHTML = `<span class="doc-icon">📄</span>
+          <span class="doc-title">${doc.title||"(Không có tên tài liệu)"}</span>
+          <div class="doc-date">Cập nhật: ${doc.updatedAt||""}</div>
+        `;
+        docList.appendChild(div);
+      });
+    }
+
+    // Lấy dữ liệu từ Google Sheet
+    fetch(SHEET_API)
+      .then(res => res.json())
+      .then(rows => {
+        // Làm sạch dữ liệu: trim, chuẩn hóa tên môn/lớp
+        allDocs = rows.map(doc => ({
+          ...doc,
+          class: (doc.class||"").trim(),
+          subject: (doc.subject||"").trim().toLowerCase(),
+          title: (doc.title||"").trim(),
+          drive_link: (doc.drive_link||"").trim(),
+          shopee_link: (doc.shopee_link||"").trim(),
+          updatedAt: (doc.updatedAt||"").trim()
+        })).filter(doc => doc.class && doc.subject && doc.title);
+        // Lấy danh sách lớp có trong sheet, sắp xếp giảm dần
+        classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
+        currentClass = classList[0] || "";
+        // Tìm môn đầu tiên có tài liệu ở lớp đầu tiên
+        let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
+        currentSubject = found || subjectList[0];
+        renderClassTabs();
+        renderSubjectTabs();
+        renderDocs();
+      })
+      .catch(e => {
+        document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
+      });
+  </script>
+</body>
+</html>
