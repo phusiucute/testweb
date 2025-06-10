@@ -3,386 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <title>Kho Tài Liệu - Free Share</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
-    :root {
-      --main-blue: #1976d2;
-      --main-bg: #f7f9fb;
-      --sidebar-bg: #fff;
-      --sidebar-width: 270px;
-      --sidebar-width-mobile: 70px;
-      --rightbar-width: 320px;
-      --card-radius: 18px;
-      --shadow: 0 2px 16px rgba(25,118,210,0.06);
-      --promo-gradient: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
-    }
-    body {
-      font-family: 'Quicksand', sans-serif;
-      margin: 0; color: #222;
-      background: var(--main-bg);
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    .layout {
-      display: flex;
-      min-height: 100vh;
-    }
-    /* ===== SIDEBAR ===== */
-    .sidebar {
-      width: var(--sidebar-width);
-      background: var(--sidebar-bg);
-      box-shadow: var(--shadow);
+    body { font-family: 'Quicksand', sans-serif; background: #f7f9fb; margin:0; color:#222;}
+    header {
       display: flex;
       flex-direction: column;
-      padding: 0 0 0 0;
-      z-index: 10;
-    }
-    .sidebar-logo-bar {
-      display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 20px 16px 13px 16px;
-      background: var(--sidebar-bg);
-    }
-    .sidebar-logo {
-      width: 46px; height: 46px; border-radius: 14px;
-      background: #e3f2fd;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .sidebar-logo img {width: 33px; height: 33px;}
-    .sidebar-search {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      margin-left: 6px;
-      background: #f7f9fc;
-      border-radius: 13px;
-      padding: 0 9px;
-      border: 1.5px solid #e3e8ef;
-      min-height: 40px;
-      gap: 5px;
-    }
-    .sidebar-search input {
-      border: none;
-      background: transparent;
-      font-size: 1.09rem;
-      outline: none;
-      width: 100%;
-      font-family: inherit;
-      padding: 8px 0;
-      color: #1976d2;
-    }
-    .sidebar-search svg {
-      color: #1976d2;
-      opacity: 0.7;
-      width: 21px; height: 21px;
-    }
-    .sidebar-menu {
-      padding: 0 0 0 0;
-      margin: 0;
-      list-style: none;
-    }
-    .sidebar-menu li {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      cursor: pointer;
-      padding: 11px 24px;
-      color: #2d3a4c;
-      font-weight: 600;
-      border-left: 3px solid transparent;
-      transition: background 0.1s;
-      font-size: 1.02rem;
-    }
-    .sidebar-menu li.active, .sidebar-menu li:hover {
-      background: #e3f2fd;
-      color: var(--main-blue);
-      border-left: 3px solid var(--main-blue);
-    }
-    .sidebar-menu li img, .sidebar-menu li svg {
-      width: 24px; height: 24px;
-      border-radius: 8px;
-      background: #f3f6fa;
-      object-fit: contain;
-    }
-    .sidebar-section-title {
-      color: #98a6bc;
-      font-size: 0.98rem;
-      font-weight: 700;
-      margin: 16px 0 8px 26px;
-      letter-spacing: 1px;
-    }
-    .sidebar-history {
-      margin: 12px 0 0 0;
-      padding: 0 20px 0 20px;
-      overflow-x: hidden;
-    }
-    .sidebar-history .history-item {
-      display: flex; align-items: flex-start;
-      gap: 13px; margin-bottom: 19px;
-    }
-    .sidebar-history .history-icon {
-      width: 33px; height: 33px;
-      border-radius: 14px;
-      background: #f9e7fe;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.08rem;
-    }
-    .sidebar-history .history-content {
-      font-size: 0.97rem;
-      color: #2d3a4c;
-      font-weight: 500;
-      line-height: 1.37;
-      display: flex; flex-direction: column;
-    }
-    .sidebar-history .history-title {
-      color: #1976d2;
-      font-size: 1.02rem;
-      font-weight: 700;
-    }
-    /* ==== HEADER ==== */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      justify-content: flex-start;
+      padding: 28px 10px 10px 10px;
       background: #fff;
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      height: 68px;
-      border-bottom: 1.5px solid #e3e3e3;
-      padding: 0 26px;
+      border-bottom: 1px solid #e3e3e3;
+      position: relative;
     }
-    .header-logo {
-      display: none;
-    }
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0 24px;
-      margin-left: 24px;
-    }
-    .header-nav .nav-item {
-      font-weight: 700;
-      color: #1976d2;
-      font-size: 1.05rem;
-      background: #f5faff;
-      padding: 9px 22px;
-      border-radius: 16px;
-      text-align: center;
-      cursor: pointer;
-      border: none;
-      outline: none;
-      transition: background 0.13s;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .header-nav .nav-item.active, .header-nav .nav-item:hover {
-      background: #1976d2;
-      color: #fff;
-    }
-    .header-icons {
-      margin-left: auto;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .header-icons .icon-btn {
-      background: #f2f5fa;
-      border-radius: 999px;
-      padding: 7px 12px;
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center;
-      font-size: 1.09rem;
-      color: #1565c0;
-      transition: background 0.11s;
-      margin-left: 4px;
-    }
-    .header-profile {
-      background: #f2f5fa;
-      border-radius: 100%;
-      width: 37px; height: 37px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.15rem;
-      color: #1976d2;
-      font-weight: 900;
-      margin-left: 5px;
-      border: 2px solid #e3e3e3;
-    }
-    /* ==== MAIN LAYOUT ==== */
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      gap: 26px;
-      min-height: 100vh;
-      background: var(--main-bg);
-    }
-    .main-scroll {
-      flex: 1;
-      padding: 24px 0 24px 0;
-      min-width: 0;
+    .logo-contact {
       display: flex;
       flex-direction: column;
-      gap: 26px;
-    }
-    /* ==== RIGHT SIDEBAR ==== */
-    .rightbar {
-      width: var(--rightbar-width);
-      min-width: var(--rightbar-width);
-      background: transparent;
-      margin: 0;
-      padding: 24px 14px 10px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 29px;
-    }
-    .exam-countdown-container {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 15px auto;
-      padding: 10px 0 0 0;
-    }
-    .exam-countdown-box {
-      display: flex;
       align-items: center;
-      gap: 14px;
-      background: linear-gradient(90deg,#ffb300 80%,#ffecb3 100%);
+      gap: 10px;
+    }
+    .main-logo {
+      height: 90px;
+      width: 90px;
+      border-radius: 22px;
+      box-shadow: 0 4px 18px rgba(25, 118, 210, 0.17);
+      object-fit: cover;
+      margin-bottom: 8px;
+      background: #f8f8ff;
+      border: 3px solid #1976d2;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      background: #e3f2fd;
+      color: #1976d2;
       border-radius: 20px;
-      padding: 17px 18px 14px 18px;
-      box-shadow: 0 4px 16px rgba(255,193,7,0.13);
-      font-family: 'Quicksand',sans-serif;
-      font-weight: 700;
-      font-size: 25px;
-    }
-    .exam-countdown-labels {
-      min-width: 55px;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      margin-right: 5px;
-    }
-    .exam-countdown-number {
-      background: #fff8e1;
-      color: #ee7600;
-      border-radius: 12px;
-      padding: 10px 11px 7px 11px;
-      min-width: 43px;
-      margin-right: 4px;
-      text-align: center;
-      font-size: 1.32rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: inherit;
-    }
-    .exam-countdown-unit {
-      color: #b26a00;
-      font-size: 0.88rem;
+      padding: 5px 14px;
       font-weight: 600;
-      margin-top: 2px;
-      display: block;
-      letter-spacing: .5px;
+      text-decoration: none;
+      font-size: 1.04rem;
+      transition: background 0.2s, color 0.2s;
+      border: 1.5px solid #bbdefb;
     }
-    .rightbar-section {
+    .contact-chip:hover {
+      background: #1976d2;
+      color: #fff;
+    }
+    .icon {
+      height: 22px;
+      width: 22px;
+      margin-right: 5px;
+      border-radius: 100%;
       background: #fff;
-      border-radius: var(--card-radius);
-      box-shadow: var(--shadow);
-      padding: 18px 17px 13px 17px;
-      margin-bottom: 13px;
+      object-fit: contain;
+      display: inline-block;
     }
-    .rightbar-section .section-title {
-      font-size: 1.09rem;
-      font-weight: 700;
+    .icon-svg {
+      height: 22px;
+      width: 22px;
+      margin-right: 5px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .title {
+      margin-top: 12px;
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-align: center;
       color: #1976d2;
-      margin-bottom: 9px;
-      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 3px 18px rgba(25,118,210,0.08);
+      margin-bottom: 3px;
     }
-    .rightbar-activate-btn {
+    .account-btn-topright {
+      position: absolute;
+      top: 18px;
+      right: 22px;
       background: #1976d2;
       color: #fff;
       font-weight: 700;
-      border: none;
-      outline: none;
-      border-radius: 13px;
-      padding: 13px 0;
-      width: 100%;
-      font-size: 1.07rem;
-      letter-spacing: .3px;
-      margin: 16px 0 10px 0;
-      cursor: pointer;
-    }
-    .rightbar-news-list {
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .rightbar-news-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: #f7f9fd;
-      padding: 8px 10px;
-      border-radius: 10px;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #1976d2;
-    }
-    .rightbar-news-thumb {
-      width: 33px; height: 33px; border-radius: 7px;
-      background: #e3f2fd;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 900;
-    }
-    .rightbar-news-meta {
-      color: #888;
-      font-size: 0.93rem;
-      font-weight: 500;
-      margin-top: 2px;
-      display: flex; align-items: center; gap: 7px;
-    }
-    .rightbar-news-title {
-      font-weight: 700;
-      color: #1976d2;
-    }
-    /* ===== MAIN CONTENT ===== */
-    .main-feature-banner {
-      width: 100%;
-      background: linear-gradient(90deg, #e3f0fc 70%, #f9f9fc 100%);
-      border-radius: var(--card-radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 12px;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 210px;
-    }
-    .main-feature-banner img {
-      width: 100%; height: auto; max-height: 230px; object-fit: cover;
-      display: block;
-    }
-    .main-section-title {
       font-size: 1.23rem;
-      font-weight: 700;
-      color: #1976d2;
-      margin: 17px 0 11px 0;
-      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 3px 12px rgba(25,118,210,0.09);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.13s;
     }
-    .promo {
-      background: var(--promo-gradient);
-      border: 2px solid #ffb300;
-      border-radius: 14px;
-      padding: 18px 24px;
-      margin-bottom: 36px;
-      font-size: 1.11rem;
-      line-height: 1.7;
-      box-shadow: 0 2px 10px rgba(255,193,7,0.06);
+    .account-btn-topright:hover { background: #1565c0; }
+    .account-dropdown {
+      position: absolute;
+      top: 61px; right: 0;
+      background: #fff;
+      border: 1.5px solid #e3e3e3;
+      box-shadow: 0 4px 18px rgba(25,118,210,0.11);
+      border-radius: 12px;
+      min-width: 210px;
+      z-index: 99;
+      text-align: left;
+      padding: 13px 0 7px 0;
     }
-    .promo strong { color:#d84315;}
-    /* ===== DOCUMENT LIST ===== */
-    .doc-list {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 18px;
+    .account-dropdown-item {
+      padding: 9px 22px; cursor: pointer; color: #1976d2; font-size:1.05rem; font-weight:600;
+      border-radius: 7px; transition: background 0.12s;
     }
+    .account-dropdown-item:hover {background:#e3f2fd;}
+    .account-dropdown .account-dropdown-logout {
+      color: #d84315; font-weight:700;
+    }
+    .container { max-width:1200px; margin:40px auto 0; background:#fff; padding:30px 24px; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.08);}
+    .tabs { display:flex; gap:20px; margin-bottom:24px; flex-wrap: wrap; }
+    .tab { padding:10px 18px; background:#f0f4f8; border-radius:20px; cursor:pointer; font-weight:700;}
+    .tab.active { background: #1976d2; color:#fff;}
+    .subjects { display:flex; gap:14px; margin-bottom:24px; flex-wrap: wrap;}
+    .subject { padding:7px 16px; background:#e0e7ef; border-radius:14px; cursor:pointer; font-weight:700;}
+    .subject.active { background: #43a047; color:#fff;}
+    .doc-list { display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
     .doc-box {
       background: #fafaff;
       border: 1.5px solid #d0d6e0;
@@ -402,310 +150,357 @@
     .doc-title { font-size:1.08rem; font-weight:600;}
     .doc-date { font-size:0.93rem; color:#888; margin-top:8px;}
     .doc-box .doc-icon {font-size: 1.6rem; vertical-align:middle; margin-right:6px;}
-    /* ===== RESPONSIVE ===== */
-    @media (max-width:1200px) {
-      .doc-list { grid-template-columns: repeat(2,1fr);}
-      .rightbar {display: none;}
+    .promo {
+      background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
+      border: 2px solid #ffb300;
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin-bottom: 36px;
+      font-size: 1.11rem;
+      line-height: 1.7;
+      box-shadow: 0 2px 10px rgba(255,193,7,0.06);
+    }
+    .promo strong { color:#d84315;}
+    /* Account modal CSS */
+    .modal-account-overlay {
+      position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:99;
+      background:rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;
+    }
+    .modal-account-content {
+      background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(25,118,210,.18);
+      padding:32px 34px 24px 34px;min-width:320px;text-align:center;position:relative;
+    }
+    .modal-account-input {
+      width:90%;padding:9px 12px;border-radius:9px;border:1.5px solid #b3c7e6;margin:8px 0;font-size:1.04rem;
+      font-family:inherit;outline:none;transition:border 0.14s;
+    }
+    .modal-account-input:focus {border:1.5px solid #1976d2;}
+    .modal-account-btn {
+      background: #1976d2; color: #fff; font-weight: 700; border: none; outline: none; border-radius: 10px;
+      padding: 11px 28px; font-size: 1.08rem; margin: 18px 0 0 0; cursor: pointer;
+      transition: background 0.13s;
+    }
+    .modal-account-btn:hover {background:#1257a8;}
+    footer {
+      text-align:center;
+      padding:32px 0 16px 0;
+      background: #f4f6fa;
+      color: #444;
+      margin-top:48px;
+      border-top:1px solid #e0e0e0;
+      font-size:1.04rem;
     }
     @media (max-width:900px) {
-      .sidebar {width: var(--sidebar-width-mobile);}
-      .sidebar-logo-bar {flex-direction:column; gap:7px;}
-      .sidebar-search {display:none;}
-      .sidebar-menu li {font-size:1rem; gap:0;}
-      .main-content {gap: 0;}
-      .main-scroll {padding:18px 0;}
-      .doc-list { grid-template-columns: 1fr;}
+      .doc-list { grid-template-columns:repeat(2,1fr);}
     }
     @media (max-width:600px) {
-      .header {padding: 0 8px;}
-      .main-scroll {padding:8px 0;}
-      .sidebar {display:none;}
+      header { flex-direction:column; gap:14px; padding:20px 6px;}
+      .container { padding:12px 4px;}
+      .doc-list { grid-template-columns:1fr;}
+      .tabs, .subjects { flex-wrap:wrap; gap:6px;}
+      .main-logo {height:60px;width:60px;}
+      .title {font-size:1.25rem;}
+      .account-btn-topright {top: 12px; right: 10px; width: 38px; height: 38px; font-size: 1.07rem;}
+      .modal-account-content {min-width: 85vw;}
     }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <!-- ===== SIDEBAR ===== -->
-    <div class="sidebar">
-      <div class="sidebar-logo-bar">
-        <div class="sidebar-logo">
-          <img src="logo.png" alt="M" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-        </div>
-        <div class="sidebar-search">
-          <input id="searchInput" type="text" placeholder="Tìm kiếm">
-          <button id="searchBtn" style="background:none;border:none;outline:none;cursor:pointer;padding:4px;">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="#1565c0"><circle cx="11" cy="11" r="7" stroke="#1565c0" stroke-width="2" fill="none"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#1565c0" stroke-width="2" stroke-linecap="round"/></svg>
-          </button>
-        </div>
-      </div>
-      <ul class="sidebar-menu">
-        <li class="active"><img src="https://cdn-icons-png.flaticon.com/128/1053/1053244.png">Đinh văn phú<br><span style="font-size:0.92rem;font-weight:400;color:#888;">Phusiucute</span></li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/747/747376.png">Thông tin cá nhân</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/3898/3898153.png">Khóa học của tôi</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png">Khóa học đã lưu</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/3176/3176290.png">Khóa học</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/2910/2910791.png">Thi online</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/3756/3756869.png">Đấu trường lý thuyết</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png">Sách Map</li>
-        <li><img src="https://cdn-icons-png.flaticon.com/128/833/833314.png">Tài liệu</li>
-      </ul>
-      <div class="sidebar-section-title">Lịch sử học</div>
-      <div class="sidebar-history">
-        <div class="history-item">
-          <div class="history-icon" style="background:#e3f2fd;">I</div>
-          <div class="history-content"><div class="history-title">Bài O104: Nhiệt độ, Nhiệt kế, Thang nhiệt độ</div>
-            <div style="color:#888;font-size:0.91rem;">KHOÁ I - CHUYÊN ĐỀ CƠ BẢN...</div></div>
-        </div>
-        <div class="history-item">
-          <div class="history-icon" style="background:#ffe0e0;">I</div>
-          <div class="history-content"><div class="history-title">Bài 1: Tính đơn điệu của hàm số cơ bản</div>
-            <div style="color:#888;font-size:0.91rem;">KHOÁ I - CHUYÊN ĐỀ CƠ BẢN...</div></div>
-        </div>
+  <header>
+    <div class="logo-contact">
+      <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
+      <div class="contact-info">
+        <!-- Zalo: dùng SVG inline -->
+        <a href="https://zalo.me/0788559492" target="_blank" class="contact-chip" title="Zalo">
+          <span class="icon-svg" style="background:#fff;border-radius:50%;margin-right:5px;">
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="24" fill="#008EE6"/>
+              <path d="M34.5,32.5c-2.5,0-3.313-2.625-3.5-4.75c-0.188-2.125-1.75-3.75-4-3.75s-3.813,1.625-4,3.75 c-0.188,2.125-1,4.75-3.5,4.75c-2.5,0-4-2.438-4-5.5c0-7.438,7.5-12,11.5-12S38.5,19.563,38.5,27 C38.5,30.063,37,32.5,34.5,32.5z" fill="#fff"/>
+            </svg>
+          </span>
+          0788.559.9492
+        </a>
+        <!-- TikTok: dùng SVG inline -->
+        <a href="https://www.tiktok.com/@khoahocgiasiure" target="_blank" class="contact-chip" title="TikTok">
+          <span class="icon-svg">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M12.66 2h3.11c.13 1.73 1.44 3.08 3.18 3.23V8.4c-.8.07-1.62-.01-2.41-.24v6.56c0 3.6-2.44 6.24-6.02 6.24-3.19 0-5.77-2.59-5.77-5.78 0-3.2 2.58-5.78 5.77-5.78.12 0 .24.01.36.02V13.3c-.12-.03-.24-.05-.36-.05-1.15 0-2.08.94-2.08 2.1 0 1.13.93 2.06 2.08 2.06 1.3 0 2.13-.83 2.13-2.14V2z" fill="#000"/>
+              </g>
+            </svg>
+          </span>
+          @khoahocgiasiure
+        </a>
+        <!-- Threads: dùng SVG inline -->
+        <a href="https://www.threads.net/@khoahocgiasiure" target="_blank" class="contact-chip" title="Threads">
+          <span class="icon-svg">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M16 2.9c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13-5.8-13-13-13zm0 24c-6.1 0-11-4.9-11-11s4.9-11 11-11 11 4.9 11 11-4.9 11-11 11zm0-18c-3.9 0-7 3.1-7 7 0 3.8 3.1 7 7 7 2.4 0 4.7-1.2 6-3.2-.4-.3-.7-.7-1.2-.7-1.2 0-1.7 1.1-2.5 2.2-.7.9-1.4 1.2-2.2 1.2-1.7 0-2.9-1.2-2.9-2.9 0-.9.5-1.8 1.3-2.3.2-.1.3-.3.3-.5 0-.1 0-.2-.1-.3-.3-.5-.3-1.1.1-1.5.3-.3.7-.4 1.1-.3.3.1.6.1.9.1.5 0 .8-.2 1-.3.3-.3.8-.3 1.1-.1.2.2.3.5.2.8-.3 1.1-.3 2.2.2 3.1.2.3.5.5.8.5.1 0 .3-.1.4-.2.7-.6 1.1-1.4 1.1-2.3 0-2.2-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2s-2-.9-2-2c0-1.1.9-2 2-2z" fill="#000"/>
+              </g>
+            </svg>
+          </span>
+          @khoahocgiasiure
+        </a>
       </div>
     </div>
-    <!-- ===== MAIN SECTION ===== -->
-    <div style="flex:1;display:flex;flex-direction:column;min-height:100vh;">
-      <!-- ===== HEADER ===== -->
-      <div class="header">
-        <div class="header-logo">
-          <img src="logo.png" alt="Logo" style="width: 40px; height: 40px;">
-        </div>
-        <div class="header-nav">
-          <button class="nav-item active"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M3 12l9-7 9 7v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z" stroke="#1976d2" stroke-width="2" fill="none"/></svg> Trang chủ</button>
-          <button class="nav-item"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke="#1976d2" stroke-width="2" fill="none"/></svg> Cộng đồng</button>
-        </div>
-        <div class="header-icons">
-          <button class="icon-btn">Kích hoạt thẻ</button>
-          <button class="icon-btn"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1976d2" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="3" stroke="#1976d2" stroke-width="2" fill="none"/><path d="M12 13v3" stroke="#1976d2" stroke-width="2" stroke-linecap="round"/></svg></button>
-          <button class="icon-btn"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 0V9" stroke="#1976d2" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
-          <div class="header-profile">P</div>
-        </div>
-      </div>
-      <div class="main-content">
-        <div class="main-scroll">
-          <div class="main-feature-banner">
-            <img src="https://img.upanh.tv/2024/06/10/mapstudybookbanner.png" alt="MapStudy Book Banner">
-          </div>
-          <div class="main-section-title">Tài liệu của bạn</div>
-          <div class="promo">
-            <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-            💥 Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!<br>
-            📘 <u>Combo Lớp 12 – dành cho 2K7</u>:<br>
-            &nbsp;&nbsp;&nbsp;✅ Giá: 99K full combo tất cả môn hoặc 50K/môn lẻ<br>
-            &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
-            📘 <u>Combo Lớp 12 – dành cho 2K8</u>:<br>
-            &nbsp;&nbsp;&nbsp;✅ Giá: 299K full combo tất cả môn hoặc 100K/môn lẻ<br>
-            &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
-            📗 <u>Combo Lớp 11/10 – dành cho 2K9/2K10</u>:<br>
-            &nbsp;&nbsp;&nbsp;✅ Giá: 199K full combo, hoặc 50K/môn lẻ<br>
-            &nbsp;&nbsp;&nbsp;📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH<br>
-            &nbsp;&nbsp;&nbsp;📌 TẶNG: Khóa học lớp 10 bản 2025<br>
-            🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký<br>
-            ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-            <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-            Khóa TOEIC cô Mai Phương: 199K<br>
-            Khóa IELTS nền tảng – nâng band: 299K<br>
-            Khóa sinh viên ôn lại gốc lớp 12: 199K<br>
-            ⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
-          </div>
-          <!-- Tabs chọn lớp và môn -->
-          <div class="tabs" id="classTabs"></div>
-          <div class="subjects" id="subjectTabs"></div>
-          <!-- Danh sách tài liệu -->
-          <div class="doc-list" id="documentList"></div>
-        </div>
-        <div class="rightbar">
-          <div>
-            <div style="font-size:1.2rem;font-weight:700;color:#1565c0;margin-bottom:10px;">Đếm ngược kỳ thi</div>
-            <div class="exam-countdown-container">
-              <div class="exam-countdown-box">
-                <div class="exam-countdown-labels">
-                  <div style="font-size:1.18rem;font-weight:bold;line-height:1.3">THPT<br>QG</div>
-                </div>
-                <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
-                <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
-                <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
-                <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
-              </div>
-            </div>
-          </div>
-          <button class="rightbar-activate-btn">🔑 Kích hoạt thẻ</button>
-          <div class="rightbar-section">
-            <div class="section-title">Tin tức <span style="float:right;font-weight:400;font-size:0.98rem;color:#1565c0;cursor:pointer;">Xem tất cả</span></div>
-            <div class="rightbar-news-list">
-              <div class="rightbar-news-item">
-                <div class="rightbar-news-thumb" style="background:#e3f2fd;">MÔN TOÁN</div>
-                <div>
-                  <div class="rightbar-news-title">Gợi ý đáp án đề thi môn Toán tốt nghiệp THPT 2024</div>
-                  <div class="rightbar-news-meta">🕑 14:41 - 27/6/2024</div>
-                </div>
-              </div>
-              <div class="rightbar-news-item">
-                <div class="rightbar-news-thumb" style="background:#e3f2fd;">MÔN VẬT LÝ</div>
-                <div>
-                  <div class="rightbar-news-title">Gợi ý đáp án đề thi môn Vật Lý tốt nghiệp THPT 2024</div>
-                  <div class="rightbar-news-meta">🕑 8:00 - 28/6/2024</div>
-                </div>
-              </div>
-              <div class="rightbar-news-item">
-                <div class="rightbar-news-thumb" style="background:#e3f2fd;">MÔN HOÁ HỌC</div>
-                <div>
-                  <div class="rightbar-news-title">Gợi ý đáp án đề thi môn Hoá học tốt nghiệp THPT 2024</div>
-                  <div class="rightbar-news-meta">🕑 8:00 - 28/6/2024</div>
-                </div>
-              </div>
-              <div class="rightbar-news-item">
-                <div class="rightbar-news-thumb" style="background:#e3f2fd;">MÔN SINH HỌC</div>
-                <div>
-                  <div class="rightbar-news-title">Gợi ý đáp án đề thi môn Sinh học tốt nghiệp THPT 2024</div>
-                  <div class="rightbar-news-meta">🕑 8:00 - 28/6/2024</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ===== FOOTER ===== -->
-      <footer style="text-align:center;padding:32px 0 16px 0;background: #f4f6fa;color: #444;margin-top:48px;border-top:1px solid #e0e0e0;font-size:1.04rem;">
-        <b>Liên hệ:</b> Zalo 0788559492 &bull; TikTok @khoahocgiasiure &bull; Threads @khoahocgiasiure<br>
-        &copy; 2025 <b> by @phusiucute</b> - Share tài liệu khóa học 10, 11, 12 giá rẻ.
-      </footer>
+    <div class="title">
+      <span>Kho Tài Liệu Miễn Phí</span>
     </div>
+    <div id="accountBtn" class="account-btn-topright" title="Tài khoản">P</div>
+  </header>
+<!-- Đếm ngược kỳ thi -->
+<div class="exam-countdown-container">
+  <div style="font-size:1.2rem;font-weight:700;color:#1565c0;margin-bottom:10px;">Đếm ngược kỳ thi</div>
+  <div class="exam-countdown-box">
+    <div class="exam-countdown-labels">
+      <div style="font-size:1.18rem;font-weight:bold;line-height:1.3">THPT<br>QG</div>
+    </div>
+    <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
+    <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
+    <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
+    <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
   </div>
-  <script>
-    // Đếm ngược kỳ thi
-    const examDate = new Date("2025-06-26T07:45:00+07:00");
-    function updateExamCountdown() {
-      const now = new Date();
-      const diff = examDate - now;
-      let days = 0, hours = 0, minutes = 0, seconds = 0;
-      if (diff > 0) {
-        days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        minutes = Math.floor((diff / (1000 * 60)) % 60);
-        seconds = Math.floor((diff / 1000) % 60);
-      }
-      document.getElementById("countdown-day").textContent = days.toString().padStart(2, "0");
-      document.getElementById("countdown-hour").textContent = hours.toString().padStart(2, "0");
-      document.getElementById("countdown-minute").textContent = minutes.toString().padStart(2, "0");
-      document.getElementById("countdown-second").textContent = seconds.toString().padStart(2, "0");
-    }
-    setInterval(updateExamCountdown, 1000);
-    updateExamCountdown();
+</div>
 
-    // ===== SEARCH VÀ SHEET =====
-    const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
-    const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
-    let allDocs = [];
-    let classList = [];
-    let currentClass = "";
-    let currentSubject = subjectList[0];
-    let searchTerm = "";
+<!-- Modal đăng nhập tài khoản -->
+<div id="accountModal" class="modal-account-overlay" style="display:none;">
+  <div class="modal-account-content">
+    <div style="font-size:1.2rem;font-weight:700;color:#1976d2; margin-bottom:14px">Đăng nhập tài khoản</div>
+    <input id="accountName" type="text" placeholder="Tên hiển thị" class="modal-account-input"><br>
+    <input id="accountEmail" type="email" placeholder="Email hoặc tên đăng nhập" class="modal-account-input"><br>
+    <button id="btnLogin" class="modal-account-btn">Đăng nhập</button>
+    <div id="accountError" style="color:red;font-size:0.97rem;margin-top:8px;"></div>
+  </div>
+</div>
 
-    function renderClassTabs() {
-      const classTabs = document.getElementById("classTabs");
-      classTabs.innerHTML = "";
-      classList.forEach(cls => {
-        const tab = document.createElement("div");
-        tab.className = "tab" + (cls===currentClass ? " active" : "");
-        tab.innerText = "Lớp " + cls;
-        tab.onclick = () => {
-          currentClass = cls;
-          let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
-          currentSubject = found || subjectList[0];
-          searchTerm = "";
-          document.getElementById("searchInput").value = "";
-          renderClassTabs(); renderSubjectTabs(); renderDocs();
-        };
-        classTabs.appendChild(tab);
-      });
-    }
-    function renderSubjectTabs() {
-      const subjectTabs = document.getElementById("subjectTabs");
-      subjectTabs.innerHTML = "";
-      subjectList.forEach(sub => {
-        if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
-          const tab = document.createElement("div");
-          tab.className = "subject" + (sub===currentSubject ? " active" : "");
-          tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
-          tab.onclick = () => { currentSubject = sub; searchTerm=""; document.getElementById("searchInput").value=""; renderSubjectTabs(); renderDocs(); };
-          subjectTabs.appendChild(tab);
-        }
-      });
-    }
-    function renderDocs() {
-      const docList = document.getElementById("documentList");
-      docList.innerHTML = "";
-      let docs = [];
-      if (searchTerm) {
-        const st = searchTerm.toLowerCase();
-        docs = allDocs.filter(doc =>
-          (doc.title||"").toLowerCase().includes(st) ||
-          (doc.class||"").toLowerCase() === st ||
-          (doc.subject||"").toLowerCase() === st
-        );
-      } else {
-        docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
-      }
-      if (!docs || docs.length === 0) {
-        docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
-        return;
-      }
-      docs.forEach((doc, idx) => {
-        const div = document.createElement("div");
-        div.className = "doc-box";
-        const key = "clicked_" + (doc.title||"") + "_" + (doc.class||"") + "_" + (doc.subject||"");
-        div.onclick = () => {
-          const isFirst = !localStorage.getItem(key);
-          if(isFirst && doc.shopee_link){
-            localStorage.setItem(key, "true");
-            window.open(doc.shopee_link, "_blank");
-          } else if(doc.drive_link) {
-            window.open(doc.drive_link, "_blank");
-          }
-        };
-        div.innerHTML = `<span class="doc-icon">📄</span>
-          <span class="doc-title">${doc.title||"(Không có tên tài liệu)"}</span>
-          <div class="doc-date">Cập nhật: ${doc.updatedAt||""}</div>
-        `;
-        docList.appendChild(div);
-      });
-    }
+<div class="container">
+  <div class="promo">
+    <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
+    💥 Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!<br>
+    📘 <u>Combo Lớp 12 – dành cho 2K7</u>:<br>
+    &nbsp;&nbsp;&nbsp;✅ Giá: 99K full combo tất cả môn hoặc 50K/môn lẻ<br>
+    &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
+    📘 <u>Combo Lớp 12 – dành cho 2K8</u>:<br>
+    &nbsp;&nbsp;&nbsp;✅ Giá: 299K full combo tất cả môn hoặc 100K/môn lẻ<br>
+    &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
+    📗 <u>Combo Lớp 11/10 – dành cho 2K9/2K10</u>:<br>
+    &nbsp;&nbsp;&nbsp;✅ Giá: 199K full combo, hoặc 50K/môn lẻ<br>
+    &nbsp;&nbsp;&nbsp;📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH<br>
+    &nbsp;&nbsp;&nbsp;📌 TẶNG: Khóa học lớp 10 bản 2025<br>
+    🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký<br>
+    ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
+    <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
+    Khóa TOEIC cô Mai Phương: 199K<br>
+    Khóa IELTS nền tảng – nâng band: 299K<br>
+    Khóa sinh viên ôn lại gốc lớp 12: 199K<br>
+    ⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
+  </div>
+  <div class="tabs" id="classTabs"></div>
+  <div class="subjects" id="subjectTabs"></div>
+  <div class="doc-list" id="documentList"></div>
+</div>
+<footer>
+  <b>Liên hệ:</b> Zalo 0788559492 &bull; TikTok @khoahocgiasiure &bull; Threads @khoahocgiasiure<br>
+  &copy; 2025 <b> by @phusiucute</b> - Share tài liệu khóa học 10, 11, 12 giá rẻ.
+</footer>
+<script>
+  // Đếm ngược kỳ thi
+  const examDate = new Date("2025-06-26T07:45:00+07:00"); // đổi lại nếu cần
 
-    fetch(SHEET_API)
-      .then(res => res.json())
-      .then(rows => {
-        allDocs = rows.map(doc => ({
-          ...doc,
-          class: (doc.class||"").trim(),
-          subject: (doc.subject||"").trim().toLowerCase(),
-          title: (doc.title||"").trim(),
-          drive_link: (doc.drive_link||"").trim(),
-          shopee_link: (doc.shopee_link||"").trim(),
-          updatedAt: (doc.updatedAt||"").trim()
-        })).filter(doc => doc.class && doc.subject && doc.title);
-        classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
-        currentClass = classList[0] || "";
-        let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
+  function updateExamCountdown() {
+    const now = new Date();
+    const diff = examDate - now;
+    let days = 0, hours = 0, minutes = 0, seconds = 0;
+    if (diff > 0) {
+      days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      minutes = Math.floor((diff / (1000 * 60)) % 60);
+      seconds = Math.floor((diff / 1000) % 60);
+    }
+    document.getElementById("countdown-day").textContent = days.toString().padStart(2, "0");
+    document.getElementById("countdown-hour").textContent = hours.toString().padStart(2, "0");
+    document.getElementById("countdown-minute").textContent = minutes.toString().padStart(2, "0");
+    document.getElementById("countdown-second").textContent = seconds.toString().padStart(2, "0");
+  }
+  setInterval(updateExamCountdown, 1000);
+  updateExamCountdown();
+
+  // ====== TÀI KHOẢN ======
+  const profileBtn = document.getElementById('accountBtn');
+  let accountDropdown = null;
+
+  function getAccount() {
+    try { return JSON.parse(localStorage.getItem("my_account")||"{}"); } catch(e){ return {}; }
+  }
+  function setAccount(acc) {
+    localStorage.setItem("my_account", JSON.stringify(acc));
+  }
+  function clearAccount() {
+    localStorage.removeItem("my_account");
+  }
+
+  function renderAccountHeader() {
+    const acc = getAccount();
+    if(acc && acc.name){
+      profileBtn.textContent = acc.name.trim().charAt(0).toUpperCase();
+      profileBtn.title = acc.name;
+      profileBtn.style.background = "#1976d2";
+      profileBtn.style.color = "#fff";
+      profileBtn.onclick = function(e){
+        e.stopPropagation();
+        showAccountDropdown();
+      }
+    } else {
+      profileBtn.textContent = "P";
+      profileBtn.title = "Tài khoản";
+      profileBtn.style.background = "#1976d2";
+      profileBtn.style.color = "#fff";
+      profileBtn.onclick = function(){
+        document.getElementById("accountModal").style.display = "";
+        document.getElementById("accountName").focus();
+      }
+    }
+  }
+  function showAccountDropdown() {
+    hideAccountDropdown();
+    accountDropdown = document.createElement("div");
+    accountDropdown.className = "account-dropdown";
+    const acc = getAccount();
+    accountDropdown.innerHTML = `
+      <div style="padding:7px 22px 9px 22px;border-bottom:1.5px solid #e3e3e3;color:#222;">
+        <b>${acc.name}</b><br>
+        <span style="color:#888;font-size:0.96rem;">${acc.email||""}</span>
+      </div>
+      <div class="account-dropdown-item" onclick="alert('Chức năng cập nhật sau!')">Thông tin tài khoản</div>
+      <div class="account-dropdown-item account-dropdown-logout" onclick="logoutAccount()">Đăng xuất</div>
+    `;
+    profileBtn.appendChild(accountDropdown);
+    setTimeout(() => { document.addEventListener("click", hideAccountDropdown); }, 10);
+  }
+  function hideAccountDropdown() {
+    if(accountDropdown && accountDropdown.parentNode) accountDropdown.parentNode.removeChild(accountDropdown);
+    accountDropdown = null;
+    document.removeEventListener("click", hideAccountDropdown);
+  }
+  window.logoutAccount = function(){
+    clearAccount();
+    hideAccountDropdown();
+    renderAccountHeader();
+  };
+
+  // Xử lý đăng nhập
+  document.getElementById("btnLogin").onclick = function(){
+    const name = document.getElementById("accountName").value.trim();
+    const email = document.getElementById("accountEmail").value.trim();
+    if(!name || !email){
+      document.getElementById("accountError").textContent = "Nhập đầy đủ tên và email!";
+      return;
+    }
+    setAccount({name,email});
+    document.getElementById("accountModal").style.display = "none";
+    document.getElementById("accountError").textContent = "";
+    renderAccountHeader();
+  };
+  // Đóng popup khi nhấn ngoài
+  document.getElementById("accountModal").onclick = function(e){
+    if(e.target === this) this.style.display = "none";
+  };
+
+  // Khi load trang
+  renderAccountHeader();
+
+  // ======== DỮ LIỆU VÀ TAB =========
+  const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
+  const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
+  let allDocs = [];
+  let classList = [];
+  let currentClass = "";
+  let currentSubject = subjectList[0];
+
+  function renderClassTabs() {
+    const classTabs = document.getElementById("classTabs");
+    classTabs.innerHTML = "";
+    classList.forEach(cls => {
+      const tab = document.createElement("div");
+      tab.className = "tab" + (cls===currentClass ? " active" : "");
+      tab.innerText = "Lớp " + cls;
+      tab.onclick = () => {
+        currentClass = cls;
+        let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
         currentSubject = found || subjectList[0];
-        renderClassTabs();
-        renderSubjectTabs();
-        renderDocs();
-      })
-      .catch(e => {
-        document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
-      });
-
-    // SEARCH EVENT
-    function doSearch() {
-      searchTerm = document.getElementById('searchInput').value.trim();
-      renderDocs();
-    }
-    document.getElementById('searchInput').addEventListener('input', doSearch);
-    document.getElementById('searchBtn').addEventListener('click', doSearch);
-    document.getElementById('searchInput').addEventListener('keypress', function(e){
-      if(e.key==='Enter') doSearch();
+        renderClassTabs(); renderSubjectTabs(); renderDocs();
+      };
+      classTabs.appendChild(tab);
     });
-  </script>
+  }
+
+  function renderSubjectTabs() {
+    const subjectTabs = document.getElementById("subjectTabs");
+    subjectTabs.innerHTML = "";
+    subjectList.forEach(sub => {
+      if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
+        const tab = document.createElement("div");
+        tab.className = "subject" + (sub===currentSubject ? " active" : "");
+        tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
+        tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
+        subjectTabs.appendChild(tab);
+      }
+    });
+  }
+
+  function renderDocs() {
+    const docList = document.getElementById("documentList");
+    docList.innerHTML = "";
+    const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+    if (!docs || docs.length === 0) {
+      docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
+      return;
+    }
+    docs.forEach((doc, idx) => {
+      const div = document.createElement("div");
+      div.className = "doc-box";
+      const key = "clicked_" + (doc.title||"") + "_" + (doc.class||"") + "_" + (doc.subject||"");
+      div.onclick = () => {
+        const isFirst = !localStorage.getItem(key);
+        if(isFirst && doc.shopee_link){
+          localStorage.setItem(key, "true");
+          window.open(doc.shopee_link, "_blank");
+        } else if(doc.drive_link) {
+          window.open(doc.drive_link, "_blank");
+        }
+      };
+      div.innerHTML = `<span class="doc-icon">📄</span>
+        <span class="doc-title">${doc.title||"(Không có tên tài liệu)"}</span>
+        <div class="doc-date">Cập nhật: ${doc.updatedAt||""}</div>
+      `;
+      docList.appendChild(div);
+    });
+  }
+
+  fetch(SHEET_API)
+    .then(res => res.json())
+    .then(rows => {
+      allDocs = rows.map(doc => ({
+        ...doc,
+        class: (doc.class||"").trim(),
+        subject: (doc.subject||"").trim().toLowerCase(),
+        title: (doc.title||"").trim(),
+        drive_link: (doc.drive_link||"").trim(),
+        shopee_link: (doc.shopee_link||"").trim(),
+        updatedAt: (doc.updatedAt||"").trim()
+      })).filter(doc => doc.class && doc.subject && doc.title);
+      classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
+      currentClass = classList[0] || "";
+      let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
+      currentSubject = found || subjectList[0];
+      renderClassTabs();
+      renderSubjectTabs();
+      renderDocs();
+    })
+    .catch(e => {
+      document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
+    });
+</script>
 </body>
 </html>
