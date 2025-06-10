@@ -209,6 +209,96 @@
       <span>Kho Tài Liệu Miễn Phí</span>
     </div>
   </header>
+<!-- Đếm ngược kỳ thi -->
+<div class="exam-countdown-container">
+  <div style="font-size:1.2rem;font-weight:700;color:#1565c0;margin-bottom:10px;">Đếm ngược kỳ thi</div>
+  <div class="exam-countdown-box">
+    <div class="exam-countdown-labels">
+      <div style="font-size:1.18rem;font-weight:bold;line-height:1.3">THPT<br>QG</div>
+    </div>
+    <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
+    <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
+    <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
+    <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
+  </div>
+</div>
+
+<style>
+.exam-countdown-container {
+  max-width: 410px;
+  margin: 0 auto 28px auto;
+  padding: 10px 0 0 0;
+}
+.exam-countdown-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(90deg,#ffb300 80%,#ffecb3 100%);
+  border-radius: 20px;
+  padding: 17px 18px 14px 18px;
+  box-shadow: 0 4px 16px rgba(255,193,7,0.13);
+  font-family: 'Quicksand',sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+.exam-countdown-labels {
+  background: url('https://cdn-icons-png.flaticon.com/512/609/609803.png') no-repeat left center/38px auto;
+  min-width: 55px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.exam-countdown-number {
+  background: #fff8e1;
+  color: #ee7600;
+  border-radius: 12px;
+  padding: 10px 11px 7px 11px;
+  min-width: 43px;
+  margin-right: 4px;
+  text-align: center;
+  font-size: 1.32rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: inherit;
+}
+.exam-countdown-unit {
+  color: #b26a00;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 2px;
+  display: block;
+  letter-spacing: .5px;
+}
+@media (max-width:600px) {
+  .exam-countdown-box {font-size:17px;padding:8px 3px;}
+  .exam-countdown-container {max-width:99vw;}
+}
+</style>
+
+<script>
+  // Chọn ngày giờ kỳ thi THPT QG (ví dụ: 26-6-2025 07:45:00)
+  const examDate = new Date("2025-06-26T07:45:00+07:00"); // đổi lại nếu cần
+
+  function updateExamCountdown() {
+    const now = new Date();
+    const diff = examDate - now;
+    let days = 0, hours = 0, minutes = 0, seconds = 0;
+    if (diff > 0) {
+      days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      minutes = Math.floor((diff / (1000 * 60)) % 60);
+      seconds = Math.floor((diff / 1000) % 60);
+    }
+    document.getElementById("countdown-day").textContent = days.toString().padStart(2, "0");
+    document.getElementById("countdown-hour").textContent = hours.toString().padStart(2, "0");
+    document.getElementById("countdown-minute").textContent = minutes.toString().padStart(2, "0");
+    document.getElementById("countdown-second").textContent = seconds.toString().padStart(2, "0");
+  }
+  setInterval(updateExamCountdown, 1000);
+  updateExamCountdown();
+</script>
   <div class="container">
     <div class="promo">
       <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
