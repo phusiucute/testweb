@@ -81,7 +81,6 @@
       .header-title {margin-left:7px;}
     }
 
-    /* Promo Row: Countdown + Sale */
     .promo-row {
       display: flex;
       align-items: stretch;
@@ -91,7 +90,6 @@
       max-width: 1100px;
       flex-wrap: wrap;
     }
-    /* Exam Countdown Card */
     .exam-countdown-card {
       background: #fff;
       border-radius: 19px;
@@ -165,7 +163,6 @@
       display: block;
       letter-spacing: .3px;
     }
-    /* Sale Countdown */
     .sale-countdown-card {
       background: #fff;
       border-radius: 19px;
@@ -222,89 +219,119 @@
       margin-right: 5px;
       margin-left: 1px;
     }
-    /* Share tài liệu đẹp */
-    .tabs {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 18px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .tab {
-      padding: 9px 18px;
-      background: #f0f4f8;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #1565c0;
-      font-size: 1.07rem;
-      border: 1.5px solid #e3e8ef;
-      transition: background 0.13s, color 0.13s;
-      user-select: none;
-    }
-    .tab.active, .tab:hover {
-      background: #1976d2;
-      color: #fff;
-      border-color: #1976d2;
-    }
-    .subjects {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-    .subject {
-      padding: 7px 16px;
-      background: #e0e7ef;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #1976d2;
-      font-size: 1.01rem;
-      border: 1.2px solid #d0d6e0;
-      transition: background 0.13s, color 0.13s;
-    }
-    .subject.active, .subject:hover {
-      background: #43a047;
-      color: #fff;
-      border-color: #43a047;
-    }
-    .doc-list {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-    .doc-box {
-      background: #fafaff;
-      border: 1.5px solid #d0d6e0;
-      border-radius: 12px;
-      padding: 20px 10px 12px 10px;
-      text-align: left;
-      box-shadow: 1px 2px 6px rgba(0,0,0,0.07);
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-      position:relative;
-      min-height: 86px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.04rem;
-    }
-    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09);}
-    .doc-title { font-size:1.13rem; font-weight:600; color:#1976d2;}
-    .doc-date { font-size:0.97rem; color:#888; margin-top:7px;}
-    .doc-icon {font-size: 1.31rem; vertical-align:middle; margin-right:6px;}
-    @media (max-width:1000px) {
-      .doc-list { grid-template-columns:repeat(2,1fr);}
-    }
-    @media (max-width:600px) {
+    /* MOBILE OPTIMIZATION FOR COUNTDOWN */
+    @media (max-width: 600px) {
+      .promo-row {
+        gap: 13px;
+        margin: 12px auto 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .exam-countdown-card, .sale-countdown-card {
+        padding: 13px 6px 13px 6px;
+        min-width: 0;
+        border-radius: 13px;
+      }
+      .exam-countdown-title {
+        font-size: 1.09rem;
+        margin-bottom: 11px;
+        text-align: center;
+        width: 100%;
+      }
+      .exam-countdown-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        background: #fffbe6;
+        border-radius: 13px;
+        padding: 10px 4px 10px 4px;
+        font-size: 18px;
+        justify-items: center;
+      }
+      .exam-countdown-labels {
+        grid-column: 1 / span 2;
+        font-size: .98rem;
+        min-width: 0;
+        padding: 5px 0;
+        border-radius: 10px;
+        margin: 0 auto 6px auto;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .exam-countdown-number {
+        min-width: 0;
+        width: 90%;
+        font-size: 1.07rem;
+        padding: 9px 0 6px 0;
+        margin: 0 auto;
+        border-radius: 10px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .exam-countdown-unit { font-size: 0.92rem; }
+
+      .sale-countdown-card {
+        min-width: 0;
+        border-radius: 13px;
+        align-items: center;
+        padding: 10px 5px 10px 5px;
+      }
+      .sale-countdown-box {
+        flex-direction: column;
+        gap: 8px;
+        min-width: 0;
+        width: 100%;
+        border-radius: 13px;
+        padding: 13px 5px 13px 5px;
+        font-size: 1rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .sale-countdown-label {
+        font-size: 1.01rem;
+        margin-right: 0;
+        margin-bottom: 3px;
+        letter-spacing: 1.1px;
+        text-align: center;
+        width: 100%;
+      }
+      .sale-countdown-num {
+        font-size: 1.04rem;
+        min-width: 38px;
+        margin: 0 2px;
+        padding: 5px 0;
+        border-radius: 8px;
+        display: inline-block;
+        text-align: center;
+      }
+      .sale-countdown-unit {
+        font-size: 0.97rem;
+        margin: 0 4px 0 2px;
+      }
       .tabs, .subjects { gap:6px;}
       .doc-list { grid-template-columns:1fr;}
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
+      .zalo-fab {font-size:12px;width:41px;height:41px;}
+      .zalo-fab span {font-size:12px;}
+      .zalo-chat-balloon {font-size:1.03rem;padding:7px 11px;}
+      .footer-inner {font-size:0.97rem;}
+      .main-logo {height:30px;width:30px;}
+      .header-title {font-size:0.93rem;}
+      .container {padding:10px 2vw;}
+      .promo {
+        padding:13px 7px;
+        margin: 0 auto 11px auto;
+        font-size: 1rem;
+        border-radius: 11px;
+        line-height: 1.65;
+        word-break: break-word;
+      }
     }
-    /* Promo box */
     .container {
       max-width: 1100px;
       margin: 32px auto 0;
@@ -325,8 +352,10 @@
       position: relative;
       color: #303030;
       border-bottom: 4px solid #ffb300;
+      font-weight: 500;
     }
-    .promo strong { color:#d84315;}
+    .promo strong { color:#d84315; font-size:1.09em;}
+    .promo u {color: #1565c0;}
     .promo .ibzalo {
       color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
       padding:2px 8px;border-radius:8px;
@@ -339,7 +368,11 @@
       transition: box-shadow 0.14s,background 0.14s;
     }
     .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
-    /* Zalo floating button */
+    .promo .promo-combo {display:block;margin:10px 0 3px 0;font-weight:700;color:#1976d2;}
+    .promo-highlight {color:#1976d2;font-weight:700;}
+    .promo-list {margin:0 0 0 16px;}
+    .promo-list li {margin-bottom:3px;}
+    /* Zalo floating button - LIÊN HỆ */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -356,12 +389,26 @@
       cursor: pointer;
       border: 4px solid #fff;
       transition: box-shadow 0.17s;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.1;
+      padding: 0;
+      overflow: hidden;
     }
-    .zalo-fab:hover {box-shadow:0 9px 26px rgba(25,118,210,0.18);}
-    .zalo-fab img, .zalo-fab svg {
-      width: 32px;
-      height: 32px;
+    .zalo-fab span {
       display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
     }
     .zalo-chat-balloon {
       display: none;
@@ -396,7 +443,6 @@
       letter-spacing:0.5px;
       box-shadow:0 2px 12px rgba(0,142,230,0.07);
     }
-    /* Footer */
     footer {
       margin-top: 50px;
       background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
@@ -450,15 +496,6 @@
       .sale-countdown-box,.exam-countdown-box {flex-wrap:wrap;}
       .exam-countdown-labels{font-size:1rem;}
     }
-    @media (max-width:600px) {
-      .zalo-fab {width:41px;height:41px;bottom:10px;right:8px;}
-      .zalo-fab img {width:21px;height:21px;}
-      .zalo-chat-balloon {font-size:1.03rem;padding:7px 11px;}
-      .promo-row {margin-top:8px;}
-      .footer-inner {font-size:0.97rem;}
-      .main-logo {height:30px;width:30px;}
-      .header-title {font-size:0.93rem;}
-    }
   </style>
 </head>
 <body>
@@ -506,42 +543,47 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     <div class="promo">
       <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-      💥 Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!<br>
-      📘 <u>Combo Lớp 12 – dành cho 2K7</u>:<br>
-      &nbsp;&nbsp;&nbsp;✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
-      📘 <u>Combo Lớp 12 – dành cho 2K8</u>:<br>
-      &nbsp;&nbsp;&nbsp;✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      &nbsp;&nbsp;&nbsp;📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025<br>
-      📗 <u>Combo Lớp 11/10 – dành cho 2K9/2K10</u>:<br>
-      &nbsp;&nbsp;&nbsp;✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      &nbsp;&nbsp;&nbsp;📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH<br>
-      &nbsp;&nbsp;&nbsp;📌 TẶNG: Khóa học lớp 10 bản 2025<br>
-      🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký<br>
+      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
+        <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
+      </ul>
+      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
       ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
       <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-      Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">ib zalo</span> nhé<br>
-      ⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
+      <ul class="promo-list">
+        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+      </ul>
+      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
     </div>
     <div class="tabs" id="classTabs"></div>
     <div class="subjects" id="subjectTabs"></div>
     <div class="doc-list" id="documentList"></div>
   </div>
-
   <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
-    <img src="zalo.png" alt="Zalo">
+    <span>Liên hệ</span>
   </div>
   <div class="zalo-chat-balloon" id="zaloBalloon">
     💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
   </div>
-
   <footer>
     <div class="footer-inner">
       <span class="footer-strong">Liên hệ:</span>
@@ -556,7 +598,6 @@
       </span>
     </div>
   </footer>
-
   <script>
     // Đếm ngược kỳ thi
     const examDate = new Date("2025-06-26T07:45:00+07:00");
