@@ -6,6 +6,69 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
+  /* Popup quảng cáo */
+.ads-modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(30,40,53,0.56);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s;
+}
+.ads-modal {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px rgba(40,50,70,0.18);
+  max-width: 97vw;
+  max-height: 97vh;
+  position: relative;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: popupShow 0.3s;
+  overflow: hidden;
+}
+.ads-modal img {
+  display: block;
+  max-width: 92vw;
+  max-height: 89vh;
+  border-radius: 22px;
+  background: #fff;
+}
+.ads-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 39px;
+  height: 39px;
+  font-size: 2.1rem;
+  color: #e53935;
+  cursor: pointer;
+  box-shadow: 0 2px 9px rgba(230,57,53,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.13s;
+}
+.ads-modal-close:hover {
+  background: #ffecec;
+}
+@keyframes popupShow {
+  0% { opacity: 0; transform: scale(0.93);}
+  100% { opacity: 1; transform: scale(1);}
+}
+@media (max-width:700px) {
+  .ads-modal {max-width:99vw;max-height:99vh;border-radius:11px;}
+  .ads-modal img {max-width:99vw;max-height:75vh;border-radius:11px;}
+  .ads-modal-close {width:32px;height:32px;font-size:1.4rem;}
+}
     html, body {
       height: 100%;
       margin: 0;
@@ -618,7 +681,30 @@
     }
   </style>
 </head>
+<script>
+  // Popup quảng cáo
+  window.addEventListener("DOMContentLoaded", function() {
+    const bg = document.getElementById('adsModalBg');
+    const closeBtn = document.getElementById('adsModalClose');
+    function closeAds() {
+      bg.style.display = "none";
+    }
+    closeBtn.onclick = closeAds;
+    bg.onclick = function(e) {
+      if (e.target === bg) closeAds();
+    }
+    // Tự động đóng sau 12 giây nếu chưa đóng
+    setTimeout(closeAds, 12000);
+  });
+</script>
 <body>
+  <!-- POPUP ADS -->
+<div class="ads-modal-bg" id="adsModalBg">
+  <div class="ads-modal">
+    <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
+    <img src="ads.png" alt="Quảng cáo nổi bật">
+  </div>
+</div>
   <!-- HEADER -->
   <header>
     <div class="header-left">
