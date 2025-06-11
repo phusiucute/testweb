@@ -98,7 +98,6 @@
       .header-title {max-width:72px;}
     }
 
-    /* COUNTDOWN ROW & CARD */
     .promo-row {
       display: flex;
       align-items: stretch;
@@ -112,12 +111,14 @@
       background: #fff;
       border-radius: 19px;
       box-shadow: 0 2px 14px rgba(25,118,210,0.09);
-      padding: 20px 30px 22px 25px;
       min-width: 292px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
+    }
+    .exam-countdown-card {
+      padding: 20px 30px 22px 25px;
     }
     .sale-countdown-card {
       box-shadow: 0 2px 14px rgba(229,57,53,0.10);
@@ -131,10 +132,9 @@
       color:#1976d2;
       margin-bottom: 13px;
       letter-spacing: 0.2px;
-      text-align: left;
+      text-align: center;
       width: 100%;
     }
-    /* Countdown BOX */
     .exam-countdown-box {
       display: flex;
       align-items: center;
@@ -190,7 +190,6 @@
       display: block;
       letter-spacing: .3px;
     }
-    /* SALE COUNTDOWN */
     .sale-countdown-box {
       display: flex;
       align-items: center;
@@ -236,7 +235,9 @@
       margin-right: 5px;
       margin-left: 1px;
     }
-    /* MOBILE OPTIMIZATION */
+
+
+    /* MOBILE OPTIMIZATION - SALE COUNTDOWN = EXAM COUNTDOWN STYLE */
     @media (max-width: 700px) {
       .promo-row {
         gap: 13px;
@@ -274,7 +275,7 @@
         grid-column: 1 / span 2;
         font-size: .89rem;
         min-width: 0;
-        padding: 4px 0;
+        padding: 9px 0;
         border-radius: 10px;
         margin: 0 auto 2px auto;
         width: 92%;
@@ -286,58 +287,74 @@
         min-width: 0;
         width: 92%;
         font-size: 0.99rem;
-        padding: 7px 0 5px 0;
+        padding: 12px 0 8px 0;
         margin: 0 auto;
         border-radius: 8px;
         text-align: center;
         box-sizing: border-box;
       }
       .exam-countdown-unit { font-size: 0.92rem; }
+
+      /*** SALE COUNTDOWN MOBILE STYLE MATCHES EXAM ***/
       .sale-countdown-card {
         min-width: 0;
         border-radius: 13px;
-        align-items: center;
+        align-items: stretch;
         padding: 8px 2px 8px 2px;
         width: 98vw;
         margin: 0 auto;
         box-sizing: border-box;
       }
       .sale-countdown-box {
-        flex-direction: column;
-        gap: 7px;
-        min-width: 0;
-        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 6px;
+        background: linear-gradient(90deg,#e53935 80%,#ffb3b3 100%);
         border-radius: 13px;
-        padding: 8px 2px 8px 2px;
+        padding: 12px 2px 12px 2px;
         font-size: 1rem;
         align-items: center;
-        justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
+        justify-items: center;
+        width: 100%;
         box-sizing: border-box;
+        border: 2.5px solid #d32f2f;
+        box-shadow:0 2px 12px rgba(229,57,53,0.08);
       }
       .sale-countdown-label {
+        grid-column: 1 / span 2;
         font-size: 1.01rem;
-        margin-right: 0;
         margin-bottom: 3px;
         letter-spacing: 1.1px;
         text-align: center;
         width: 100%;
+        font-weight: bold;
+        color: #fff;
+        text-shadow:0 1px 5px #e57373;
       }
       .sale-countdown-num {
         font-size: 1.04rem;
-        min-width: 36px;
-        margin: 0 2px;
-        padding: 4px 0;
+        min-width: 0;
+        width: 92%;
+        margin: 0 auto;
+        padding: 12px 0 8px 0;
         border-radius: 8px;
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
+        background: #fff;
+        color: #e53935;
+        font-weight: 900;
+        box-shadow: 0 2px 10px rgba(229,57,53,0.11);
       }
       .sale-countdown-unit {
         font-size: 0.97rem;
-        margin: 0 4px 0 2px;
+        color: #fffde7;
+        margin: 0 0 0 0;
+        font-weight: bold;
       }
     }
+
     /* PROMO BOX - TỐI ƯU MOBILE */
     .container {
       max-width: 1100px;
@@ -606,7 +623,7 @@
   <header>
     <div class="header-left">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
-      <div class="header-title">Kho Tài Liệu Miễn Phí</div>
+      <div class="header-title">@khoahocgiasiure</div>
     </div>
     <div class="header-right">
       <a href="https://zalo.me/0788559492" target="_blank" class="header-social-btn" title="Zalo">
