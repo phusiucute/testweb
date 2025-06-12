@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kho Tài Liệu - Free Share</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- POPUP ADS -->
+  <div class="ads-modal-bg" id="adsModalBg">
+    <div class="ads-modal">
+      <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
+      <img src="ads.png" alt="Quảng cáo nổi bật">
+    </div>
+  </div>
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
+      <div class="header-title">v1.0</div>
+    </div>
+    <div class="header-right">
+      <a href="https://zalo.me/0788559492" target="_blank" class="header-social-btn" title="Zalo">
+        <img src="zalo.png" alt="Zalo">
+      </a>
+      <a href="https://www.tiktok.com/@khoahocgiasiure" target="_blank" class="header-social-btn" title="TikTok">
+        <img src="tiktok.png" alt="TikTok">
+      </a>
+      <a href="https://www.threads.net/@khoahocgiasiure" target="_blank" class="header-social-btn" title="Threads">
+        <img src="logothreads.png" alt="Threads">
+      </a>
+    </div>
+  </header>
+  <!-- ROW: Đếm ngược + Sale -->
+  <div class="promo-row">
+    <!-- Countdown -->
+    <div class="exam-countdown-card">
+      <div class="exam-countdown-title">Đếm ngược kỳ thi</div>
+      <div class="exam-countdown-box">
+        <div class="exam-countdown-labels">
+          <div>THPT<br>QG</div>
+        </div>
+        <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
+        <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
+        <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
+        <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
+      </div>
+    </div>
+    <!-- Sale countdown -->
+    <div class="sale-countdown-card">
+      <div class="sale-countdown-box">
+        <span class="sale-countdown-label">SALE GIÁ SỐC</span>
+        <span id="sale-day" class="sale-countdown-num">00</span><span class="sale-countdown-unit">ngày</span>
+        <span id="sale-hour" class="sale-countdown-num">00</span><span class="sale-countdown-unit">giờ</span>
+        <span id="sale-min" class="sale-countdown-num">00</span><span class="sale-countdown-unit">phút</span>
+        <span id="sale-sec" class="sale-countdown-num">00</span><span class="sale-countdown-unit">giây</span>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="promo">
+      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
+      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
+        <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
+      </ul>
+      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
+      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
+      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
+      <ul class="promo-list">
+        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+      </ul>
+      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
+    </div>
+    <div class="tabs" id="classTabs"></div>
+    <div class="subjects" id="subjectTabs"></div>
+    <div class="doc-list" id="documentList"></div>
+  </div>
+  <!-- Zalo Nổi -->
+  <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
+    <span>Liên hệ</span>
+  </div>
+  <div class="zalo-chat-balloon" id="zaloBalloon">
+    💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-strong">Liên hệ:</span>
+      <a href="https://zalo.me/0788559492" class="footer-link" target="_blank" rel="noopener">Zalo 0788559492</a>
+      &bull;
+      <a href="https://www.tiktok.com/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">TikTok @khoahocgiasiure</a>
+      &bull;
+      <a href="https://www.threads.net/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">Threads @khoahocgiasiure</a>
+      <br>
+      <span style="color:#888;font-weight:400;display:block;margin-top:7px;">
+        &copy; 2025 <b style="color:#1976d2;font-weight:800">by @phusiucute</b> &mdash; Share tài liệu khoá học 10, 11, 12 giá rẻ, nhanh, uy tín.
+      </span>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
