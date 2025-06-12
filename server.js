@@ -27,10 +27,10 @@ app.use(session({
 }));
 
 const dbConfig = {
-  host: 'localhost',
-  user: 'root', // đổi thành user của bạn
-  password: '', // đổi thành pass của bạn
-  database: 'kho_tailieu'
+  host: '15.235.181.136',
+  user: 'u3066636_1qe1MOH9TO', // đổi thành user của bạn
+  password: 'cZHPL!MhQRvtNGO=GYPwZX02', // đổi thành pass của bạn
+  database: 's3066636_db1749719600647'
 };
 
 const storage = multer.diskStorage({
