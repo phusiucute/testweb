@@ -877,7 +877,7 @@
       classList.forEach(cls => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cls===currentClass ? " active" : "");
-        tab.innerText = "Lớp " + cls;
+        tab.innerText =  + cls;
         tab.onclick = () => {
           currentClass = cls;
           let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
