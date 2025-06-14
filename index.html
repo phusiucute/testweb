@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
     html, body {
-      height: 100%;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       background: #f7f9fb;
@@ -16,37 +16,93 @@
       font-size: 16px;
       -webkit-tap-highlight-color: transparent;
     }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
+    /* HEADER */
     header {
       background: #fff;
       border-bottom: 1px solid #e3e3e3;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       height: 76px;
       position: relative;
       padding: 0 32px 0 0;
       z-index: 3;
     }
-    .header-left {
+    .header-countdown-area {
       display: flex;
       align-items: center;
-      gap: 15px;
-      min-width: 0;
+      margin-left: auto;
+      gap: 13px;
+    }
+    .exam-countdown-minimal {
+      display: flex;
+      align-items: center;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      border-radius: 0;
+      margin-right: 0;
+      gap: 0;
+    }
+    .exam-countdown-labels-minimal {
+      background: #ffc107;
+      color: #fff;
+      border-radius: 10px 0 0 10px;
+      font-weight: 900;
+      font-size: 1.04rem;
+      padding: 13px 16px 13px 14px;
+      text-align: center;
+      min-width: 56px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      box-shadow: 0 1px 8px #ffe082;
+      border-right: 2px solid #fffde7;
+    }
+    .exam-countdown-box-minimal {
+      display: flex;
+      align-items: center;
+      background: #fffde7;
+      border-radius: 0 14px 14px 0;
+      box-shadow: 0 2px 13px rgba(255,193,7,0.13);
+      padding: 0 7px 0 0;
+      gap: 0;
+      height: 54px;
+    }
+    .exam-countdown-number-minimal {
+      background: #fff;
+      color: #e65100;
+      border-radius: 11px;
+      padding: 7px 13px 4px 13px;
+      min-width: 39px;
+      margin: 0 7px 0 0;
+      text-align: center;
+      font-size: 1.09rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: inherit;
+      box-shadow: 0 1px 6px #ffecb3;
+      border: 2px solid #ffe082;
+    }
+    .exam-countdown-unit-minimal {
+      color: #b26a00;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 2px;
+      display: block;
+      letter-spacing: .3px;
     }
     .main-logo {
-      height: 40px;
-      width: 40px;
-      border-radius: 12px;
+      height: 50px;
+      width: 50px;
+      border-radius: 15px;
       background: #f8f8ff;
       border: 2px solid #1976d2;
       object-fit: cover;
       box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
-      margin-right: 12px;
+      margin-left: 22px;
     }
     .header-title {
       font-size: 1.22rem;
@@ -55,101 +111,21 @@
       color: #1976d2;
       text-shadow: 0 1px 7px rgba(25,118,210,0.07);
       line-height: 1.1;
-      margin-left: 0px;
+      margin-left: 8px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 200px;
     }
-    /* Đếm ngược header nhỏ gọn */
-    .exam-countdown-headerbox {
-      margin-left: 0;
-      margin-top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      background: #fffbe6;
-      border-radius: 13px;
-      box-shadow: 0 2px 10px rgba(255,193,7,0.10);
-      padding: 9px 18px 8px 18px;
-      min-width: 180px;
-      max-width: 250px;
-      z-index: 2;
-      border: 1.5px solid #ffe082;
-      margin-right: 0;
-    }
-    .exam-countdown-header-title {
-      text-align: center;
-      font-size: 1.01rem;
-      font-weight: bold;
-      color: #1976d2;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-      width: 100%;
-    }
-    .exam-countdown-header-box {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: none;
-      border-radius: 9px;
-      padding: 0;
-      font-family: 'Quicksand',sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      box-shadow: none;
-      justify-content: center;
-      width: 100%;
-    }
-    .exam-countdown-header-labels {
-      min-width: 38px;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      background: linear-gradient(90deg,#ffc107 50%,#ffd54f 100%);
-      border-radius: 8px;
-      padding: 0 6px;
-      font-size:0.99rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 36px;
-    }
-    .exam-countdown-header-number {
-      background: #fff;
-      color: #ee7600;
-      border-radius: 7px;
-      padding: 6px 7px 3px 7px;
-      min-width: 30px;
-      margin-right: 1px;
-      text-align: center;
-      font-size: 0.99rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: inherit;
-      box-shadow: 0 1px 4px #ffecb3;
-    }
-    .exam-countdown-header-unit {
-      color: #b26a00;
-      font-size: 0.77rem;
-      font-weight: 600;
-      margin-top: 1px;
-      display: block;
-      letter-spacing: .3px;
-    }
     @media (max-width:700px) {
-      .exam-countdown-headerbox {min-width:0;max-width:99vw;padding:5px 7px;}
-      .exam-countdown-header-title{font-size:0.92rem;}
-      .exam-countdown-header-box{font-size:12px;}
-      .exam-countdown-header-labels{font-size:0.7rem;padding:0 4px;min-width:0;}
-      .exam-countdown-header-number{font-size:0.8rem;min-width:0;}
+      .exam-countdown-labels-minimal{font-size: 0.8rem; padding:7px 7px;}
+      .exam-countdown-number-minimal{font-size:0.84rem;min-width:26px;padding:4px 7px 2px 7px;}
+      .exam-countdown-unit-minimal{font-size:0.7rem;}
+      .main-logo{height:28px;width:28px;}
       .header-title{font-size:0.8rem;}
-      .main-logo{height:26px;width:26px;}
       header{height:54px;}
+      .exam-countdown-box-minimal{padding:0 2px 0 0; height:34px;}
     }
-    /* PROMO BOX - TỐI ƯU MOBILE */
     .container {
       max-width: 1100px;
       margin: 42px auto 0;
@@ -202,7 +178,6 @@
       }
       .promo-list {padding-left: 18px;}
     }
-    /* TABS, SUBJECTS, DOCS (giữ nguyên) */
     .tabs {
       display: flex;
       gap: 14px;
@@ -386,25 +361,35 @@
       <img src="ads.png" alt="Quảng cáo nổi bật">
     </div>
   </div>
-  <!-- HEADER + Đếm ngược trên cùng bên trái -->
+  <!-- HEADER + Đếm ngược tối giản sát phải -->
   <header>
-    <div class="header-left">
-      <div class="exam-countdown-headerbox">
-        <div class="exam-countdown-header-title">Đếm ngược kỳ thi</div>
-        <div class="exam-countdown-header-box">
-          <div class="exam-countdown-header-labels">
-            <div>THPT<br>QG</div>
+    <div class="header-countdown-area">
+      <div class="exam-countdown-minimal">
+        <div class="exam-countdown-labels-minimal">
+          <div>THPT<br>QG</div>
+        </div>
+        <div class="exam-countdown-box-minimal">
+          <div class="exam-countdown-number-minimal">
+            <span id="countdown-day">00</span>
+            <span class="exam-countdown-unit-minimal">Ngày</span>
           </div>
-          <div class="exam-countdown-header-number"><span id="countdown-day">00</span><span class="exam-countdown-header-unit">Ngày</span></div>
-          <div class="exam-countdown-header-number"><span id="countdown-hour">00</span><span class="exam-countdown-header-unit">Giờ</span></div>
-          <div class="exam-countdown-header-number"><span id="countdown-minute">00</span><span class="exam-countdown-header-unit">Phút</span></div>
-          <div class="exam-countdown-header-number"><span id="countdown-second">00</span><span class="exam-countdown-header-unit">Giây</span></div>
+          <div class="exam-countdown-number-minimal">
+            <span id="countdown-hour">00</span>
+            <span class="exam-countdown-unit-minimal">Giờ</span>
+          </div>
+          <div class="exam-countdown-number-minimal">
+            <span id="countdown-minute">00</span>
+            <span class="exam-countdown-unit-minimal">Phút</span>
+          </div>
+          <div class="exam-countdown-number-minimal">
+            <span id="countdown-second">00</span>
+            <span class="exam-countdown-unit-minimal">Giây</span>
+          </div>
         </div>
       </div>
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
       <div class="header-title">v1.0</div>
     </div>
-    <!-- XÓA hoàn toàn header-right (3 nút mạng xã hội) -->
   </header>
   <div class="container">
     <div class="promo">
