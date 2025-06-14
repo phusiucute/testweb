@@ -16,6 +16,9 @@
       font-size: 16px;
       -webkit-tap-highlight-color: transparent;
     }
+    body {
+      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
+    }
     header {
       background: #fff;
       border-bottom: 1px solid #e3e3e3;
@@ -207,11 +210,11 @@
     }
     .container {
       max-width: 1100px;
-      margin: 32px auto 0;
-      background: #fff;
+      margin: 42px auto 0;
+      background: transparent;
       padding: 32px 34px 30px 34px;
       border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      box-shadow: none;
     }
     .promo {
       margin: 0 auto 26px auto;
@@ -407,27 +410,28 @@
       box-shadow:0 2px 12px rgba(0,142,230,0.07);
     }
     footer {
+      background: transparent;
       margin-top: 50px;
-      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
-      padding: 33px 0 24px 0;
+      padding: 0 0 40px 0;
       color: #1959a0;
-      border-top: 2.5px solid #e3f2fd;
       font-size: 1.11rem;
       letter-spacing: .3px;
       text-align: center;
-      box-shadow: 0 -2px 16px rgba(25,118,210,0.06);
       font-weight: 600;
       border-radius: 31px 31px 0 0 / 19px 19px 0 0;
       position: relative;
       overflow: hidden;
+      border-top: none;
+      box-shadow: none;
     }
     .footer-inner {
       display: inline-block;
       background: #fff;
       padding: 17px 30px 14px 30px;
-      border-radius: 14px;
-      box-shadow: 0 3px 24px rgba(25,118,210,0.08);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(25,118,210,0.10), 0 1.5px 7px rgba(25,118,210,0.04);
       font-size: 1.07rem;
+      margin-top: 32px;
     }
     .footer-strong {
       color: #e53935;
