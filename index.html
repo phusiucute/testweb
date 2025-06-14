@@ -693,18 +693,17 @@
     bg.onclick = function(e) {
       if (e.target === bg) closeAds();
     }
-    // Tự động đóng sau 12 giây nếu chưa đóng
     setTimeout(closeAds, 12000);
   });
 </script>
 <body>
   <!-- POPUP ADS -->
-<div class="ads-modal-bg" id="adsModalBg">
-  <div class="ads-modal">
-    <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
-    <img src="ads.png" alt="Quảng cáo nổi bật">
+  <div class="ads-modal-bg" id="adsModalBg">
+    <div class="ads-modal">
+      <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
+      <img src="ads.png" alt="Quảng cáo nổi bật">
+    </div>
   </div>
-</div>
   <!-- HEADER -->
   <header>
     <div class="header-left">
@@ -779,6 +778,49 @@
       </ul>
       <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
     </div>
+    <!-- MỤC KHÁC -->
+    <div class="extra-sections" style="margin-top:30px;">
+      <h2 style="color:#1976d2; font-size:1.25rem; margin-bottom:16px;">🌟 Các mục nổi bật khác</h2>
+      <div class="doc-list" style="grid-template-columns: repeat(3,1fr); gap:20px;">
+        <!-- Mục Đại học -->
+        <div class="doc-box" onclick="window.open('https://example.com/daihoc','_blank')">
+          <span class="doc-icon">🎓</span>
+          <span class="doc-title">Tài liệu Đại học</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+        <!-- Mục Ôn thi THCS -->
+        <div class="doc-box" onclick="window.open('https://example.com/thcs','_blank')">
+          <span class="doc-icon">📚</span>
+          <span class="doc-title">Ôn thi THCS</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+        <!-- Mục Tiếng Anh nâng cao -->
+        <div class="doc-box" onclick="window.open('https://example.com/tienganh','_blank')">
+          <span class="doc-icon">🇬🇧</span>
+          <span class="doc-title">Tiếng Anh nâng cao</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+        <!-- Mục Đề thi thử các tỉnh -->
+        <div class="doc-box" onclick="window.open('https://example.com/dethithu','_blank')">
+          <span class="doc-icon">📝</span>
+          <span class="doc-title">Đề thi thử các tỉnh</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+        <!-- Mục Tài liệu Tin Học -->
+        <div class="doc-box" onclick="window.open('https://example.com/tinhoc','_blank')">
+          <span class="doc-icon">💻</span>
+          <span class="doc-title">Tài liệu Tin học</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+        <!-- Mục Tài liệu miễn phí khác -->
+        <div class="doc-box" onclick="window.open('https://example.com/free','_blank')">
+          <span class="doc-icon">🆓</span>
+          <span class="doc-title">Tài liệu miễn phí khác</span>
+          <div class="doc-date">Cập nhật: 06/2025</div>
+        </div>
+      </div>
+    </div>
+    <!-- HẾT MỤC KHÁC -->
     <div class="tabs" id="classTabs"></div>
     <div class="subjects" id="subjectTabs"></div>
     <div class="doc-list" id="documentList"></div>
@@ -877,7 +919,7 @@
       classList.forEach(cls => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cls===currentClass ? " active" : "");
-        tab.innerText =  + cls;
+        tab.innerText = "Lớp " + cls;
         tab.onclick = () => {
           currentClass = cls;
           let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
