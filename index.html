@@ -705,8 +705,32 @@
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
     // ==== FULL KHOÁ MIỄN PHÍ ====
-    // Cấu hình
+    // Đảm bảo thứ tự lớp 12, 11, 10 luôn hiện đủ các lớp (dù có sheet hay không)
+    const freeClassList = ["12", "11", "10"];
+    const freeSubjectList = ["toán","lý","hóa","sinh","sử","địa","tiếng anh"];
+    // Thay các link bên dưới cho từng lớp/môn theo nhu cầu
     const FREE_SHEET = {
+      "12": {
+        "toán": {
+          sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYPHkF5c0pQ.../pubhtml?gid=12&single=true&widget=true&headers=false",
+          shopee: "https://shopee.vn/link-toan12"
+        },
+        "lý": {sheet:"",shopee:""},
+        "hóa": {sheet:"",shopee:""},
+        "sinh": {sheet:"",shopee:""},
+        "sử": {sheet:"",shopee:""},
+        "địa": {sheet:"",shopee:""},
+        "tiếng anh": {sheet:"",shopee:""}
+      },
+      "11": {
+        "toán": {sheet:"",shopee:""},
+        "lý": {sheet:"",shopee:""},
+        "hóa": {sheet:"",shopee:""},
+        "sinh": {sheet:"",shopee:""},
+        "sử": {sheet:"",shopee:""},
+        "địa": {sheet:"",shopee:""},
+        "tiếng anh": {sheet:"",shopee:""}
+      },
       "10": {
         "toán": {
           sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYPHkF5c0pQ.../pubhtml?gid=0&single=true&widget=true&headers=false",
@@ -724,47 +748,23 @@
         "sử": {sheet:"",shopee:""},
         "địa": {sheet:"",shopee:""},
         "tiếng anh": {sheet:"",shopee:""}
-      },
-      "11": {
-        "toán": {sheet:"",shopee:""},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      },
-      "12": {
-        "toán": {sheet:"",shopee:""},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
       }
     };
-    const freeClassList = ["10", "11", "12"];
-    const freeSubjectList = ["toán","lý","hóa","sinh","sử","địa","tiếng anh"];
     let freeCurrentClass = freeClassList[0];
     let freeCurrentSubject = freeSubjectList[0];
 
-    // Khởi tạo tab
     function renderFreeTabs() {
       // Tab lớp
       const freeClassTabs = document.getElementById("freeClassTabs");
       freeClassTabs.innerHTML = "";
       freeClassList.forEach(cls => {
-        // Có ít nhất 1 môn có sheet thì mới cho click
-        const hasSheet = freeSubjectList.some(subj => FREE_SHEET[cls] && FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
-        if (!hasSheet) return;
         const tab = document.createElement("div");
         tab.className = "free-class-tab" + (cls === freeCurrentClass ? " active" : "");
         tab.innerText = "Lớp " + cls;
         tab.onclick = () => {
           freeCurrentClass = cls;
-          // auto chọn môn đầu tiên có sheet
-          let found = freeSubjectList.find(subj => FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
+          // auto chọn môn đầu tiên có sheet, nếu không có thì lấy đầu tiên
+          let found = freeSubjectList.find(subj => FREE_SHEET[cls] && FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
           freeCurrentSubject = found || freeSubjectList[0];
           renderFreeTabs();
         };
@@ -788,16 +788,17 @@
       document.getElementById("freeSheetWrap").style.display = "none";
       document.getElementById("freeSheetBtn").style.display = "";
     }
-    // Sự kiện nút hiện sheet
     document.addEventListener("DOMContentLoaded",function(){
+      // Luôn hiện lớp 12 trước rồi 11 rồi 10
+      freeCurrentClass = freeClassList[0];
+      let found = freeSubjectList.find(subj => FREE_SHEET[freeCurrentClass] && FREE_SHEET[freeCurrentClass][subj] && FREE_SHEET[freeCurrentClass][subj].sheet);
+      freeCurrentSubject = found || freeSubjectList[0];
       renderFreeTabs();
       document.getElementById("freeSheetBtn").onclick = function(){
-        // Lấy link Shopee
         const cfg = FREE_SHEET[freeCurrentClass][freeCurrentSubject];
         if(cfg.shopee){
           window.open(cfg.shopee,"_blank");
         }
-        // Hiện Sheet
         document.getElementById("freeSheetIframe").src = cfg.sheet;
         document.getElementById("freeSheetWrap").style.display = "";
         this.style.display = "none";
@@ -819,7 +820,6 @@
     function renderClassTabs() {
       const classTabs = document.getElementById("classTabs");
       classTabs.innerHTML = "";
-      // Lớp 10-11-12
       classList.forEach(cls => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cls===currentClass && !currentExtra ? " active" : "");
@@ -833,7 +833,6 @@
         };
         classTabs.appendChild(tab);
       });
-      // Các mục đặc biệt (Đại học, HSK, IELTS, TOEIC)
       extraList.forEach(cat => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cat===currentExtra ? " active" : "");
@@ -850,7 +849,6 @@
     }
     function renderSubjectTabs() {
       const subjectTabs = document.getElementById("subjectTabs");
-      // Ẩn subject khi là các tab đặc biệt
       if (currentExtra) {
         subjectTabs.innerHTML = "";
         subjectTabs.style.display = "none";
@@ -914,11 +912,8 @@
           shopee_link: (doc.shopee_link||"").trim(),
           updatedAt: (doc.updatedAt||"").trim()
         })).filter(doc => doc.class && doc.title);
-        // Lớp 10/11/12
         classList = classListDefault.filter(cls => allDocs.some(doc => doc.class === cls));
-        // Các mục đặc biệt (chỉ hiện nếu trong sheet có file thuộc mục đó)
         extraList = extraCategories.filter(cat => allDocs.some(doc => doc.class === cat));
-        // Mặc định: ưu tiên lớp 12, sau đó lớp 11, 10, sau đó đến extra
         currentClass = classList[0] || "";
         currentExtra = "";
         let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
