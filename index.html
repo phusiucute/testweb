@@ -51,7 +51,7 @@
       color: #1976d2;
       text-shadow: 0 1px 7px rgba(25,118,210,0.07);
       line-height: 1.1;
-      margin-left: 6px; /* dịch sang phải một chút */
+      margin-left: 6px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -205,7 +205,6 @@
       .header-title{margin-left:2px;}
       .main-logo{margin-right:2px;}
     }
-    /* Các style còn lại giữ nguyên (container, promo, tab, doc-list...) */
     .container {
       max-width: 1100px;
       margin: 32px auto 0;
@@ -214,7 +213,38 @@
       border-radius: 16px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
     }
-    /* ... các style khác như promo, tabs, subjects, doc-list, doc-box, zalo-fab, footer ... giữ nguyên như bản hoàn chỉnh trước ... */
+    .promo {
+      margin: 0 auto 26px auto;
+      background: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 20px 28px;
+      font-size: 1.13rem;
+      line-height: 1.8;
+      color: #222;
+      font-weight: 500;
+    }
+    .promo strong { color:#222; font-size:1.09em;}
+    .promo u {color: #1976d2;}
+    .promo .ibzalo {
+      color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
+      padding:2px 8px;border-radius:8px;
+      box-shadow:0 1px 5px #ffeaea;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin: 0 2px;
+      cursor: pointer;
+      text-decoration: underline dotted #e53935 1.5px;
+      transition: box-shadow 0.14s,background 0.14s;
+    }
+    .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
+    .promo .promo-combo {display:block;margin:10px 0 3px 0;font-weight:700;color:#1976d2;}
+    .promo-highlight {color:#1976d2;font-weight:700;}
+    .promo-list {margin:0 0 0 16px;}
+    .promo-list li {margin-bottom:3px;}
+    .promo b, .promo strong {font-weight: bold;}
+    .promo .promo-combo {margin-top:10px;}
+    .promo .promo-list {margin-bottom:0;}
     .tabs {
       display: flex;
       gap: 14px;
@@ -268,14 +298,14 @@
       margin-bottom: 18px;
     }
     .doc-box {
-      background: #fafaff;
-      border: 1.5px solid #d0d6e0;
+      background: #fff;
+      border: 1.5px solid #e3e8ef;
       border-radius: 12px;
       padding: 20px 10px 12px 10px;
       text-align: left;
-      box-shadow: 1px 2px 6px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 8px rgba(25,118,210,0.07);
       cursor: pointer;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, border-color 0.13s;
       position:relative;
       min-height: 86px;
       display: flex;
@@ -283,7 +313,7 @@
       justify-content: center;
       font-size: 1.04rem;
     }
-    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09);}
+    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09); border-color: #1976d2;}
     .doc-title { font-size:1.13rem; font-weight:600; color:#1976d2;}
     .doc-date { font-size:0.97rem; color:#888; margin-top:7px;}
     .doc-icon {font-size: 1.31rem; vertical-align:middle; margin-right:6px;}
@@ -297,6 +327,118 @@
       .doc-title {font-size:1.02rem;}
     }
     /* ZALO BUTTON, FOOTER ... giữ nguyên như trước */
+    .zalo-fab {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 100;
+      width: 56px;
+      height: 56px;
+      background: #008EE6;
+      border-radius: 50%;
+      box-shadow: 0 5px 24px rgba(0, 142, 230, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 4px solid #fff;
+      transition: box-shadow 0.17s;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.1;
+      padding: 0;
+      overflow: hidden;
+    }
+    .zalo-fab span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+    @media (max-width:600px) {
+      .zalo-fab {font-size:12px;width:41px;height:41px;bottom:10px;right:8px;}
+      .zalo-fab span {font-size:12px;}
+    }
+    .zalo-chat-balloon {
+      display: none;
+      position: fixed;
+      bottom: 88px;
+      right: 28px;
+      z-index: 110;
+      background: #fff;
+      color: #1976d2;
+      font-weight: 700;
+      font-size: 1.09rem;
+      padding: 13px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 22px rgba(25,118,210,0.13);
+      border: 2px solid #e3f2fd;
+      min-width: 175px;
+      max-width: 90vw;
+      animation: chatBalloonShow 0.35s;
+    }
+    @keyframes chatBalloonShow {
+      0% {transform:translateY(20px); opacity:0}
+      100% {transform:translateY(0); opacity:1}
+    }
+    .zalo-chat-balloon span {
+      color: #fff;
+      background: #008ee6;
+      padding: 2px 8px 2px 8px;
+      border-radius: 8px;
+      font-weight: 900;
+      margin: 0 2px;
+      font-size: 1.09rem;
+      letter-spacing:0.5px;
+      box-shadow:0 2px 12px rgba(0,142,230,0.07);
+    }
+    footer {
+      margin-top: 50px;
+      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
+      padding: 33px 0 24px 0;
+      color: #1959a0;
+      border-top: 2.5px solid #e3f2fd;
+      font-size: 1.11rem;
+      letter-spacing: .3px;
+      text-align: center;
+      box-shadow: 0 -2px 16px rgba(25,118,210,0.06);
+      font-weight: 600;
+      border-radius: 31px 31px 0 0 / 19px 19px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-inner {
+      display: inline-block;
+      background: #fff;
+      padding: 17px 30px 14px 30px;
+      border-radius: 14px;
+      box-shadow: 0 3px 24px rgba(25,118,210,0.08);
+      font-size: 1.07rem;
+    }
+    .footer-strong {
+      color: #e53935;
+      font-size: 1.13em;
+      font-weight: 800;
+      letter-spacing: .7px;
+      margin: 0 4px;
+    }
+    .footer-link {
+      color: #1976d2;
+      font-weight: 700;
+      text-decoration: underline;
+      margin: 0 6px;
+      transition: color 0.14s;
+    }
+    .footer-link:hover { color: #d84315;}
   </style>
 </head>
 <script>
@@ -354,7 +496,6 @@
   </header>
   <div class="container">
     <div class="promo">
-      <!-- ... giữ nguyên như trước ... -->
       <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
       <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
       <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
@@ -447,7 +588,7 @@
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
-    // === GOOGLE SHEET CODE GIỮ NGUYÊN ===
+    // Sheet code giữ nguyên
     const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
     let allDocs = [];
