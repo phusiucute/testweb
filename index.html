@@ -6,217 +6,37 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
-    html, body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      background: #f7f9fb;
-      color: #222;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px;
-      -webkit-tap-highlight-color: transparent;
-    }
     body {
       background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
-    }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e3e3e3;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-      position: relative;
-      padding: 0 32px 0 0;
-      z-index: 3;
-    }
-    .header-left-group {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      min-width: 0;
-      padding-left: 20px;
-    }
-    .main-logo {
-      height: 46px;
-      width: 46px;
-      border-radius: 11px;
-      background: #f8f8ff;
-      border: 2px solid #1976d2;
-      object-fit: cover;
-      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
-      margin-right: 8px;
-    }
-    .header-title {
-      font-size: 1.22rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #1976d2;
-      text-shadow: 0 1px 7px rgba(25,118,210,0.07);
-      line-height: 1.1;
-      margin-left: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 200px;
-      display: inline-block;
-    }
-    .header-countdown-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin-left: auto;
-      min-width: 0;
-      user-select: none;
-    }
-    .countdown-label-box {
-      background: linear-gradient(90deg, #ffc107 100%, #ffd54f 100%);
-      color: #fff;
-      border-radius: 13px;
-      font-weight: 900;
-      font-size: 1.05rem;
-      padding: 10px 17px 10px 17px;
-      text-align: center;
-      min-width: 52px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 1px 8px #ffe082;
-      margin-right: 5px;
-      border: none;
-      letter-spacing: 0.5px;
-      transition: box-shadow 0.14s;
-    }
-    .countdown-label-box > div {
-      width: 100%;
-      font-weight: bold;
-      font-size: 1.02rem;
-      line-height: 1.15;
-      letter-spacing: 0.5px;
-    }
-    .countdown-main-box {
-      display: flex;
-      align-items: center;
-      background: #fffde7;
-      border-radius: 12px;
-      box-shadow: 0 2px 13px rgba(255,193,7,0.13);
-      padding: 0 7px 0 0;
-      height: 44px;
-    }
-    .countdown-block {
-      background: #fff;
-      color: #e65100;
-      border-radius: 10px;
-      padding: 4px 13px 3px 13px;
-      min-width: 36px;
-      margin: 0 7px 0 0;
-      text-align: center;
-      font-size: 1.08rem;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: inherit;
-      box-shadow: 0 1px 6px #ffecb3;
-      border: 2px solid #ffe082;
-      transition: background 0.13s, color 0.13s;
-    }
-    .countdown-block:last-child {margin-right:0;}
-    .countdown-unit {
-      color: #b26a00;
-      font-size: 0.91rem;
-      font-weight: 700;
-      margin-top: 0.5px;
-      display: block;
-      letter-spacing: .2px;
-    }
-    @media (max-width:900px) {
-      .header-countdown-wrap {flex-shrink:1;}
-      .countdown-label-box {padding:5px 8px;height:30px;font-size:0.91rem;min-width:32px;}
-      .countdown-main-box {height:30px;}
-      .countdown-block{font-size:0.82rem;min-width:18px;padding:3px 7px 1.5px 7px;}
-      .countdown-unit{font-size:0.68rem;}
-      .main-logo{height:26px;width:26px;}
-      .header-title{font-size:0.8rem;}
-      header{height:54px;}
+      color: #222;
+      font-family: 'Quicksand', sans-serif;
     }
     .container {
-      max-width: 1100px;
-      margin: 42px auto 0;
-      background: transparent;
-      padding: 32px 34px 30px 34px;
-      border-radius: 16px;
-      box-shadow: none;
-    }
-    .free-header, .share-header {
-      margin: 0 auto 16px auto;
+      max-width: 900px;
+      margin: 40px auto;
       background: #fff;
-      border-radius: 13px;
-      box-shadow: 0 3px 18px rgba(25,118,210,0.10);
-      padding: 20px 20px 18px 20px;
-      font-size: 1.18rem;
-      color: #1976d2;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .free-header .title {color:#1565c0;}
-    .share-header .title {color:#e65100;}
-    .free-class-tabs, .share-class-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      margin-top: 7px;
-      flex-wrap: wrap;
-    }
-    .free-class-tab, .share-class-tab {
-      padding: 7px 17px;
-      background: #e3f2fd;
       border-radius: 18px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #1565c0;
-      font-size: 1.05rem;
-      border: 1.3px solid #bbdefb;
-      transition: background 0.13s, color 0.13s;
-      user-select: none;
+      box-shadow: 0 5px 30px rgba(25,118,210,0.08);
+      padding: 30px 20px 30px 20px;
     }
-    .free-class-tab.active, .free-class-tab:hover,
-    .share-class-tab.active, .share-class-tab:hover {
-      background: #1976d2;
-      color: #fff;
-      border-color: #1976d2;
-    }
-    .free-subject-tabs, .share-subject-tabs {
+    .share-header {
+      background: #fffde7;
+      border-radius: 11px;
+      margin: 24px 0 18px 0;
+      padding: 17px 20px;
+      font-size: 1.21rem;
+      font-weight: 800;
+      color: #e65100;
+      letter-spacing: 1px;
       display: flex;
-      gap: 7px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
     }
-    .free-subject-tab, .share-subject-tab {
-      padding: 6px 15px;
-      background: #e0f7fa;
-      border-radius: 15px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #006064;
-      font-size: 1.00rem;
-      border: 1.2px solid #b2ebf2;
-      transition: background 0.13s, color 0.13s;
-    }
-    .free-subject-tab.active, .free-subject-tab:hover,
-    .share-subject-tab.active, .share-subject-tab:hover {
-      background: #00bcd4;
-      color: #fff;
-      border-color: #00bcd4;
-    }
-    .free-sheet-toggle-btn, .share-sheet-toggle-btn {
+    .share-sheet-toggle-btn {
       margin: 0 0 18px 0;
       background: #ffb300;
       color: #fff;
-      font-size: 1.12rem;
+      font-size: 1.13rem;
       font-weight: 700;
       padding: 10px 22px;
       border-radius: 13px;
@@ -224,12 +44,14 @@
       box-shadow: 0 2px 9px #ffe082;
       cursor: pointer;
       transition: background 0.13s;
+      margin-bottom: 18px;
+      margin-left: 5px;
     }
-    .free-sheet-toggle-btn:hover, .share-sheet-toggle-btn:hover {
+    .share-sheet-toggle-btn:hover {
       background: #ff8f00;
     }
-    .free-sheet-wrap, .share-sheet-wrap {
-      margin-top: 10px;
+    .share-sheet-wrap {
+      margin-top: 14px;
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
@@ -238,25 +60,24 @@
       background: #fff;
     }
     .promo {
-      margin: 0 auto 26px auto;
+      margin: 32px 0 0 0;
       background: #fff;
       border: none;
       border-radius: 15px;
-      padding: 26px 34px 20px 34px;
+      padding: 26px 20px 20px 20px;
       font-size: 1.13rem;
       line-height: 1.7;
       color: #222;
       font-weight: 500;
       box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
-    /* ZALO NÚT NỔI - CHỈ CHỮ LIÊN HỆ */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
       right: 22px;
       z-index: 100;
-      width: 66px;
-      height: 66px;
+      width: 56px;
+      height: 56px;
       background: #008EE6;
       border-radius: 50%;
       box-shadow: 0 5px 24px rgba(0, 142, 230, 0.18);
@@ -264,65 +85,35 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border: 5px solid #fff;
+      border: 4px solid #fff;
       transition: box-shadow 0.17s;
-      font-size: 17px;
+      font-size: 15px;
       font-weight: bold;
       color: #fff;
       letter-spacing: 0.5px;
       text-align: center;
       line-height: 1.1;
       padding: 0;
-      user-select: none;
+      overflow: hidden;
     }
     .zalo-fab span {
       display: block;
       width: 100%;
       text-align: center;
-      font-size: 1.05em;
-      font-weight: 700;
-      color: #fff;
-      white-space: pre-line;
       line-height: 1.15;
-      margin: 0;
-      padding: 0;
-    }
-    @media (max-width:600px) {
-      .zalo-fab {width:44px;height:44px;bottom:10px;right:8px;font-size:13px;}
-      .zalo-fab span {font-size:12px;}
-    }
-    .zalo-chat-balloon {
-      display: none;
-      position: fixed;
-      bottom: 88px;
-      right: 28px;
-      z-index: 110;
-      background: #fff;
-      color: #1976d2;
-      font-weight: 700;
-      font-size: 1.09rem;
-      padding: 13px 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 22px rgba(25,118,210,0.13);
-      border: 2px solid #e3f2fd;
-      min-width: 175px;
-      max-width: 90vw;
-      animation: chatBalloonShow 0.35s;
-    }
-    @keyframes chatBalloonShow {
-      0% {transform:translateY(20px); opacity:0}
-      100% {transform:translateY(0); opacity:1}
-    }
-    .zalo-chat-balloon span {
+      font-size: 15px;
+      font-weight: bold;
       color: #fff;
-      background: #008ee6;
-      padding: 2px 8px 2px 8px;
-      border-radius: 8px;
-      font-weight: 900;
-      margin: 0 2px;
-      font-size: 1.09rem;
-      letter-spacing:0.5px;
-      box-shadow:0 2px 12px rgba(0,142,230,0.07);
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+    @media (max-width:700px) {
+      .container {padding:10px 2vw;}
+      .share-header {padding:10px 7px;}
+      .promo {padding:11px 7px;}
+      .zalo-fab {width:42px;height:42px;font-size:12px;}
+      .zalo-fab span {font-size:12px;}
     }
     footer {
       background: transparent;
@@ -368,72 +159,27 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-left-group">
-      <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
-      <div class="header-title">v1.0</div>
-    </div>
-    <div class="header-countdown-wrap">
-      <div class="countdown-label-box">
-        <div>THPT<br>QG</div>
-      </div>
-      <div class="countdown-main-box">
-        <div class="countdown-block">
-          <span id="countdown-day">00</span>
-          <span class="countdown-unit">Ngày</span>
-        </div>
-        <div class="countdown-block">
-          <span id="countdown-hour">00</span>
-          <span class="countdown-unit">Giờ</span>
-        </div>
-        <div class="countdown-block">
-          <span id="countdown-minute">00</span>
-          <span class="countdown-unit">Phút</span>
-        </div>
-        <div class="countdown-block">
-          <span id="countdown-second">00</span>
-          <span class="countdown-unit">Giây</span>
-        </div>
-      </div>
-    </div>
-  </header>
   <div class="container">
-    <!-- FULL KHÓA MIỄN PHÍ -->
-    <div class="free-header">
-      <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">🎁 HỌC FULL KHÓA MIỄN PHÍ</span>
-      <div class="free-class-tabs" id="freeClassTabs"></div>
-      <div class="free-subject-tabs" id="freeSubjectTabs"></div>
-      <button class="free-sheet-toggle-btn" id="freeSheetBtn">Bấm để hiện Sheet tài liệu miễn phí</button>
-      <div class="free-sheet-wrap" id="freeSheetWrap">
-        <iframe id="freeSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
-      </div>
-    </div>
-    <!-- SHARE TÀI LIỆU TỔNG HỢP -->
     <div class="share-header">
-      <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">📚 SHARE TÀI LIỆU TỔNG HỢP</span>
+      📚 SHARE TÀI LIỆU TỔNG HỢP
       <button class="share-sheet-toggle-btn" id="shareSheetBtn">Bấm để hiện Sheet tài liệu tổng hợp</button>
-      <div class="share-sheet-wrap" id="shareSheetWrap">
-        <iframe id="shareSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
-      </div>
+    </div>
+    <div class="share-sheet-wrap" id="shareSheetWrap">
+      <iframe id="shareSheetIframe"
+        src=""
+        width="100%"
+        height="670"
+        frameborder="0"
+        style="border:0;display:block;"></iframe>
     </div>
     <div class="promo">
-      <!-- ... giữ nguyên nội dung promo ... -->
-      <span style="font-size:1.21em;font-weight:800;color:#222;">
-        <span style="font-size:1.18em;">🎓</span>
-        KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ
-      </span><br>
-      <span style="color:#1976d2;font-weight:600;">
-        Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!
-      </span><br>
-      <!-- ... phần dưới giữ nguyên ... -->
+      <strong>Chào mừng bạn đến với kho tài liệu tổng hợp miễn phí!</strong><br>
+      <span style="color:#1976d2;font-weight:600;">Nhấn nút "Bấm để hiện Sheet tài liệu tổng hợp" để xem tất cả tài liệu mới nhất.</span>
     </div>
   </div>
-  <!-- NÚT ZALO NỔI CHỈ CHỮ LIÊN HỆ -->
+  <!-- NÚT ZALO NỔI -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
     <span>Liên hệ</span>
-  </div>
-  <div class="zalo-chat-balloon" id="zaloBalloon">
-    💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
   </div>
   <footer>
     <div class="footer-inner">
@@ -443,142 +189,17 @@
       <a href="https://www.tiktok.com/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">TikTok @khoahocgiasiure</a>
       &bull;
       <a href="https://www.threads.net/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">Threads @khoahocgiasiure</a>
-      <br>
-      <span style="color:#888;font-weight:400;display:block;margin-top:7px;">
-        &copy; 2025 <span style="color:#1976d2;font-weight:800;">by <a href="https://www.facebook.com/phusiucute" target="_blank" rel="noopener" style="color:#1976d2;text-decoration:none;">@phusiucute</a></span>
-        — Website chia sẻ tài liệu & khóa học miễn phí, tổng hợp, cập nhật mới nhất.
-      </span>
     </div>
   </footer>
   <script>
-    // Đếm ngược kỳ thi
-    const examDate = new Date("2026-06-26T07:45:00+07:00");
-    function updateExamCountdown() {
-      const now = new Date();
-      const diff = examDate - now;
-      let days = 0, hours = 0, minutes = 0, seconds = 0;
-      if (diff > 0) {
-        days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        minutes = Math.floor((diff / (1000 * 60)) % 60);
-        seconds = Math.floor((diff / 1000) % 60);
-      }
-      document.getElementById("countdown-day").textContent = days.toString().padStart(2, "0");
-      document.getElementById("countdown-hour").textContent = hours.toString().padStart(2, "0");
-      document.getElementById("countdown-minute").textContent = minutes.toString().padStart(2, "0");
-      document.getElementById("countdown-second").textContent = seconds.toString().padStart(2, "0");
-    }
-    setInterval(updateExamCountdown, 1000);
-    updateExamCountdown();
-
-    // Zalo FAB chat nổi bật
-    const zaloFab = document.getElementById('zaloFab');
-    const zaloBalloon = document.getElementById('zaloBalloon');
-    let zaloBalloonTimer = null;
-    zaloFab.onclick = function() {
+    // Nút Zalo nổi
+    document.getElementById('zaloFab').onclick = function() {
       window.open('https://zalo.me/0788559492', '_blank');
     };
-    zaloFab.addEventListener('mouseenter', ()=>{
-      zaloBalloon.style.display = 'block';
-      clearTimeout(zaloBalloonTimer);
-      zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4200);
-    });
-    zaloFab.addEventListener('mouseleave', ()=> {
-      zaloBalloon.style.display = 'none';
-      clearTimeout(zaloBalloonTimer);
-    });
-    setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
-    // ==== FULL KHOÁ MIỄN PHÍ ====
-    const freeClassList = ["12", "11", "10"];
-    const freeSubjectList = ["toán","lý","hóa","sinh","sử","địa","tiếng anh"];
-    const FREE_SHEET = {
-      "12": {
-        "toán": {sheet: "https://docs.google.com/spreadsheets/d/your12toan/pubhtml", shopee: "https://shopee.vn/link-toan12"},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      },
-      "11": {
-        "toán": {sheet:"",shopee:""},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      },
-      "10": {
-        "toán": {sheet: "https://docs.google.com/spreadsheets/d/your10toan/pubhtml", shopee: "https://shopee.vn/link-toan10"},
-        "lý": {sheet: "https://docs.google.com/spreadsheets/d/your10ly/pubhtml", shopee: "https://shopee.vn/link-ly10"},
-        "hóa": {sheet: "https://docs.google.com/spreadsheets/d/your10hoa/pubhtml", shopee: ""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      }
-    };
-    let freeCurrentClass = freeClassList[0];
-    let freeCurrentSubject = freeSubjectList[0];
-
-    function renderFreeTabs() {
-      const freeClassTabs = document.getElementById("freeClassTabs");
-      freeClassTabs.innerHTML = "";
-      freeClassList.forEach(cls => {
-        const tab = document.createElement("div");
-        tab.className = "free-class-tab" + (cls === freeCurrentClass ? " active" : "");
-        tab.innerText = "Lớp " + cls;
-        tab.onclick = () => {
-          freeCurrentClass = cls;
-          let found = freeSubjectList.find(subj => FREE_SHEET[cls] && FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
-          freeCurrentSubject = found || freeSubjectList[0];
-          renderFreeTabs();
-        };
-        freeClassTabs.appendChild(tab);
-      });
-      const freeSubjectTabs = document.getElementById("freeSubjectTabs");
-      freeSubjectTabs.innerHTML = "";
-      freeSubjectList.forEach(subj => {
-        if (!FREE_SHEET[freeCurrentClass][subj] || !FREE_SHEET[freeCurrentClass][subj].sheet) return;
-        const tab = document.createElement("div");
-        tab.className = "free-subject-tab" + (subj === freeCurrentSubject ? " active" : "");
-        tab.innerText = subj.charAt(0).toUpperCase() + subj.slice(1);
-        tab.onclick = () => {
-          freeCurrentSubject = subj;
-          renderFreeTabs();
-        };
-        freeSubjectTabs.appendChild(tab);
-      });
-      document.getElementById("freeSheetWrap").style.display = "none";
-      document.getElementById("freeSheetBtn").style.display = "";
-    }
-    document.addEventListener("DOMContentLoaded",function(){
-      freeCurrentClass = freeClassList[0];
-      let found = freeSubjectList.find(subj => FREE_SHEET[freeCurrentClass] && FREE_SHEET[freeCurrentClass][subj] && FREE_SHEET[freeCurrentClass][subj].sheet);
-      freeCurrentSubject = found || freeSubjectList[0];
-      renderFreeTabs();
-      document.getElementById("freeSheetBtn").onclick = function(){
-        const cfg = FREE_SHEET[freeCurrentClass][freeCurrentSubject];
-        if(cfg.shopee){
-          window.open(cfg.shopee,"_blank");
-        }
-        document.getElementById("freeSheetIframe").src = cfg.sheet;
-        document.getElementById("freeSheetWrap").style.display = "";
-        this.style.display = "none";
-      };
-    });
-
-    // ==== SHARE TÀI LIỆU TỔNG HỢP ====
-    // CHỈNH LẠI LINK: thay &amp; thành &
+    // Nút hiện sheet tài liệu
     const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&single=true&widget=true&headers=false";
-    const SHARE_SHOPEE_URL = "https://shopee.vn/share-link";
-    document.getElementById("shareSheetBtn").onclick = function() {
-      if(SHARE_SHOPEE_URL){
-        window.open(SHARE_SHOPEE_URL, "_blank");
-      }
+    document.getElementById("shareSheetBtn").onclick = function () {
       document.getElementById("shareSheetIframe").src = SHARE_SHEET_URL;
       document.getElementById("shareSheetWrap").style.display = "";
       this.style.display = "none";
