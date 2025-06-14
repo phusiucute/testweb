@@ -217,27 +217,32 @@
       margin: 0 auto 26px auto;
       background: #fff;
       border: none;
-      border-radius: 12px;
-      padding: 20px 28px;
+      border-radius: 15px;
+      padding: 26px 34px 20px 34px;
       font-size: 1.13rem;
-      line-height: 1.8;
+      line-height: 1.7;
       color: #222;
       font-weight: 500;
+      box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
     .promo strong { color:#222; font-size:1.09em;}
     .promo u {color: #1976d2;}
     .promo .ibzalo {
-      color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
-      padding:2px 8px;border-radius:8px;
-      box-shadow:0 1px 5px #ffeaea;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin: 0 2px;
-      cursor: pointer;
-      text-decoration: underline dotted #e53935 1.5px;
-      transition: box-shadow 0.14s,background 0.14s;
+      color:#e53935;
+      background:rgba(255,235,238,0.97);
+      padding:2px 8px 2px 8px;
+      border-radius:8px;
+      font-weight:900;
+      margin:0 2px;
+      cursor:pointer;
+      text-decoration:underline dotted #e53935 1.5px;
+      box-shadow:0 1px 7px #ffeaea;
+      transition:box-shadow 0.14s,background 0.14s;
     }
-    .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
+    .promo .ibzalo:hover {
+      background:#ffd6d6;
+      box-shadow:0 3px 11px #ffcdd2;
+    }
     .promo .promo-combo {display:block;margin:10px 0 3px 0;font-weight:700;color:#1976d2;}
     .promo-highlight {color:#1976d2;font-weight:700;}
     .promo-list {margin:0 0 0 16px;}
@@ -321,12 +326,12 @@
       .doc-list { grid-template-columns:repeat(2,1fr);}
     }
     @media (max-width:700px) {
+      .promo {padding:11px 5px;}
       .tabs, .subjects { gap:6px;}
       .doc-list { grid-template-columns:1fr;}
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
     }
-    /* ZALO BUTTON, FOOTER ... giữ nguyên như trước */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -496,33 +501,45 @@
   </header>
   <div class="container">
     <div class="promo">
-      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
-      <ul class="promo-list">
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
-        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-      </ul>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
-      <ul class="promo-list">
+      <span style="font-size:1.21em;font-weight:800;color:#222;">
+        <span style="font-size:1.18em;">🎓</span>
+        KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ
+      </span><br>
+      <span style="color:#1976d2;font-weight:600;">
+        Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!
+      </span><br>
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K7:</a>
+      <ul>
         <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
       </ul>
-      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
-      <ul class="promo-list">
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 12 – dành cho 2K8:</a>
+      <ul>
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <a style="font-weight:700;color:#1976d2;text-decoration:underline;" href="#">Combo Lớp 11/10 – dành cho 2K9/2K10:</a>
+      <ul>
         <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
         <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
       </ul>
-      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
-      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-      <ul class="promo-list">
+      <p>
+        <span style="color:#1976d2;font-weight:800;text-decoration:underline;">
+          <span style="background:#e3f2fd;padding:1px 8px 1px 5px;border-radius:6px;">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ</span>
+        </span> trước khi đăng ký<br>
+        <span style="color:#1976d2;">♻️</span> Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ
+        <br>
+        <span style="color:#9c27b0;font-weight:700;"><span style="font-size:1.13em;">💡</span> Đặc biệt:</span>
+      </p>
+      <ul>
         <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
         <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
       </ul>
-      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
+      <span style="color:#e65100;font-weight:700;font-size:1.08em;">
+        <span style="font-size:1.15em;">⏳</span> Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!
+      </span>
     </div>
     <div class="tabs" id="classTabs"></div>
     <div class="subjects" id="subjectTabs"></div>
