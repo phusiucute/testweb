@@ -61,7 +61,6 @@
       max-width: 200px;
       display: inline-block;
     }
-    /* COUNTDOWN */
     .header-countdown-wrap {
       display: flex;
       align-items: center;
@@ -142,7 +141,6 @@
       .header-title{font-size:0.8rem;}
       header{height:54px;}
     }
-    /* Popup quảng cáo giữ nguyên từ file cũ */
     .ads-modal-bg {
       position: fixed;
       inset: 0;
@@ -451,7 +449,6 @@
   </style>
 </head>
 <script>
-  // Popup quảng cáo từ file cũ
   window.addEventListener("DOMContentLoaded", function() {
     const bg = document.getElementById('adsModalBg');
     const closeBtn = document.getElementById('adsModalClose');
@@ -549,7 +546,6 @@
     <div class="subjects" id="subjectTabs"></div>
     <div class="doc-list" id="documentList"></div>
   </div>
-  <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
     <span>Liên hệ</span>
   </div>
@@ -609,32 +605,59 @@
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
-    // Sheet code giữ nguyên
+    // ==== Tab đại học/hsk/ielts/toeic... sau lớp 10 11 12, không phân môn, chỉ hiện khi có file ====
     const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
+    const classListDefault = ["10", "11", "12"];
+    const extraCategories = ["Đại học", "HSK", "IELTS", "TOEIC"];
     let allDocs = [];
     let classList = [];
+    let extraList = [];
     let currentClass = "";
     let currentSubject = subjectList[0];
+    let currentExtra = "";
 
     function renderClassTabs() {
       const classTabs = document.getElementById("classTabs");
       classTabs.innerHTML = "";
+      // Lớp 10-11-12
       classList.forEach(cls => {
         const tab = document.createElement("div");
-        tab.className = "tab" + (cls===currentClass ? " active" : "");
+        tab.className = "tab" + (cls===currentClass && !currentExtra ? " active" : "");
         tab.innerText = "Lớp " + cls;
         tab.onclick = () => {
           currentClass = cls;
+          currentExtra = "";
           let found = subjectList.find(subj => allDocs.some(doc => doc.class === cls && doc.subject === subj));
           currentSubject = found || subjectList[0];
           renderClassTabs(); renderSubjectTabs(); renderDocs();
         };
         classTabs.appendChild(tab);
       });
+      // Các mục đặc biệt (Đại học, HSK, IELTS, TOEIC)
+      extraList.forEach(cat => {
+        const tab = document.createElement("div");
+        tab.className = "tab" + (cat===currentExtra ? " active" : "");
+        tab.innerText = cat;
+        tab.onclick = () => {
+          currentExtra = cat;
+          currentClass = "";
+          renderClassTabs();
+          renderSubjectTabs();
+          renderDocs();
+        };
+        classTabs.appendChild(tab);
+      });
     }
     function renderSubjectTabs() {
       const subjectTabs = document.getElementById("subjectTabs");
+      // Ẩn subject khi là các tab đặc biệt
+      if (currentExtra) {
+        subjectTabs.innerHTML = "";
+        subjectTabs.style.display = "none";
+        return;
+      }
+      subjectTabs.style.display = "";
       subjectTabs.innerHTML = "";
       subjectList.forEach(sub => {
         if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
@@ -649,7 +672,12 @@
     function renderDocs() {
       const docList = document.getElementById("documentList");
       docList.innerHTML = "";
-      const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      let docs = [];
+      if (currentExtra) {
+        docs = allDocs.filter(doc => doc.class === currentExtra);
+      } else {
+        docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      }
       if (!docs || docs.length === 0) {
         docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
         return;
@@ -686,9 +714,14 @@
           drive_link: (doc.drive_link||"").trim(),
           shopee_link: (doc.shopee_link||"").trim(),
           updatedAt: (doc.updatedAt||"").trim()
-        })).filter(doc => doc.class && doc.subject && doc.title);
-        classList = [...new Set(allDocs.map(doc=>doc.class))].sort((a,b) => b-a);
+        })).filter(doc => doc.class && doc.title);
+        // Lớp 10/11/12
+        classList = classListDefault.filter(cls => allDocs.some(doc => doc.class === cls));
+        // Các mục đặc biệt (chỉ hiện nếu trong sheet có file thuộc mục đó)
+        extraList = extraCategories.filter(cat => allDocs.some(doc => doc.class === cat));
+        // Mặc định: ưu tiên lớp 12, sau đó lớp 11, 10, sau đó đến extra
         currentClass = classList[0] || "";
+        currentExtra = "";
         let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
         currentSubject = found || subjectList[0];
         renderClassTabs();
