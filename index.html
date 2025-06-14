@@ -572,7 +572,8 @@
     });
 
     // ==== SHARE TÀI LIỆU TỔNG HỢP ====
-    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false";
+    // CHỈNH LẠI LINK: thay &amp; thành &
+    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&single=true&widget=true&headers=false";
     const SHARE_SHOPEE_URL = "https://shopee.vn/share-link";
     document.getElementById("shareSheetBtn").onclick = function() {
       if(SHARE_SHOPEE_URL){
