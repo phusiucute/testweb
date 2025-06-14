@@ -251,6 +251,90 @@
     .promo b, .promo strong {font-weight: bold;}
     .promo .promo-combo {margin-top:10px;}
     .promo .promo-list {margin-bottom:0;}
+    .free-header {
+      margin: 0 auto 16px auto;
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 3px 18px rgba(25,118,210,0.10);
+      padding: 20px 20px 18px 20px;
+      font-size: 1.18rem;
+      color: #1976d2;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .free-class-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      margin-top: 7px;
+      flex-wrap: wrap;
+    }
+    .free-class-tab {
+      padding: 7px 17px;
+      background: #e3f2fd;
+      border-radius: 18px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #1565c0;
+      font-size: 1.05rem;
+      border: 1.3px solid #bbdefb;
+      transition: background 0.13s, color 0.13s;
+      user-select: none;
+    }
+    .free-class-tab.active, .free-class-tab:hover {
+      background: #1976d2;
+      color: #fff;
+      border-color: #1976d2;
+    }
+    .free-subject-tabs {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .free-subject-tab {
+      padding: 6px 15px;
+      background: #e0f7fa;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #006064;
+      font-size: 1.00rem;
+      border: 1.2px solid #b2ebf2;
+      transition: background 0.13s, color 0.13s;
+    }
+    .free-subject-tab.active, .free-subject-tab:hover {
+      background: #00bcd4;
+      color: #fff;
+      border-color: #00bcd4;
+    }
+    .free-sheet-toggle-btn {
+      margin: 0 0 18px 0;
+      background: #ffb300;
+      color: #fff;
+      font-size: 1.12rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 13px;
+      border: none;
+      box-shadow: 0 2px 9px #ffe082;
+      cursor: pointer;
+      transition: background 0.13s;
+    }
+    .free-sheet-toggle-btn:hover {
+      background: #ff8f00;
+    }
+    .free-sheet-wrap {
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 18px #bbdefb;
+      display: none;
+      background: #fff;
+    }
     .tabs {
       display: flex;
       gap: 14px;
@@ -329,6 +413,9 @@
     @media (max-width:700px) {
       .promo {padding:11px 5px;}
       .tabs, .subjects { gap:6px;}
+      .free-header {padding:11px 7px 10px 7px;}
+      .free-class-tabs {gap:5px;}
+      .free-subject-tabs {gap:4px;}
       .doc-list { grid-template-columns:1fr;}
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
@@ -501,6 +588,18 @@
     </div>
   </header>
   <div class="container">
+    <!-- FULL KHÓA FREE -->
+    <div class="free-header">
+      <span style="font-size:1.14em;color:#1565c0;font-weight:800;margin-bottom:5px;">🎁 HỌC FULL KHÓA MIỄN PHÍ</span>
+      <div class="free-class-tabs" id="freeClassTabs"></div>
+      <div class="free-subject-tabs" id="freeSubjectTabs"></div>
+      <button class="free-sheet-toggle-btn" id="freeSheetBtn">Bấm để hiện Sheet tài liệu miễn phí</button>
+      <div class="free-sheet-wrap" id="freeSheetWrap">
+        <!-- Sheet sẽ nhúng ở đây -->
+        <iframe id="freeSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
+      </div>
+    </div>
+    <!-- END FULL KHÓA FREE -->
     <div class="promo">
       <span style="font-size:1.21em;font-weight:800;color:#222;">
         <span style="font-size:1.18em;">🎓</span>
@@ -604,6 +703,106 @@
       clearTimeout(zaloBalloonTimer);
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
+
+    // ==== FULL KHOÁ MIỄN PHÍ ====
+    // Cấu hình
+    const FREE_SHEET = {
+      "10": {
+        "toán": {
+          sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYPHkF5c0pQ.../pubhtml?gid=0&single=true&widget=true&headers=false",
+          shopee: "https://shopee.vn/link-toan10"
+        },
+        "lý": {
+          sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYPHkF5c0pQ.../pubhtml?gid=1&single=true&widget=true&headers=false",
+          shopee: "https://shopee.vn/link-ly10"
+        },
+        "hóa": {
+          sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYPHkF5c0pQ.../pubhtml?gid=2&single=true&widget=true&headers=false",
+          shopee: ""
+        },
+        "sinh": {sheet:"",shopee:""},
+        "sử": {sheet:"",shopee:""},
+        "địa": {sheet:"",shopee:""},
+        "tiếng anh": {sheet:"",shopee:""}
+      },
+      "11": {
+        "toán": {sheet:"",shopee:""},
+        "lý": {sheet:"",shopee:""},
+        "hóa": {sheet:"",shopee:""},
+        "sinh": {sheet:"",shopee:""},
+        "sử": {sheet:"",shopee:""},
+        "địa": {sheet:"",shopee:""},
+        "tiếng anh": {sheet:"",shopee:""}
+      },
+      "12": {
+        "toán": {sheet:"",shopee:""},
+        "lý": {sheet:"",shopee:""},
+        "hóa": {sheet:"",shopee:""},
+        "sinh": {sheet:"",shopee:""},
+        "sử": {sheet:"",shopee:""},
+        "địa": {sheet:"",shopee:""},
+        "tiếng anh": {sheet:"",shopee:""}
+      }
+    };
+    const freeClassList = ["10", "11", "12"];
+    const freeSubjectList = ["toán","lý","hóa","sinh","sử","địa","tiếng anh"];
+    let freeCurrentClass = freeClassList[0];
+    let freeCurrentSubject = freeSubjectList[0];
+
+    // Khởi tạo tab
+    function renderFreeTabs() {
+      // Tab lớp
+      const freeClassTabs = document.getElementById("freeClassTabs");
+      freeClassTabs.innerHTML = "";
+      freeClassList.forEach(cls => {
+        // Có ít nhất 1 môn có sheet thì mới cho click
+        const hasSheet = freeSubjectList.some(subj => FREE_SHEET[cls] && FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
+        if (!hasSheet) return;
+        const tab = document.createElement("div");
+        tab.className = "free-class-tab" + (cls === freeCurrentClass ? " active" : "");
+        tab.innerText = "Lớp " + cls;
+        tab.onclick = () => {
+          freeCurrentClass = cls;
+          // auto chọn môn đầu tiên có sheet
+          let found = freeSubjectList.find(subj => FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
+          freeCurrentSubject = found || freeSubjectList[0];
+          renderFreeTabs();
+        };
+        freeClassTabs.appendChild(tab);
+      });
+      // Tab môn
+      const freeSubjectTabs = document.getElementById("freeSubjectTabs");
+      freeSubjectTabs.innerHTML = "";
+      freeSubjectList.forEach(subj => {
+        if (!FREE_SHEET[freeCurrentClass][subj] || !FREE_SHEET[freeCurrentClass][subj].sheet) return;
+        const tab = document.createElement("div");
+        tab.className = "free-subject-tab" + (subj === freeCurrentSubject ? " active" : "");
+        tab.innerText = subj.charAt(0).toUpperCase() + subj.slice(1);
+        tab.onclick = () => {
+          freeCurrentSubject = subj;
+          renderFreeTabs();
+        };
+        freeSubjectTabs.appendChild(tab);
+      });
+      // Reset iframe và nút
+      document.getElementById("freeSheetWrap").style.display = "none";
+      document.getElementById("freeSheetBtn").style.display = "";
+    }
+    // Sự kiện nút hiện sheet
+    document.addEventListener("DOMContentLoaded",function(){
+      renderFreeTabs();
+      document.getElementById("freeSheetBtn").onclick = function(){
+        // Lấy link Shopee
+        const cfg = FREE_SHEET[freeCurrentClass][freeCurrentSubject];
+        if(cfg.shopee){
+          window.open(cfg.shopee,"_blank");
+        }
+        // Hiện Sheet
+        document.getElementById("freeSheetIframe").src = cfg.sheet;
+        document.getElementById("freeSheetWrap").style.display = "";
+        this.style.display = "none";
+      };
+    });
 
     // ==== Tab đại học/hsk/ielts/toeic... sau lớp 10 11 12, không phân môn, chỉ hiện khi có file ====
     const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
