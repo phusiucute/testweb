@@ -13,30 +13,30 @@
       padding: 0;
       color: #222;
     }
-    /* Header bar */
-    .header-bar {
+    header {
       background: #fff;
+      border-bottom: 1px solid #e3e3e3;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1.5px solid #dde6f1;
-      padding: 12px 40px;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 2px 16px rgba(25,118,210,0.03);
+      height: 76px;
+      position: relative;
+      padding: 0 32px;
     }
     .header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 15px;
+      min-width: 0;
     }
     .main-logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
+      height: 50px;
+      width: 50px;
+      border-radius: 15px;
+      background: #f8f8ff;
+      border: 2px solid #1976d2;
       object-fit: cover;
-      border: 3px solid #1976d2;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(25,118,210,0.08);
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
     }
     .header-title {
       font-size: 1.52rem;
@@ -44,7 +44,6 @@
       letter-spacing: 1px;
       color: #1976d2;
       text-shadow: 0 1px 7px rgba(25,118,210,0.07);
-      line-height: 1.1;
       margin-left: 14px;
       white-space: nowrap;
       overflow: hidden;
@@ -69,17 +68,15 @@
       cursor: pointer;
     }
     .header-social-btn img {
-      width: 22px;
-      height: 22px;
-      display: block;
+      width: 22px;height: 22px;display: block;
     }
-    .header-social-btn:hover { background: #e3f2fd;}
+    .header-social-btn:hover {background: #e3f2fd;}
     @media (max-width:700px) {
       .header-title {font-size:0.7rem;max-width:800px;}
       .main-logo {width:35px;height:35px;}
       .header-left {padding-left:9px;}
       .header-right {padding-right:9px;gap:7px;}
-      .header-bar {height:56px;}
+      header {height:56px;}
       .header-social-btn {width:28px;height:28px;}
       .header-social-btn img {width:16px;height:16px;}
       .header-title {margin-left:7px;}
@@ -88,46 +85,51 @@
       .header-title {max-width:72px;}
     }
 
-    /* Layout */
-    .layout-main {
+    /* 2 Cột: promo rộng + sidebar trái */
+    .main-layout {
       display: flex;
+      gap: 32px;
       justify-content: center;
       align-items: flex-start;
-      gap: 36px;
-      margin: 36px auto 0 auto;
-      max-width: 1200px;
+      margin: 32px auto 0 auto;
+      max-width: 1350px;
       width: 100%;
     }
-    .main-content {
-      flex: 1 1 0%;
-      min-width: 340px;
-      max-width: 720px;
-    }
-    .side-content {
-      width: 270px;
-      min-width: 230px;
+    .sidebar-left {
+      width: 320px;
+      min-width: 240px;
       display: flex;
       flex-direction: column;
       gap: 22px;
+      align-items: flex-end;
     }
 
-    /* Promo box */
+    .main-content {
+      flex: 1 1 0%;
+      min-width: 350px;
+      max-width: 900px;
+      margin-right: 0;
+    }
+
+    /* Promo box cực rộng */
     .promo {
-      margin: 0 auto 26px auto;
-      background: linear-gradient(90deg, #ffffe0 64%, #e4eeff 100%);
+      background: linear-gradient(90deg, #fffde7 60%, #e4eeff 100%);
       border: 2.5px solid #ffb300;
-      border-radius: 17px;
-      padding: 28px 28px 18px 28px;
-      font-size: 1.16rem;
+      border-radius: 18px;
+      padding: 38px 40px 26px 40px;
+      font-size: 1.22rem;
       color: #222;
       font-weight: 500;
       box-shadow: 0 2px 12px rgba(255,193,7,0.11);
-      margin-bottom: 25px;
+      margin-bottom: 28px;
       margin-top: 0;
       line-height: 1.7;
       position: relative;
+      width: 100%;
+      max-width: 900px;
+      min-width: 300px;
     }
-    .promo strong { color: #d84315; font-size: 1.12em;}
+    .promo strong { color: #d84315; font-size: 1.13em;}
     .promo u {color: #1565c0;}
     .promo .ibzalo {
       color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
@@ -141,28 +143,34 @@
       transition: box-shadow 0.14s,background 0.14s;
     }
     .promo .ibzalo:hover {background:#fff1f2;box-shadow:0 3px 11px #ffcdd2;}
-    .promo .promo-combo { display: block; margin: 10px 0 3px 0; font-weight: 700; color: #1976d2;}
-    .promo-highlight { color: #1976d2; font-weight: 700; }
-    .promo-list { margin: 0 0 0 16px; }
-    .promo-list li { margin-bottom: 3px; }
+    .promo .promo-combo {display:block;margin:10px 0 3px 0;font-weight:700;color:#1976d2;}
+    .promo-highlight {color:#1976d2;font-weight:700;}
+    .promo-list {margin:0 0 0 16px;}
+    .promo-list li {margin-bottom:3px;}
 
-    /* Countdown right side */
+    /* Đếm ngược kỳ thi trái */
     .exam-countdown-card {
       background: #e8f5e9;
-      border-radius: 15px;
+      border-radius: 17px;
       box-shadow: 0 2px 14px rgba(56,142,60,0.12);
-      padding: 20px 18px 18px 18px;
+      padding: 20px 25px 18px 25px;
       color: #1976d2;
       font-size: 1.08rem;
       margin-bottom: 10px;
       text-align: center;
       border: 2px solid #b2dfdb;
+      width: 100%;
+      max-width: 312px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .exam-countdown-title {
-      font-size:1.1rem;
+      font-size:1.11rem;
       font-weight:700;
       color:#1976d2;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
       letter-spacing: 0.2px;
       text-align: center;
       width: 100%;
@@ -181,32 +189,12 @@
       box-shadow: 0 2px 9px rgba(255,193,7,0.10);
       margin-bottom: 0;
     }
-    .exam-countdown-labels {
-      min-width: 49px;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      margin-right: 2px;
-      background: linear-gradient(90deg,#388e3c 50%,#c8e6c9 100%);
-      border-radius: 10px;
-      padding: 0 4px;
-      font-size:1.0rem;
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .exam-countdown-labels div {
-      color: #fff;
-      width: 100%;
-      font-weight: bold;
-    }
     .exam-countdown-number {
       background: #fff;
       color: #43a047;
       border-radius: 10px;
       padding: 7px 8px 4px 8px;
-      min-width: 38px;
+      min-width: 44px;
       margin-right: 2px;
       text-align: center;
       font-size: 1.08rem;
@@ -224,22 +212,27 @@
       display: block;
       letter-spacing: .3px;
     }
-
-    /* Message right side */
+    /* Message box dưới countdown */
     .message-card {
       background: #f4fff6;
       color: #388e3c;
       border: 2px solid #c8e6c9;
       border-radius: 15px;
       box-shadow: 0 2px 14px rgba(56,142,60,0.08);
-      padding: 16px 14px 14px 14px;
+      padding: 18px 15px 12px 15px;
       font-style: italic;
-      font-size: 1.01rem;
+      font-size: 1.07rem;
       line-height: 1.6;
       margin-bottom: 8px;
-      min-height: 100px;
+      min-height: 90px;
       text-align: center;
       position: relative;
+      width: 100%;
+      max-width: 312px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .message-card-title {
       font-weight: bold;
@@ -260,8 +253,8 @@
       bottom: 24px;
       right: 24px;
       z-index: 100;
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       background: #008EE6;
       border-radius: 50%;
       box-shadow: 0 5px 24px rgba(0, 142, 230, 0.18);
@@ -270,7 +263,7 @@
       justify-content: center;
       cursor: pointer;
       border: 4px solid #fff;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: bold;
       color: #fff;
       letter-spacing: 0.5px;
@@ -280,26 +273,32 @@
       transition: box-shadow 0.17s;
     }
     .zalo-fab span {
-      display: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
     }
-    /* Responsive */
     @media (max-width: 1100px) {
-      .layout-main { flex-direction: column; align-items: center; }
-      .side-content { margin: 30px auto 0 auto; }
+      .main-layout { flex-direction: column; align-items: stretch; }
+      .sidebar-left { flex-direction: row; width: 99vw; justify-content: flex-start; }
+      .main-content { max-width: 100vw;}
+      .promo {max-width: none;}
     }
-    @media (max-width: 800px) {
-      .layout-main { flex-direction: column; align-items: stretch;}
-      .main-content, .side-content { max-width: 100vw;}
-      .side-content { width: 100%; margin-left: 0;}
+    @media (max-width: 900px) {
+      .promo {padding:14px 2vw;}
+      .main-layout {gap: 10px;}
     }
     @media (max-width: 700px) {
-      .main-content { padding: 0 2vw;}
-      .promo { padding: 14px 6px 9px 6px;}
-      .exam-countdown-card, .message-card { padding: 13px 5px;}
-      .layout-main { gap: 10px;}
-      .side-content { width: 98vw; min-width: 0;}
+      .sidebar-left {flex-direction: column; width: 99vw; align-items: stretch;}
+      .main-content {padding:0 2vw;}
+      .promo {padding: 7vw 2vw;}
     }
-    /* Footer */
     footer {
       margin-top: 50px;
       background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
@@ -338,16 +337,10 @@
       transition: color 0.14s;
     }
     .footer-link:hover { color: #d84315;}
-    @media (max-width:1050px) {
-      .footer-inner {padding:11px 5vw;}
-      .footer-inner {font-size:0.97rem;}
-      .main-logo {height:30px;width:30px;}
-      .header-title {font-size:0.93rem;}
-    }
   </style>
 </head>
 <body>
-  <!-- POPUP ADS (giữ nguyên) -->
+  <!-- POPUP ADS -->
   <div class="ads-modal-bg" id="adsModalBg">
     <div class="ads-modal">
       <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
@@ -355,7 +348,7 @@
     </div>
   </div>
   <!-- HEADER -->
-  <div class="header-bar">
+  <header>
     <div class="header-left">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
       <div class="header-title">v1.0</div>
@@ -371,8 +364,23 @@
         <img src="logothreads.png" alt="Threads">
       </a>
     </div>
-  </div>
-  <div class="layout-main">
+  </header>
+  <div class="main-layout">
+    <div class="sidebar-left">
+      <div class="exam-countdown-card">
+        <div class="exam-countdown-title">Đếm ngược kỳ thi<br>THPT QG 2025</div>
+        <div class="exam-countdown-box">
+          <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
+          <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
+          <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
+          <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
+        </div>
+      </div>
+      <div class="message-card">
+        <span class="message-card-title" id="message-date"></span>
+        <span id="message-content"></span>
+      </div>
+    </div>
     <div class="main-content">
       <div class="promo">
         <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
@@ -407,27 +415,10 @@
       <div class="subjects" id="subjectTabs"></div>
       <div class="doc-list" id="documentList"></div>
     </div>
-    <div class="side-content">
-      <!-- Đếm ngược kỳ thi QG -->
-      <div class="exam-countdown-card">
-        <div class="exam-countdown-title">Đếm ngược ngày thi<br>THPT QG 2025</div>
-        <div class="exam-countdown-box">
-          <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
-          <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
-          <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
-          <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
-        </div>
-      </div>
-      <!-- Thông điệp tự động -->
-      <div class="message-card">
-        <span class="message-card-title" id="message-date"></span>
-        <span id="message-content"></span>
-      </div>
-    </div>
   </div>
   <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
-    <img src="zalo.png" width="32" height="32" alt="Zalo">
+    <span>Liên hệ</span>
   </div>
   <footer>
     <div class="footer-inner">
@@ -485,7 +476,9 @@
     };
 
     // === GOOGLE SHEET CODE GIỮ NGUYÊN ===
-    const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
+    const SHEET_ID = "1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0";
+    const SHEET_API = `https://opensheet.elk.sh/${SHEET_ID}/Sheet1`;
+    const SHEET_API_MSG = `https://opensheet.elk.sh/${SHEET_ID}/Sheet2`;
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
     let allDocs = [];
     let classList = [];
@@ -574,30 +567,30 @@
         document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
       });
 
-    // TỰ ĐỘNG cập nhật thông điệp hàng ngày (ví dụ demo)
-    function getAutoMessage() {
-      // Cập nhật thông điệp theo ngày, ví dụ theo ngày chẵn/lẻ hoặc random
-      const d = new Date();
-      const day = d.getDate();
-      const messages = [
-        "Nội dung đoạn văn bản của bạn này được cập nhật mỗi 7h sáng hàng ngày tự động.",
-        "Chúc bạn một ngày học tập hiệu quả và nhiều niềm vui!",
-        "Đừng quên luyện đề mỗi ngày để đạt kết quả tốt nhất nhé!",
-        "Kiến thức là sức mạnh, hãy chăm chỉ mỗi ngày!",
-        "Mỗi ngày một bước tiến, thành công sẽ đến gần hơn!"
-      ];
-      // Có thể chọn random hoặc lặp theo ngày
-      const msg = messages[day % messages.length];
-      return msg;
-    }
+    // ---- THÔNG ĐIỆP RANDOM MỖI NGÀY (sheet2) ----
     function updateMessageCard() {
-      const d = new Date();
-      const dateStr = d.toLocaleDateString('vi-VN', {day: '2-digit', month: '2-digit', year: 'numeric'});
-      document.getElementById('message-date').textContent = `Thông điệp ${dateStr}`;
-      document.getElementById('message-content').textContent = getAutoMessage();
+      fetch(SHEET_API_MSG)
+        .then(res => res.json())
+        .then(list => {
+          // Lấy random hoặc theo ngày
+          if (!list || !list.length) {
+            document.getElementById('message-date').textContent = "Thông điệp hôm nay";
+            document.getElementById('message-content').textContent = "Chúc bạn một ngày tốt lành!";
+            return;
+          }
+          const d = new Date();
+          // Chọn random 1 dòng theo ngày/tháng/năm
+          const idx = d.getDate() % list.length;
+          const row = list[idx];
+          document.getElementById('message-date').textContent = row.date ? `Thông điệp ${row.date}` : 'Thông điệp hôm nay';
+          document.getElementById('message-content').textContent = row.message || Object.values(row)[0] || "Chúc bạn một ngày tốt lành!";
+        })
+        .catch(()=>{
+          document.getElementById('message-date').textContent = "Thông điệp hôm nay";
+          document.getElementById('message-content').textContent = "Chúc bạn một ngày tốt lành!";
+        });
     }
     updateMessageCard();
-    // Nếu muốn cập nhật lại mỗi 1 ngày, có thể để interval 1 giờ (3600000) hoặc chỉ chạy khi load trang
   </script>
 </body>
 </html>
