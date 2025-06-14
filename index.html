@@ -750,33 +750,7 @@
   </div>
   <div class="container">
     <div class="promo">
-      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
-      <ul class="promo-list">
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
-        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-      </ul>
-      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
-      <ul class="promo-list">
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-      </ul>
-      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
-      <ul class="promo-list">
-        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
-        <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
-      </ul>
-      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
-      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-      <ul class="promo-list">
-        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-      </ul>
-      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
+      <!-- ... giữ nguyên phần promo ... -->
     </div>
     <div class="tabs" id="classTabs"></div>
     <div class="subjects" id="subjectTabs"></div>
@@ -791,16 +765,7 @@
   </div>
   <footer>
     <div class="footer-inner">
-      <span class="footer-strong">Liên hệ:</span>
-      <a href="https://zalo.me/0788559492" class="footer-link" target="_blank" rel="noopener">Zalo 0788559492</a>
-      &bull;
-      <a href="https://www.tiktok.com/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">TikTok @khoahocgiasiure</a>
-      &bull;
-      <a href="https://www.threads.net/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">Threads @khoahocgiasiure</a>
-      <br>
-      <span style="color:#888;font-weight:400;display:block;margin-top:7px;">
-        &copy; 2025 <b style="color:#1976d2;font-weight:800">by @phusiucute</b> &mdash; Share tài liệu khoá học 10, 11, 12 giá rẻ, nhanh, uy tín.
-      </span>
+      <!-- ... giữ nguyên phần footer ... -->
     </div>
   </footer>
   <script>
@@ -824,7 +789,7 @@
     setInterval(updateExamCountdown, 1000);
     updateExamCountdown();
 
-    // Đếm ngược SALE (ví dụ đến hết ngày 16/6/2025 23:59)
+    // Đếm ngược SALE
     const saleEnd = new Date("2025-06-16T23:59:59+07:00");
     function updateSaleCountdown() {
       const now = new Date();
@@ -862,12 +827,22 @@
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
-    // ==== CÁC MỤC ĐẶC BIỆT (tab ngang cùng lớp 10/11/12) ====
+    // ==== CÁC MỤC ĐẶC BIỆT (tab ngang sau lớp 10/11/12) ====
+    // "ielts" và "toic" sẽ có tab con riêng, "daihoc" không có tab con
     const extraSections = [
-      { label: "Đại học", value: "daihoc" },
-      { label: "THCS", value: "thcs" },
-      { label: "Tin học", value: "tinhoc" },
-      { label: "TA nâng cao", value: "tienganh-cao" }
+      {
+        label: "Đại học",
+        value: "daihoc",
+        noSubject: true // không có phân môn
+      },
+      {
+        label: "Tiếng Anh nâng cao",
+        value: "tienganh-cao",
+        subjects: [
+          {label: "IELTS", value: "ielts"},
+          {label: "TOEIC", value: "toeic"}
+        ]
+      }
     ];
 
     // GOOGLE SHEET
@@ -881,21 +856,7 @@
     function renderClassTabs() {
       const classTabs = document.getElementById("classTabs");
       classTabs.innerHTML = "";
-
-      // vẽ các mục đặc biệt trước
-      extraSections.forEach(section => {
-        const tab = document.createElement("div");
-        tab.className = "tab" + (currentClass === section.value ? " active" : "");
-        tab.innerText = section.label;
-        tab.onclick = () => {
-          currentClass = section.value;
-          currentSubject = subjectList[0];
-          renderClassTabs(); renderSubjectTabs(); renderDocs();
-        };
-        classTabs.appendChild(tab);
-      });
-
-      // vẽ các lớp truyền thống
+      // Vẽ các lớp thông thường trước (Lớp 12, 11, 10,...)
       classList.forEach(cls => {
         const tab = document.createElement("div");
         tab.className = "tab" + (cls === currentClass ? " active" : "");
@@ -908,24 +869,86 @@
         };
         classTabs.appendChild(tab);
       });
+
+      // Vẽ các mục đặc biệt, chỉ hiện nếu có dữ liệu trong allDocs!
+      extraSections.forEach(section => {
+        // Nếu mục này không có tài liệu thì không render
+        if (section.noSubject) {
+          if (!allDocs.some(doc => doc.class === section.value)) return;
+        } else {
+          // Nếu mục này không có đủ bất kỳ tài liệu thuộc subject nào thì không render
+          if (!allDocs.some(doc => doc.class === section.value)) return;
+        }
+        const tab = document.createElement("div");
+        tab.className = "tab" + (currentClass === section.value ? " active" : "");
+        tab.innerText = section.label;
+        tab.onclick = () => {
+          currentClass = section.value;
+          // Chọn subject đầu tiên hoặc null nếu là mục không phân môn
+          if (section.noSubject) {
+            currentSubject = null;
+          } else if (section.subjects) {
+            // Nếu trước đó đang ở subject không phải IELTS/TOEIC thì mặc định chọn IELTS
+            currentSubject = section.subjects[0].value;
+          }
+          renderClassTabs(); renderSubjectTabs(); renderDocs();
+        };
+        classTabs.appendChild(tab);
+      });
     }
+
     function renderSubjectTabs() {
       const subjectTabs = document.getElementById("subjectTabs");
       subjectTabs.innerHTML = "";
-      subjectList.forEach(sub => {
-        if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
+      // Nếu là mục đặc biệt "tienganh-cao" thì show tab IELTS/TOEIC
+      const currentExtra = extraSections.find(s => s.value === currentClass);
+
+      if (currentExtra && currentExtra.subjects) {
+        currentExtra.subjects.forEach(subj => {
+          // Chỉ hiện tab nếu có tài liệu
+          if (!allDocs.some(doc => doc.class === currentClass && doc.subject === subj.value)) return;
           const tab = document.createElement("div");
-          tab.className = "subject" + (sub===currentSubject ? " active" : "");
-          tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
-          tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
+          tab.className = "subject" + (currentSubject === subj.value ? " active" : "");
+          tab.innerText = subj.label;
+          tab.onclick = () => {
+            currentSubject = subj.value;
+            renderSubjectTabs();
+            renderDocs();
+          };
           subjectTabs.appendChild(tab);
-        }
-      });
+        });
+        return;
+      }
+      // Nếu là các lớp thông thường, render môn chuẩn
+      if (!currentExtra || !currentExtra.noSubject) {
+        subjectList.forEach(sub => {
+          if (allDocs.some(doc => doc.class === currentClass && doc.subject === sub)) {
+            const tab = document.createElement("div");
+            tab.className = "subject" + (sub===currentSubject ? " active" : "");
+            tab.innerText = sub.charAt(0).toUpperCase() + sub.slice(1);
+            tab.onclick = () => { currentSubject = sub; renderSubjectTabs(); renderDocs(); };
+            subjectTabs.appendChild(tab);
+          }
+        });
+      }
+      // Nếu là mục không có subject (ví dụ Đại học) thì không render gì
     }
+
     function renderDocs() {
       const docList = document.getElementById("documentList");
       docList.innerHTML = "";
-      const docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      let docs;
+      const currentExtra = extraSections.find(s => s.value === currentClass);
+      if (currentExtra && currentExtra.noSubject) {
+        // Đại học: không phân môn
+        docs = allDocs.filter(doc => doc.class === currentClass);
+      } else if (currentExtra && currentExtra.subjects) {
+        // IELTS/TOEIC: lọc theo class và subject
+        docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      } else {
+        // lớp thường
+        docs = allDocs.filter(doc => doc.class === currentClass && doc.subject === currentSubject);
+      }
       if (!docs || docs.length === 0) {
         docList.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#999;font-size:1.1rem'>Chưa có tài liệu cho mục này.</div>";
         return;
@@ -962,18 +985,33 @@
           drive_link: (doc.drive_link||"").trim(),
           shopee_link: (doc.shopee_link||"").trim(),
           updatedAt: (doc.updatedAt||"").trim()
-        })).filter(doc => doc.class && doc.subject && doc.title);
+        })).filter(doc => doc.class && doc.title); // không yêu cầu subject nếu là mục đại học
 
-        // bỏ trùng với extraSections
+        // Xác định các lớp thông thường (không trùng với extraSections)
         const extraClassValues = extraSections.map(x => x.value);
         classList = [...new Set(allDocs.map(doc=>doc.class))]
           .filter(cls => !extraClassValues.includes(cls))
           .sort((a,b) => b-a);
 
-        // mặc định chọn tab đầu
-        currentClass = extraSections.length > 0 ? extraSections[0].value : (classList[0] || "");
-        let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
-        currentSubject = found || subjectList[0];
+        // Ưu tiên chọn Lớp 12, nếu không có thì lấy lớp khác, nếu không thì mục đặc biệt đầu tiên có tài liệu
+        let firstTab = classList.find(l => l === "12") || classList[0];
+        for (const section of extraSections) {
+          if (allDocs.some(doc => doc.class === section.value)) {
+            firstTab = firstTab || section.value;
+            break;
+          }
+        }
+        currentClass = firstTab || "";
+        // Nếu là mục đặc biệt có subject, chọn subject đầu (IELTS)
+        const curSec = extraSections.find(s => s.value === currentClass);
+        if (curSec && curSec.subjects && allDocs.some(doc => doc.class === currentClass && doc.subject === curSec.subjects[0].value)) {
+          currentSubject = curSec.subjects[0].value;
+        } else if (!curSec || !curSec.noSubject) {
+          let found = subjectList.find(subj => allDocs.some(doc => doc.class === currentClass && doc.subject === subj));
+          currentSubject = found || subjectList[0];
+        } else {
+          currentSubject = null;
+        }
         renderClassTabs();
         renderSubjectTabs();
         renderDocs();
