@@ -6,69 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
-  /* Popup quảng cáo */
-.ads-modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(30,40,53,0.56);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s;
-}
-.ads-modal {
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 8px 40px rgba(40,50,70,0.18);
-  max-width: 97vw;
-  max-height: 97vh;
-  position: relative;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: popupShow 0.3s;
-  overflow: hidden;
-}
-.ads-modal img {
-  display: block;
-  max-width: 92vw;
-  max-height: 89vh;
-  border-radius: 22px;
-  background: #fff;
-}
-.ads-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 17px;
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 39px;
-  height: 39px;
-  font-size: 2.1rem;
-  color: #e53935;
-  cursor: pointer;
-  box-shadow: 0 2px 9px rgba(230,57,53,0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: background 0.13s;
-}
-.ads-modal-close:hover {
-  background: #ffecec;
-}
-@keyframes popupShow {
-  0% { opacity: 0; transform: scale(0.93);}
-  100% { opacity: 1; transform: scale(1);}
-}
-@media (max-width:700px) {
-  .ads-modal {max-width:99vw;max-height:99vh;border-radius:11px;}
-  .ads-modal img {max-width:99vw;max-height:75vh;border-radius:11px;}
-  .ads-modal-close {width:32px;height:32px;font-size:1.4rem;}
-}
     html, body {
       height: 100%;
       margin: 0;
@@ -80,11 +17,11 @@
       -webkit-tap-highlight-color: transparent;
     }
     body {
-      min-height: 100dvh;
       min-height: 100vh;
       margin: 0;
       padding: 0;
     }
+    /* HEADER */
     header {
       background: #fff;
       border-bottom: 1px solid #e3e3e3;
@@ -93,13 +30,15 @@
       justify-content: space-between;
       height: 76px;
       position: relative;
+      padding: 0 32px 0 0;
+      z-index: 3;
     }
     .header-left {
       display: flex;
       align-items: center;
       gap: 15px;
       min-width: 0;
-      padding-left: 32px;
+      /* padding-left: 32px; bỏ padding để countdown sát trái */
     }
     .main-logo {
       height: 50px;
@@ -142,98 +81,62 @@
       cursor: pointer;
     }
     .header-social-btn img {
-      width: 22px;
-      height: 22px;
-      display: block;
+      width: 22px;height: 22px;display: block;
     }
-    .header-social-btn:hover { background: #e3f2fd;}
-    @media (max-width:700px) {
-      .header-title {font-size:0.7rem;max-width:800px;}
-      .main-logo {width:35px;height:35px;}
-      .header-left {padding-left:9px;}
-      .header-right {padding-right:9px;gap:7px;}
-      header {height:56px;}
-      .header-social-btn {width:28px;height:28px;}
-      .header-social-btn img {width:16px;height:16px;}
-      .header-title {margin-left:7px;}
-    }
-    @media (max-width:430px) {
-      .header-title {max-width:72px;}
-    }
-
-    /* Đếm ngược - message bên trái, promo bên phải */
-    .main-flex-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      max-width: 1300px;
-      margin: 36px auto 0 auto;
-      gap: 38px;
-    }
-    .left-col {
-      min-width: 300px;
-      max-width: 350px;
+    .header-social-btn:hover {background: #e3f2fd;}
+    /* Đếm ngược header */
+    .exam-countdown-headerbox {
+      margin-left: 20px;
+      margin-top: 0;
       display: flex;
       flex-direction: column;
-      gap: 22px;
-      align-items: flex-end;
-    }
-    .exam-countdown-card {
+      align-items: flex-start;
+      justify-content: center;
       background: #fff;
-      border-radius: 19px;
-      box-shadow: 0 2px 14px rgba(25,118,210,0.09);
-      min-width: 272px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 20px 30px 22px 25px;
-      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 3px 22px rgba(25,118,210,0.08);
+      padding: 19px 34px 18px 34px;
+      min-width: 320px;
+      max-width: 380px;
+      z-index: 2;
     }
-    .exam-countdown-title {
-      font-size:1.16rem;
-      font-weight:700;
-      color:#1976d2;
-      margin-bottom: 13px;
-      letter-spacing: 0.2px;
+    .exam-countdown-header-title {
       text-align: center;
+      font-size: 1.23rem;
+      font-weight: bold;
+      color: #1976d2;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
       width: 100%;
     }
-    .exam-countdown-box {
+    .exam-countdown-header-box {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 14px;
       background: #fffbe6;
       border-radius: 13px;
-      padding: 17px 12px 13px 15px;
+      padding: 13px 12px;
       font-family: 'Quicksand',sans-serif;
       font-weight: 700;
-      font-size: 23px;
+      font-size: 22px;
       box-shadow: 0 2px 9px rgba(255,193,7,0.10);
-      width: 100%;
       justify-content: center;
     }
-    .exam-countdown-labels {
+    .exam-countdown-header-labels {
       min-width: 54px;
       text-align: center;
       color: #fff;
       font-weight: bold;
-      margin-right: 2px;
       background: linear-gradient(90deg,#ffc107 50%,#ffd54f 100%);
       border-radius: 12px;
-      padding: 0 4px;
-      font-size:1.12rem;
-      align-self: stretch;
+      padding: 0 10px;
+      font-size:1.15rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 48px;
     }
-    .exam-countdown-labels div {
-      color: #fff;
-      width: 100%;
-      font-weight: bold;
-    }
-    .exam-countdown-number {
+    .exam-countdown-header-number {
       background: #fff;
       color: #ee7600;
       border-radius: 12px;
@@ -248,7 +151,7 @@
       font-family: inherit;
       box-shadow: 0 1px 6px #ffecb3;
     }
-    .exam-countdown-unit {
+    .exam-countdown-header-unit {
       color: #b26a00;
       font-size: 0.92rem;
       font-weight: 600;
@@ -256,40 +159,34 @@
       display: block;
       letter-spacing: .3px;
     }
-    .message-card {
-      background: #f4fff6;
-      color: #388e3c;
-      border: 2px solid #c8e6c9;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px rgba(56,142,60,0.08);
-      padding: 18px 15px 12px 15px;
-      font-style: italic;
-      font-size: 1.07rem;
-      line-height: 1.6;
-      min-height: 90px;
-      text-align: center;
-      width: 100%;
-      max-width: 312px;
-      min-width: 210px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* Responsive */
+    @media (max-width:1050px) {
+      .exam-countdown-headerbox {padding:10px 5vw;}
+      .exam-countdown-header-title{font-size:1rem;}
     }
-    .message-card-title {
-      font-weight: bold;
-      color: #1976d2;
-      margin-bottom: 7px;
-      font-size: 1.06rem;
-      display: block;
+    @media (max-width:800px) {
+      .exam-countdown-headerbox {
+        min-width: 0;max-width:98vw;padding:8px 4vw;
+      }
+      .exam-countdown-header-title{font-size:1rem;}
+      .exam-countdown-header-box {font-size:17px;}
     }
+    @media (max-width:700px) {
+      .exam-countdown-headerbox {margin-left:2px;}
+      .exam-countdown-header-title{font-size:0.99rem;}
+      .exam-countdown-header-box {font-size: 13px;gap:7px;}
+      .exam-countdown-header-labels {font-size:0.9rem;}
+      .header-title {font-size:0.8rem;}
+      .main-logo {height:34px;width:34px;}
+    }
+    /* PROMO BOX - TỐI ƯU MOBILE */
     .container {
       max-width: 1100px;
+      margin: 42px auto 0;
       background: #fff;
       padding: 32px 34px 30px 34px;
       border-radius: 16px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-      margin: 0 auto;
-      width: 100%;
     }
     .promo {
       margin: 0 auto 26px auto;
@@ -323,18 +220,19 @@
     .promo-highlight {color:#1976d2;font-weight:700;}
     .promo-list {margin:0 0 0 16px;}
     .promo-list li {margin-bottom:3px;}
-    @media (max-width: 1100px) {
-      .main-flex-row {flex-direction: column;gap:8px;}
-      .left-col {flex-direction:row;width:99vw;justify-content:flex-start;}
-      .container {padding:19px 5vw;}
-    }
     @media (max-width: 700px) {
-      .main-flex-row {flex-direction: column;gap:10px;}
-      .left-col {flex-direction: column; width: 99vw; align-items: stretch;}
       .container {padding:10px 1vw;}
-      .promo {padding:11px 5px;}
+      .promo {
+        padding:11px 5px;
+        margin: 0 auto 11px auto;
+        font-size: 0.97rem;
+        border-radius: 11px;
+        line-height: 1.65;
+        word-break: break-word;
+      }
       .promo-list {padding-left: 18px;}
     }
+    /* TABS, SUBJECTS, DOCS (giữ nguyên) */
     .tabs {
       display: flex;
       gap: 14px;
@@ -416,6 +314,7 @@
       .doc-box {padding:12px 6px;}
       .doc-title {font-size:1.02rem;}
     }
+    /* ZALO BUTTON */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -553,10 +452,24 @@
       <img src="ads.png" alt="Quảng cáo nổi bật">
     </div>
   </div>
-  <!-- HEADER -->
+  <!-- HEADER + Đếm ngược trên cùng bên trái -->
   <header>
     <div class="header-left">
-      <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
+      <div class="exam-countdown-headerbox">
+        <div class="exam-countdown-header-title">Đếm ngược kỳ thi</div>
+        <div class="exam-countdown-header-box">
+          <div class="exam-countdown-header-labels">
+            <div>THPT<br>QG</div>
+          </div>
+          <div class="exam-countdown-header-number"><span id="countdown-day">00</span><span class="exam-countdown-header-unit">Ngày</span></div>
+          <div class="exam-countdown-header-number"><span id="countdown-hour">00</span><span class="exam-countdown-header-unit">Giờ</span></div>
+          <div class="exam-countdown-header-number"><span id="countdown-minute">00</span><span class="exam-countdown-header-unit">Phút</span></div>
+          <div class="exam-countdown-header-number"><span id="countdown-second">00</span><span class="exam-countdown-header-unit">Giây</span></div>
+        </div>
+      </div>
+      <div class="main-logo" style="margin-left:24px;">
+        <img src="logo.png" alt="Logo" style="width:100%;height:100%;border-radius:15px;" onerror="this.style.display='none'">
+      </div>
       <div class="header-title">v1.0</div>
     </div>
     <div class="header-right">
@@ -571,61 +484,40 @@
       </a>
     </div>
   </header>
-
-  <!-- Đếm ngược sát trái + promo bên phải -->
-  <div class="main-flex-row">
-    <div class="left-col">
-      <div class="exam-countdown-card">
-        <div class="exam-countdown-title">Đếm ngược kỳ thi</div>
-        <div class="exam-countdown-box">
-          <div class="exam-countdown-labels">
-            <div>THPT<br>QG</div>
-          </div>
-          <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
-          <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
-          <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
-          <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
-        </div>
-      </div>
+  <div class="container">
+    <div class="promo">
+      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
+      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
+        <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
+      </ul>
+      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
+      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
+      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
+      <ul class="promo-list">
+        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+      </ul>
+      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
     </div>
-    <div style="flex:1;">
-      <div class="container">
-        <div class="promo">
-          <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-          <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
-          <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
-          <ul class="promo-list">
-            <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
-            <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-          </ul>
-          <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
-          <ul class="promo-list">
-            <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-            <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-          </ul>
-          <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
-          <ul class="promo-list">
-            <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-            <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
-            <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
-          </ul>
-          <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
-          ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-          <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-          <ul class="promo-list">
-            <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-            <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-            <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-          </ul>
-          <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
-        </div>
-        <div class="tabs" id="classTabs"></div>
-        <div class="subjects" id="subjectTabs"></div>
-        <div class="doc-list" id="documentList"></div>
-      </div>
-    </div>
+    <div class="tabs" id="classTabs"></div>
+    <div class="subjects" id="subjectTabs"></div>
+    <div class="doc-list" id="documentList"></div>
   </div>
-
   <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
     <span>Liên hệ</span>
@@ -648,7 +540,7 @@
     </div>
   </footer>
   <script>
-    // Đếm ngược kỳ thi
+    // Đếm ngược kỳ thi - header
     const examDate = new Date("2025-06-26T07:45:00+07:00");
     function updateExamCountdown() {
       const now = new Date();
