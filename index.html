@@ -162,6 +162,8 @@
       flex-direction: column;
       align-items: flex-start;
     }
+    .free-header .title {color:#1565c0;}
+    .share-header .title {color:#e65100;}
     .free-class-tabs, .share-class-tabs {
       display: flex;
       gap: 10px;
@@ -247,35 +249,130 @@
       font-weight: 500;
       box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
-    .promo strong { color:#222; font-size:1.09em;}
-    .promo u {color: #1976d2;}
-    .promo .ibzalo {
-      color:#e53935;
-      background:rgba(255,235,238,0.97);
-      padding:2px 8px 2px 8px;
-      border-radius:8px;
-      font-weight:900;
-      margin:0 2px;
-      cursor:pointer;
-      text-decoration:underline dotted #e53935 1.5px;
-      box-shadow:0 1px 7px #ffeaea;
-      transition:box-shadow 0.14s,background 0.14s;
+    /* ZALO NÚT NỔI */
+    .zalo-fab {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 100;
+      width: 66px;
+      height: 66px;
+      background: #008EE6;
+      border-radius: 50%;
+      box-shadow: 0 5px 24px rgba(0, 142, 230, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 5px solid #fff;
+      transition: box-shadow 0.17s;
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.1;
+      padding: 0;
     }
-    .promo .ibzalo:hover {
-      background:#ffd6d6;
-      box-shadow:0 3px 11px #ffcdd2;
+    .zalo-fab span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      padding: 0 2px;
+      white-space: pre-line;
+      word-break: break-word;
     }
-    @media (max-width:700px) {
-      .promo {padding:11px 5px;}
-      .free-header,.share-header {padding:11px 7px 10px 7px;}
-      .free-class-tabs,.share-class-tabs {gap:5px;}
-      .free-subject-tabs,.share-subject-tabs {gap:4px;}
+    .zalo-fab .zalo-icon {
+      font-size: 1.8em;
+      display: block;
+      margin-bottom: 1px;
     }
-    /* ... giữ nguyên các style khác ... */
+    @media (max-width:600px) {
+      .zalo-fab {font-size:16px;width:48px;height:48px;bottom:10px;right:8px;}
+      .zalo-fab span {font-size:13px;}
+      .zalo-fab .zalo-icon {font-size:1.4em;}
+    }
+    .zalo-chat-balloon {
+      display: none;
+      position: fixed;
+      bottom: 88px;
+      right: 28px;
+      z-index: 110;
+      background: #fff;
+      color: #1976d2;
+      font-weight: 700;
+      font-size: 1.09rem;
+      padding: 13px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 22px rgba(25,118,210,0.13);
+      border: 2px solid #e3f2fd;
+      min-width: 175px;
+      max-width: 90vw;
+      animation: chatBalloonShow 0.35s;
+    }
+    @keyframes chatBalloonShow {
+      0% {transform:translateY(20px); opacity:0}
+      100% {transform:translateY(0); opacity:1}
+    }
+    .zalo-chat-balloon span {
+      color: #fff;
+      background: #008ee6;
+      padding: 2px 8px 2px 8px;
+      border-radius: 8px;
+      font-weight: 900;
+      margin: 0 2px;
+      font-size: 1.09rem;
+      letter-spacing:0.5px;
+      box-shadow:0 2px 12px rgba(0,142,230,0.07);
+    }
+    footer {
+      background: transparent;
+      margin-top: 50px;
+      padding: 0 0 40px 0;
+      color: #1959a0;
+      font-size: 1.11rem;
+      letter-spacing: .3px;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 31px 31px 0 0 / 19px 19px 0 0;
+      position: relative;
+      overflow: hidden;
+      border-top: none;
+      box-shadow: none;
+    }
+    .footer-inner {
+      display: inline-block;
+      background: #fff;
+      padding: 17px 30px 14px 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(25,118,210,0.10), 0 1.5px 7px rgba(25,118,210,0.04);
+      font-size: 1.07rem;
+      margin-top: 32px;
+      text-align: center;
+      min-width: 260px;
+    }
+    .footer-strong {
+      color: #e53935;
+      font-size: 1.13em;
+      font-weight: 800;
+      letter-spacing: .7px;
+      margin: 0 4px;
+    }
+    .footer-link {
+      color: #1976d2;
+      font-weight: 700;
+      text-decoration: underline;
+      margin: 0 6px;
+      transition: color 0.14s;
+    }
+    .footer-link:hover { color: #d84315;}
   </style>
 </head>
 <body>
-  <!-- HEADER, COUNTDOWN, ZALO ... giữ nguyên -->
   <header>
     <div class="header-left-group">
       <img src="logo.png" alt="Logo" class="main-logo" onerror="this.style.display='none'">
@@ -308,7 +405,7 @@
   <div class="container">
     <!-- FULL KHÓA MIỄN PHÍ -->
     <div class="free-header">
-      <span style="font-size:1.14em;color:#1565c0;font-weight:800;margin-bottom:5px;">🎁 HỌC FULL KHÓA MIỄN PHÍ</span>
+      <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">🎁 HỌC FULL KHÓA MIỄN PHÍ</span>
       <div class="free-class-tabs" id="freeClassTabs"></div>
       <div class="free-subject-tabs" id="freeSubjectTabs"></div>
       <button class="free-sheet-toggle-btn" id="freeSheetBtn">Bấm để hiện Sheet tài liệu miễn phí</button>
@@ -318,13 +415,12 @@
     </div>
     <!-- SHARE TÀI LIỆU TỔNG HỢP -->
     <div class="share-header">
-      <span style="font-size:1.14em;color:#e65100;font-weight:800;margin-bottom:5px;">📚 SHARE TÀI LIỆU TỔNG HỢP</span>
+      <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">📚 SHARE TÀI LIỆU TỔNG HỢP</span>
       <button class="share-sheet-toggle-btn" id="shareSheetBtn">Bấm để hiện Sheet tài liệu tổng hợp</button>
       <div class="share-sheet-wrap" id="shareSheetWrap">
         <iframe id="shareSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
       </div>
     </div>
-    <!-- END SHARE -->
     <div class="promo">
       <!-- ... giữ nguyên nội dung promo ... -->
       <span style="font-size:1.21em;font-weight:800;color:#222;">
@@ -337,15 +433,16 @@
       <!-- ... phần dưới giữ nguyên ... -->
     </div>
   </div>
-  <!-- Zalo nổi ... giữ nguyên -->
+  <!-- NÚT ZALO NỔI -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
+    <span class="zalo-icon">💬</span>
     <span>Liên hệ</span>
   </div>
   <div class="zalo-chat-balloon" id="zaloBalloon">
     💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
   </div>
   <footer>
-    <div class="footer-inner" style="text-align:center;">
+    <div class="footer-inner">
       <span class="footer-strong">Liên hệ:</span>
       <a href="https://zalo.me/0788559492" class="footer-link" target="_blank" rel="noopener">Zalo 0788559492</a>
       &bull;
@@ -353,8 +450,8 @@
       &bull;
       <a href="https://www.threads.net/@khoahocgiasiure" class="footer-link" target="_blank" rel="noopener">Threads @khoahocgiasiure</a>
       <br>
-      <span style="display:block;margin-top:7px;color:#888;font-weight:400;">
-        &copy; 2025 <span style="color:#1976d2;font-weight:800">by <a href="https://www.facebook.com/phusiucute" target="_blank" rel="noopener" style="color:#1976d2;text-decoration:none;">@phusiucute</a></span>
+      <span style="color:#888;font-weight:400;display:block;margin-top:7px;">
+        &copy; 2025 <span style="color:#1976d2;font-weight:800;">by <a href="https://www.facebook.com/phusiucute" target="_blank" rel="noopener" style="color:#1976d2;text-decoration:none;">@phusiucute</a></span>
         — Website chia sẻ tài liệu & khóa học miễn phí, tổng hợp, cập nhật mới nhất.
       </span>
     </div>
@@ -380,7 +477,7 @@
     setInterval(updateExamCountdown, 1000);
     updateExamCountdown();
 
-    // Zalo
+    // Zalo FAB chat nổi bật
     const zaloFab = document.getElementById('zaloFab');
     const zaloBalloon = document.getElementById('zaloBalloon');
     let zaloBalloonTimer = null;
@@ -481,7 +578,7 @@
     });
 
     // ==== SHARE TÀI LIỆU TỔNG HỢP ====
-    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/edit?gid=0#gid=0";
+    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml";
     const SHARE_SHOPEE_URL = "https://shopee.vn/share-link";
     document.getElementById("shareSheetBtn").onclick = function() {
       if(SHARE_SHOPEE_URL){
