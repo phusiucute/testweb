@@ -579,7 +579,7 @@
         minutes = Math.floor((diff / (1000 * 60)) % 60);
         seconds = Math.floor((diff / 1000) % 60);
       }
-      document.getElementById("countdown-day").textContent = days.toString().padStart(3, "0");
+      document.getElementById("countdown-day").textContent = days.toString().padStart(2, "0");
       document.getElementById("countdown-hour").textContent = hours.toString().padStart(2, "0");
       document.getElementById("countdown-minute").textContent = minutes.toString().padStart(2, "0");
       document.getElementById("countdown-second").textContent = seconds.toString().padStart(2, "0");
