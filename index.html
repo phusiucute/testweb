@@ -6,12 +6,84 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap">
   <style>
-    body {
-      background: #f7f9fb;
-      font-family: 'Quicksand', sans-serif;
+  /* Popup quảng cáo */
+.ads-modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(30,40,53,0.56);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s;
+}
+.ads-modal {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px rgba(40,50,70,0.18);
+  max-width: 97vw;
+  max-height: 97vh;
+  position: relative;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: popupShow 0.3s;
+  overflow: hidden;
+}
+.ads-modal img {
+  display: block;
+  max-width: 92vw;
+  max-height: 89vh;
+  border-radius: 22px;
+  background: #fff;
+}
+.ads-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 39px;
+  height: 39px;
+  font-size: 2.1rem;
+  color: #e53935;
+  cursor: pointer;
+  box-shadow: 0 2px 9px rgba(230,57,53,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.13s;
+}
+.ads-modal-close:hover {
+  background: #ffecec;
+}
+@keyframes popupShow {
+  0% { opacity: 0; transform: scale(0.93);}
+  100% { opacity: 1; transform: scale(1);}
+}
+@media (max-width:700px) {
+  .ads-modal {max-width:99vw;max-height:99vh;border-radius:11px;}
+  .ads-modal img {max-width:99vw;max-height:75vh;border-radius:11px;}
+  .ads-modal-close {width:32px;height:32px;font-size:1.4rem;}
+}
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
+      background: #f7f9fb;
       color: #222;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      min-height: 100dvh;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
     header {
       background: #fff;
@@ -21,13 +93,13 @@
       justify-content: space-between;
       height: 76px;
       position: relative;
-      padding: 0 32px;
     }
     .header-left {
       display: flex;
       align-items: center;
       gap: 15px;
       min-width: 0;
+      padding-left: 32px;
     }
     .main-logo {
       height: 50px;
@@ -44,6 +116,7 @@
       letter-spacing: 1px;
       color: #1976d2;
       text-shadow: 0 1px 7px rgba(25,118,210,0.07);
+      line-height: 1.1;
       margin-left: 14px;
       white-space: nowrap;
       overflow: hidden;
@@ -54,6 +127,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      padding-right: 32px;
     }
     .header-social-btn {
       width: 38px; height: 38px;
@@ -68,9 +142,11 @@
       cursor: pointer;
     }
     .header-social-btn img {
-      width: 22px;height: 22px;display: block;
+      width: 22px;
+      height: 22px;
+      display: block;
     }
-    .header-social-btn:hover {background: #e3f2fd;}
+    .header-social-btn:hover { background: #e3f2fd;}
     @media (max-width:700px) {
       .header-title {font-size:0.7rem;max-width:800px;}
       .main-logo {width:35px;height:35px;}
@@ -85,51 +161,172 @@
       .header-title {max-width:72px;}
     }
 
-    /* 2 Cột: promo rộng + sidebar trái */
-    .main-layout {
+    .promo-row {
       display: flex;
-      gap: 32px;
+      align-items: stretch;
       justify-content: center;
-      align-items: flex-start;
-      margin: 32px auto 0 auto;
-      max-width: 1350px;
-      width: 100%;
+      gap: 36px;
+      margin: 36px auto 0 auto;
+      max-width: 1100px;
+      flex-wrap: wrap;
     }
-    .sidebar-left {
-      width: 320px;
-      min-width: 240px;
+    .exam-countdown-card {
+      background: #fff;
+      border-radius: 19px;
+      box-shadow: 0 2px 14px rgba(25,118,210,0.09);
+      min-width: 292px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
-      align-items: flex-end;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 30px 22px 25px;
     }
-
-    .main-content {
-      flex: 1 1 0%;
-      min-width: 350px;
-      max-width: 900px;
-      margin-right: 0;
-    }
-
-    /* Promo box cực rộng */
-    .promo {
-      background: linear-gradient(90deg, #fffde7 60%, #e4eeff 100%);
-      border: 2.5px solid #ffb300;
-      border-radius: 18px;
-      padding: 38px 40px 26px 40px;
-      font-size: 1.22rem;
-      color: #222;
-      font-weight: 500;
-      box-shadow: 0 2px 12px rgba(255,193,7,0.11);
-      margin-bottom: 28px;
-      margin-top: 0;
-      line-height: 1.7;
-      position: relative;
+    .exam-countdown-title {
+      font-size:1.16rem;
+      font-weight:700;
+      color:#1976d2;
+      margin-bottom: 13px;
+      letter-spacing: 0.2px;
+      text-align: center;
       width: 100%;
-      max-width: 900px;
-      min-width: 300px;
     }
-    .promo strong { color: #d84315; font-size: 1.13em;}
+    .exam-countdown-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #fffbe6;
+      border-radius: 13px;
+      padding: 17px 12px 13px 15px;
+      font-family: 'Quicksand',sans-serif;
+      font-weight: 700;
+      font-size: 23px;
+      box-shadow: 0 2px 9px rgba(255,193,7,0.10);
+    }
+    .exam-countdown-labels {
+      min-width: 54px;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      margin-right: 2px;
+      background: linear-gradient(90deg,#ffc107 50%,#ffd54f 100%);
+      border-radius: 12px;
+      padding: 0 4px;
+      font-size:1.12rem;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .exam-countdown-labels div {
+      color: #fff;
+      width: 100%;
+      font-weight: bold;
+    }
+    .exam-countdown-number {
+      background: #fff;
+      color: #ee7600;
+      border-radius: 12px;
+      padding: 11px 12px 6px 12px;
+      min-width: 44px;
+      margin-right: 2px;
+      text-align: center;
+      font-size: 1.19rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: inherit;
+      box-shadow: 0 1px 6px #ffecb3;
+    }
+    .exam-countdown-unit {
+      color: #b26a00;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-top: 2px;
+      display: block;
+      letter-spacing: .3px;
+    }
+    @media (max-width: 700px) {
+      .promo-row {
+        gap: 13px;
+        margin: 12px auto 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100vw;
+      }
+      .exam-countdown-card {
+        padding: 11px 4px 11px 4px;
+        min-width: 0;
+        border-radius: 13px;
+        width: 98vw;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+      .exam-countdown-title {
+        font-size: 1rem;
+        margin-bottom: 9px;
+        text-align: center;
+      }
+      .exam-countdown-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 6px;
+        background: #fffbe6;
+        border-radius: 13px;
+        padding: 9px 2px 9px 2px;
+        font-size: 17px;
+        justify-items: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .exam-countdown-labels {
+        grid-column: 1 / span 2;
+        font-size: .89rem;
+        min-width: 0;
+        padding: 9px 0;
+        border-radius: 10px;
+        margin: 0 auto 2px auto;
+        width: 92%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .exam-countdown-number {
+        min-width: 0;
+        width: 92%;
+        font-size: 0.99rem;
+        padding: 12px 0 8px 0;
+        margin: 0 auto;
+        border-radius: 8px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .exam-countdown-unit { font-size: 0.92rem; }
+    }
+
+    /* PROMO BOX - TỐI ƯU MOBILE */
+    .container {
+      max-width: 1100px;
+      margin: 32px auto 0;
+      background: #fff;
+      padding: 32px 34px 30px 34px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+    .promo {
+      margin: 0 auto 26px auto;
+      background: linear-gradient(90deg, #f8ffda 80%, #e4eeff 100%);
+      border: 2px solid #ffb300;
+      border-radius: 14px;
+      padding: 20px 28px;
+      font-size: 1.13rem;
+      line-height: 1.8;
+      box-shadow: 0 2px 10px rgba(255,193,7,0.10);
+      position: relative;
+      color: #303030;
+      border-bottom: 4px solid #ffb300;
+      font-weight: 500;
+    }
+    .promo strong { color:#d84315; font-size:1.09em;}
     .promo u {color: #1565c0;}
     .promo .ibzalo {
       color:#e53935;font-size:1.13em;background:rgba(255,235,238,0.94);
@@ -147,111 +344,105 @@
     .promo-highlight {color:#1976d2;font-weight:700;}
     .promo-list {margin:0 0 0 16px;}
     .promo-list li {margin-bottom:3px;}
-
-    /* Đếm ngược kỳ thi trái */
-    .exam-countdown-card {
-      background: #e8f5e9;
-      border-radius: 17px;
-      box-shadow: 0 2px 14px rgba(56,142,60,0.12);
-      padding: 20px 25px 18px 25px;
-      color: #1976d2;
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-      text-align: center;
-      border: 2px solid #b2dfdb;
-      width: 100%;
-      max-width: 312px;
-      min-width: 220px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    @media (max-width: 700px) {
+      .container {padding:10px 1vw;}
+      .promo {
+        padding:11px 5px;
+        margin: 0 auto 11px auto;
+        font-size: 0.97rem;
+        border-radius: 11px;
+        line-height: 1.65;
+        word-break: break-word;
+      }
+      .promo-list {padding-left: 18px;}
     }
-    .exam-countdown-title {
-      font-size:1.11rem;
-      font-weight:700;
-      color:#1976d2;
-      margin-bottom: 9px;
-      letter-spacing: 0.2px;
-      text-align: center;
-      width: 100%;
-    }
-    .exam-countdown-box {
+    /* TABS, SUBJECTS, DOCS (giữ nguyên) */
+    .tabs {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      background: #fff;
-      border-radius: 11px;
-      padding: 8px 9px;
-      font-family: 'Quicksand',sans-serif;
+      gap: 14px;
+      margin-bottom: 18px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 9px 18px;
+      background: #f0f4f8;
+      border-radius: 20px;
+      cursor: pointer;
       font-weight: 700;
-      font-size: 18px;
-      box-shadow: 0 2px 9px rgba(255,193,7,0.10);
-      margin-bottom: 0;
-    }
-    .exam-countdown-number {
-      background: #fff;
-      color: #43a047;
-      border-radius: 10px;
-      padding: 7px 8px 4px 8px;
-      min-width: 44px;
-      margin-right: 2px;
-      text-align: center;
-      font-size: 1.08rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: inherit;
-      box-shadow: 0 1px 6px #ffecb3;
-    }
-    .exam-countdown-unit {
-      color: #388e3c;
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-top: 2px;
-      display: block;
-      letter-spacing: .3px;
-    }
-    /* Message box dưới countdown */
-    .message-card {
-      background: #f4fff6;
-      color: #388e3c;
-      border: 2px solid #c8e6c9;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px rgba(56,142,60,0.08);
-      padding: 18px 15px 12px 15px;
-      font-style: italic;
+      color: #1565c0;
       font-size: 1.07rem;
-      line-height: 1.6;
-      margin-bottom: 8px;
-      min-height: 90px;
-      text-align: center;
-      position: relative;
-      width: 100%;
-      max-width: 312px;
-      min-width: 220px;
+      border: 1.5px solid #e3e8ef;
+      transition: background 0.13s, color 0.13s;
+      user-select: none;
+    }
+    .tab.active, .tab:hover {
+      background: #1976d2;
+      color: #fff;
+      border-color: #1976d2;
+    }
+    .subjects {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .subject {
+      padding: 7px 16px;
+      background: #e0e7ef;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #1976d2;
+      font-size: 1.01rem;
+      border: 1.2px solid #d0d6e0;
+      transition: background 0.13s, color 0.13s;
+    }
+    .subject.active, .subject:hover {
+      background: #43a047;
+      color: #fff;
+      border-color: #43a047;
+    }
+    .doc-list {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .doc-box {
+      background: #fafaff;
+      border: 1.5px solid #d0d6e0;
+      border-radius: 12px;
+      padding: 20px 10px 12px 10px;
+      text-align: left;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      position:relative;
+      min-height: 86px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      font-size: 1.04rem;
     }
-    .message-card-title {
-      font-weight: bold;
-      color: #1976d2;
-      margin-bottom: 7px;
-      font-size: 1.06rem;
-      display: block;
+    .doc-box:hover { box-shadow:0 6px 18px rgba(25,118,210,0.09);}
+    .doc-title { font-size:1.13rem; font-weight:600; color:#1976d2;}
+    .doc-date { font-size:0.97rem; color:#888; margin-top:7px;}
+    .doc-icon {font-size: 1.31rem; vertical-align:middle; margin-right:6px;}
+    @media (max-width:1000px) {
+      .doc-list { grid-template-columns:repeat(2,1fr);}
     }
-    .message-card-date {
-      color: #388e3c;
-      font-size: 0.92rem;
-      margin-bottom: 5px;
-      display: block;
+    @media (max-width:700px) {
+      .tabs, .subjects { gap:6px;}
+      .doc-list { grid-template-columns:1fr;}
+      .doc-box {padding:12px 6px;}
+      .doc-title {font-size:1.02rem;}
     }
-    /* Zalo FAB */
+    /* ZALO BUTTON */
     .zalo-fab {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 22px;
+      right: 22px;
       z-index: 100;
       width: 56px;
       height: 56px;
@@ -263,42 +454,66 @@
       justify-content: center;
       cursor: pointer;
       border: 4px solid #fff;
-      font-size: 16px;
+      transition: box-shadow 0.17s;
+      font-size: 15px;
       font-weight: bold;
       color: #fff;
       letter-spacing: 0.5px;
       text-align: center;
       line-height: 1.1;
       padding: 0;
-      transition: box-shadow 0.17s;
+      overflow: hidden;
     }
     .zalo-fab span {
       display: block;
       width: 100%;
       text-align: center;
       line-height: 1.15;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
       color: #fff;
       padding: 0 2px;
       white-space: pre-line;
       word-break: break-word;
     }
-    @media (max-width: 1100px) {
-      .main-layout { flex-direction: column; align-items: stretch; }
-      .sidebar-left { flex-direction: row; width: 99vw; justify-content: flex-start; }
-      .main-content { max-width: 100vw;}
-      .promo {max-width: none;}
+    @media (max-width:600px) {
+      .zalo-fab {font-size:12px;width:41px;height:41px;bottom:10px;right:8px;}
+      .zalo-fab span {font-size:12px;}
     }
-    @media (max-width: 900px) {
-      .promo {padding:14px 2vw;}
-      .main-layout {gap: 10px;}
+    .zalo-chat-balloon {
+      display: none;
+      position: fixed;
+      bottom: 88px;
+      right: 28px;
+      z-index: 110;
+      background: #fff;
+      color: #1976d2;
+      font-weight: 700;
+      font-size: 1.09rem;
+      padding: 13px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 22px rgba(25,118,210,0.13);
+      border: 2px solid #e3f2fd;
+      min-width: 175px;
+      max-width: 90vw;
+      animation: chatBalloonShow 0.35s;
     }
-    @media (max-width: 700px) {
-      .sidebar-left {flex-direction: column; width: 99vw; align-items: stretch;}
-      .main-content {padding:0 2vw;}
-      .promo {padding: 7vw 2vw;}
+    @keyframes chatBalloonShow {
+      0% {transform:translateY(20px); opacity:0}
+      100% {transform:translateY(0); opacity:1}
     }
+    .zalo-chat-balloon span {
+      color: #fff;
+      background: #008ee6;
+      padding: 2px 8px 2px 8px;
+      border-radius: 8px;
+      font-weight: 900;
+      margin: 0 2px;
+      font-size: 1.09rem;
+      letter-spacing:0.5px;
+      box-shadow:0 2px 12px rgba(0,142,230,0.07);
+    }
+    /* Footer */
     footer {
       margin-top: 50px;
       background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
@@ -337,16 +552,43 @@
       transition: color 0.14s;
     }
     .footer-link:hover { color: #d84315;}
+    @media (max-width:1050px) {
+      .promo-row {flex-direction:column;align-items:stretch;gap:18px;}
+      .exam-countdown-card {align-items:center;}
+      .container {padding:19px 5vw;}
+    }
+    @media (max-width:700px) {
+      .footer-inner {padding:11px 5vw;}
+      .footer-inner {font-size:0.97rem;}
+      .main-logo {height:30px;width:30px;}
+      .header-title {font-size:0.93rem;}
+    }
   </style>
 </head>
+<script>
+  // Popup quảng cáo
+  window.addEventListener("DOMContentLoaded", function() {
+    const bg = document.getElementById('adsModalBg');
+    const closeBtn = document.getElementById('adsModalClose');
+    function closeAds() {
+      bg.style.display = "none";
+    }
+    closeBtn.onclick = closeAds;
+    bg.onclick = function(e) {
+      if (e.target === bg) closeAds();
+    }
+    // Tự động đóng sau 12 giây nếu chưa đóng
+    setTimeout(closeAds, 12000);
+  });
+</script>
 <body>
   <!-- POPUP ADS -->
-  <div class="ads-modal-bg" id="adsModalBg">
-    <div class="ads-modal">
-      <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
-      <img src="ads.png" alt="Quảng cáo nổi bật">
-    </div>
+<div class="ads-modal-bg" id="adsModalBg">
+  <div class="ads-modal">
+    <button class="ads-modal-close" id="adsModalClose" aria-label="Đóng quảng cáo">&times;</button>
+    <img src="ads.png" alt="Quảng cáo nổi bật">
   </div>
+</div>
   <!-- HEADER -->
   <header>
     <div class="header-left">
@@ -365,60 +607,63 @@
       </a>
     </div>
   </header>
-  <div class="main-layout">
-    <div class="sidebar-left">
-      <div class="exam-countdown-card">
-        <div class="exam-countdown-title">Đếm ngược kỳ thi<br>THPT QG 2025</div>
-        <div class="exam-countdown-box">
-          <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
-          <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
-          <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
-          <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
+  <!-- ROW: Đếm ngược -->
+  <div class="promo-row">
+    <!-- Countdown -->
+    <div class="exam-countdown-card">
+      <div class="exam-countdown-title">Đếm ngược kỳ thi</div>
+      <div class="exam-countdown-box">
+        <div class="exam-countdown-labels">
+          <div>THPT<br>QG</div>
         </div>
-      </div>
-      <div class="message-card">
-        <span class="message-card-title" id="message-date"></span>
-        <span id="message-content"></span>
+        <div class="exam-countdown-number"><span id="countdown-day">00</span><span class="exam-countdown-unit">Ngày</span></div>
+        <div class="exam-countdown-number"><span id="countdown-hour">00</span><span class="exam-countdown-unit">Giờ</span></div>
+        <div class="exam-countdown-number"><span id="countdown-minute">00</span><span class="exam-countdown-unit">Phút</span></div>
+        <div class="exam-countdown-number"><span id="countdown-second">00</span><span class="exam-countdown-unit">Giây</span></div>
       </div>
     </div>
-    <div class="main-content">
-      <div class="promo">
-        <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
-        <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
-        <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
-        <ul class="promo-list">
-          <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
-          <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-        </ul>
-        <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
-        <ul class="promo-list">
-          <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-          <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
-        </ul>
-        <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
-        <ul class="promo-list">
-          <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-          <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
-          <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
-        </ul>
-        <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
-        ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
-        <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
-        <ul class="promo-list">
-          <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-          <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-          <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
-        </ul>
-        <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
-      </div>
-      <div class="tabs" id="classTabs"></div>
-      <div class="subjects" id="subjectTabs"></div>
-      <div class="doc-list" id="documentList"></div>
+    <!-- Đã bỏ hoàn toàn sale-countdown -->
+  </div>
+  <div class="container">
+    <div class="promo">
+      <strong>🎓 KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ</strong><br>
+      <span style="color:#1976d2;font-weight:600;">Ưu đãi tháng này – Học trọn gói từ A–Z, chọn thầy cô theo gu của bạn!</span><br>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K7:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá </span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 12 – dành cho 2K8:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 TẶNG kèm: Khóa học lớp 10 + 11 bản 2025</li>
+      </ul>
+      <span class="promo-combo"><u>Combo Lớp 11/10 – dành cho 2K9/2K10:</u></span>
+      <ul class="promo-list">
+        <li>✅ Giá: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>📌 Có cả tổ hợp: Toán, Văn, Anh, KHTN, KHXH</li>
+        <li>📌 TẶNG: Khóa học lớp 10 bản 2025</li>
+      </ul>
+      <span class="promo-highlight">🆓 ĐƯỢC HỌC THỬ 24 GIỜ MIỄN PHÍ trước khi đăng ký</span><br>
+      ♻️ Cập nhật bài giảng mới mỗi tuần, có file luyện đề, hệ thống ôn tập cuối kỳ<br>
+      <b style="color:#1976d2;">🎯 Đặc biệt:</b><br>
+      <ul class="promo-list">
+        <li>Khóa TOEIC cô Mai Phương: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa IELTS nền tảng – nâng band: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+        <li>Khóa sinh viên ôn lại gốc lớp 12: <span class="ibzalo" onclick="window.open('https://zalo.me/0788559492','_blank')">click vào đây để được báo giá</span> nhé</li>
+      </ul>
+      <span style="color:#d84315;font-weight:600;">⏳ Ưu đãi giới hạn trong tháng – nhanh tay đăng ký để không bỏ lỡ!</span>
     </div>
+    <div class="tabs" id="classTabs"></div>
+    <div class="subjects" id="subjectTabs"></div>
+    <div class="doc-list" id="documentList"></div>
   </div>
   <!-- Zalo Nổi -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
     <span>Liên hệ</span>
+  </div>
+  <div class="zalo-chat-balloon" id="zaloBalloon">
+    💬 <span>Liên hệ Zalo</span> để được tư vấn ngay!
   </div>
   <footer>
     <div class="footer-inner">
@@ -435,20 +680,6 @@
     </div>
   </footer>
   <script>
-    // Popup quảng cáo
-    window.addEventListener("DOMContentLoaded", function() {
-      const bg = document.getElementById('adsModalBg');
-      const closeBtn = document.getElementById('adsModalClose');
-      function closeAds() {
-        bg.style.display = "none";
-      }
-      closeBtn.onclick = closeAds;
-      bg.onclick = function(e) {
-        if (e.target === bg) closeAds();
-      }
-      setTimeout(closeAds, 12000);
-    });
-
     // Đếm ngược kỳ thi
     const examDate = new Date("2025-06-26T07:45:00+07:00");
     function updateExamCountdown() {
@@ -471,14 +702,24 @@
 
     // Zalo FAB chat
     const zaloFab = document.getElementById('zaloFab');
+    const zaloBalloon = document.getElementById('zaloBalloon');
+    let zaloBalloonTimer = null;
     zaloFab.onclick = function() {
       window.open('https://zalo.me/0788559492', '_blank');
     };
+    zaloFab.addEventListener('mouseenter', ()=>{
+      zaloBalloon.style.display = 'block';
+      clearTimeout(zaloBalloonTimer);
+      zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4200);
+    });
+    zaloFab.addEventListener('mouseleave', ()=> {
+      zaloBalloon.style.display = 'none';
+      clearTimeout(zaloBalloonTimer);
+    });
+    setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
 
     // === GOOGLE SHEET CODE GIỮ NGUYÊN ===
-    const SHEET_ID = "1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0";
-    const SHEET_API = `https://opensheet.elk.sh/${SHEET_ID}/Sheet1`;
-    const SHEET_API_MSG = `https://opensheet.elk.sh/${SHEET_ID}/Sheet2`;
+    const SHEET_API = "https://opensheet.elk.sh/1hXvKb09Bu5xzqFAlgRjZ1S3Z0uQ8wjfDVQQn4uAuYH0/Sheet1";
     const subjectList = ["toán","lý","hóa","sinh","sử","địa","văn","tiếng anh"];
     let allDocs = [];
     let classList = [];
@@ -566,31 +807,6 @@
       .catch(e => {
         document.getElementById("documentList").innerHTML = "<div style='color:red'>Không tải được dữ liệu từ Google Sheet. Hãy kiểm tra lại ID Sheet và quyền chia sẻ!</div>";
       });
-
-    // ---- THÔNG ĐIỆP RANDOM MỖI NGÀY (sheet2) ----
-    function updateMessageCard() {
-      fetch(SHEET_API_MSG)
-        .then(res => res.json())
-        .then(list => {
-          // Lấy random hoặc theo ngày
-          if (!list || !list.length) {
-            document.getElementById('message-date').textContent = "Thông điệp hôm nay";
-            document.getElementById('message-content').textContent = "Chúc bạn một ngày tốt lành!";
-            return;
-          }
-          const d = new Date();
-          // Chọn random 1 dòng theo ngày/tháng/năm
-          const idx = d.getDate() % list.length;
-          const row = list[idx];
-          document.getElementById('message-date').textContent = row.date ? `Thông điệp ${row.date}` : 'Thông điệp hôm nay';
-          document.getElementById('message-content').textContent = row.message || Object.values(row)[0] || "Chúc bạn một ngày tốt lành!";
-        })
-        .catch(()=>{
-          document.getElementById('message-date').textContent = "Thông điệp hôm nay";
-          document.getElementById('message-content').textContent = "Chúc bạn một ngày tốt lành!";
-        });
-    }
-    updateMessageCard();
   </script>
 </body>
 </html>
