@@ -249,7 +249,7 @@
       font-weight: 500;
       box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
-    /* ZALO NÚT NỔI */
+    /* ZALO NÚT NỔI - CHỈ CHỮ LIÊN HỆ */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -266,35 +266,30 @@
       cursor: pointer;
       border: 5px solid #fff;
       transition: box-shadow 0.17s;
-      font-size: 28px;
+      font-size: 17px;
       font-weight: bold;
       color: #fff;
       letter-spacing: 0.5px;
       text-align: center;
       line-height: 1.1;
       padding: 0;
+      user-select: none;
     }
     .zalo-fab span {
       display: block;
       width: 100%;
       text-align: center;
-      line-height: 1.15;
-      font-size: 16px;
+      font-size: 1.05em;
       font-weight: 700;
       color: #fff;
-      padding: 0 2px;
       white-space: pre-line;
-      word-break: break-word;
-    }
-    .zalo-fab .zalo-icon {
-      font-size: 1.8em;
-      display: block;
-      margin-bottom: 1px;
+      line-height: 1.15;
+      margin: 0;
+      padding: 0;
     }
     @media (max-width:600px) {
-      .zalo-fab {font-size:16px;width:48px;height:48px;bottom:10px;right:8px;}
-      .zalo-fab span {font-size:13px;}
-      .zalo-fab .zalo-icon {font-size:1.4em;}
+      .zalo-fab {width:44px;height:44px;bottom:10px;right:8px;font-size:13px;}
+      .zalo-fab span {font-size:12px;}
     }
     .zalo-chat-balloon {
       display: none;
@@ -433,9 +428,8 @@
       <!-- ... phần dưới giữ nguyên ... -->
     </div>
   </div>
-  <!-- NÚT ZALO NỔI -->
+  <!-- NÚT ZALO NỔI CHỈ CHỮ LIÊN HỆ -->
   <div class="zalo-fab" id="zaloFab" title="Nhắn Zalo để được tư vấn ngay!">
-    <span class="zalo-icon">💬</span>
     <span>Liên hệ</span>
   </div>
   <div class="zalo-chat-balloon" id="zaloBalloon">
@@ -578,7 +572,7 @@
     });
 
     // ==== SHARE TÀI LIỆU TỔNG HỢP ====
-    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false";
+    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/your-share-sheet/pubhtml";
     const SHARE_SHOPEE_URL = "https://shopee.vn/share-link";
     document.getElementById("shareSheetBtn").onclick = function() {
       if(SHARE_SHOPEE_URL){
