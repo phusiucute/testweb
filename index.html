@@ -149,7 +149,7 @@
       border-radius: 16px;
       box-shadow: none;
     }
-    .free-header, .share-header {
+    .share-header {
       margin: 0 auto 16px auto;
       background: #fff;
       border-radius: 13px;
@@ -162,80 +162,15 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    .free-header .title {color:#1565c0;}
     .share-header .title {color:#e65100;}
-    .free-class-tabs, .share-class-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      margin-top: 7px;
-      flex-wrap: wrap;
-    }
-    .free-class-tab, .share-class-tab {
-      padding: 7px 17px;
-      background: #e3f2fd;
-      border-radius: 18px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #1565c0;
-      font-size: 1.05rem;
-      border: 1.3px solid #bbdefb;
-      transition: background 0.13s, color 0.13s;
-      user-select: none;
-    }
-    .free-class-tab.active, .free-class-tab:hover,
-    .share-class-tab.active, .share-class-tab:hover {
-      background: #1976d2;
-      color: #fff;
-      border-color: #1976d2;
-    }
-    .free-subject-tabs, .share-subject-tabs {
-      display: flex;
-      gap: 7px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .free-subject-tab, .share-subject-tab {
-      padding: 6px 15px;
-      background: #e0f7fa;
-      border-radius: 15px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #006064;
-      font-size: 1.00rem;
-      border: 1.2px solid #b2ebf2;
-      transition: background 0.13s, color 0.13s;
-    }
-    .free-subject-tab.active, .free-subject-tab:hover,
-    .share-subject-tab.active, .share-subject-tab:hover {
-      background: #00bcd4;
-      color: #fff;
-      border-color: #00bcd4;
-    }
-    .free-sheet-toggle-btn, .share-sheet-toggle-btn {
-      margin: 0 0 18px 0;
-      background: #ffb300;
-      color: #fff;
-      font-size: 1.12rem;
-      font-weight: 700;
-      padding: 10px 22px;
-      border-radius: 13px;
-      border: none;
-      box-shadow: 0 2px 9px #ffe082;
-      cursor: pointer;
-      transition: background 0.13s;
-    }
-    .free-sheet-toggle-btn:hover, .share-sheet-toggle-btn:hover {
-      background: #ff8f00;
-    }
-    .free-sheet-wrap, .share-sheet-wrap {
+    .share-sheet-wrap {
       margin-top: 10px;
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 2px 18px #bbdefb;
-      display: none;
       background: #fff;
+      display: block;
     }
     .promo {
       margin: 0 auto 26px auto;
@@ -249,7 +184,6 @@
       font-weight: 500;
       box-shadow: 0 5px 36px rgba(25,118,210,0.07), 0 1.5px 7px rgba(25,118,210,0.04);
     }
-    /* ZALO NÚT NỔI - CHỈ CHỮ LIÊN HỆ */
     .zalo-fab {
       position: fixed;
       bottom: 22px;
@@ -401,23 +335,15 @@
     <!-- SHARE TÀI LIỆU TỔNG HỢP -->
     <div class="share-header">
       <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">📚 SHARE TÀI LIỆU TỔNG HỢP</span>
-      <button class="share-sheet-toggle-btn" id="shareSheetBtn">Bấm để hiện Sheet tài liệu tổng hợp</button>
-      <div class="share-sheet-wrap" id="shareSheetWrap">
-        <iframe id="shareSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
+      <div class="share-sheet-wrap" id="shareSheetWrap" style="display:block;">
+        <iframe id="shareSheetIframe"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&single=true&widget=true&headers=false"
+          width="100%" height="670" frameborder="0" style="border:0;display:block;">
+        </iframe>
       </div>
     </div>
     <!-- FULL KHÓA MIỄN PHÍ -->
-    <div class="free-header">
-      <span class="title" style="font-size:1.14em;font-weight:800;margin-bottom:5px;">🎁 HỌC FULL KHÓA MIỄN PHÍ</span>
-      <div class="free-class-tabs" id="freeClassTabs"></div>
-      <div class="free-subject-tabs" id="freeSubjectTabs"></div>
-      <button class="free-sheet-toggle-btn" id="freeSheetBtn">Bấm để hiện Sheet tài liệu miễn phí</button>
-      <div class="free-sheet-wrap" id="freeSheetWrap">
-        <iframe id="freeSheetIframe" src="" width="100%" height="670" frameborder="0" style="border:0;display:block;"></iframe>
-      </div>
-    </div>
     <div class="promo">
-      <!-- ... giữ nguyên nội dung promo ... -->
       <span style="font-size:1.21em;font-weight:800;color:#222;">
         <span style="font-size:1.18em;">🎓</span>
         KHÓA HỌC XPS – LỚP 10, 11, 12 – CẤP TỐC, GIÁ RẺ
@@ -488,97 +414,6 @@
       clearTimeout(zaloBalloonTimer);
     });
     setTimeout(()=>{zaloBalloon.style.display='block'; zaloBalloonTimer = setTimeout(()=>{zaloBalloon.style.display='none'}, 4000);},1500);
-
-    // ==== FULL KHOÁ MIỄN PHÍ ====
-    const freeClassList = ["12", "11", "10"];
-    const freeSubjectList = ["toán","lý","hóa","sinh","sử","địa","tiếng anh"];
-    const FREE_SHEET = {
-      "12": {
-        "toán": {sheet: "https://docs.google.com/spreadsheets/d/your12toan/pubhtml", shopee: "https://shopee.vn/link-toan12"},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      },
-      "11": {
-        "toán": {sheet:"",shopee:""},
-        "lý": {sheet:"",shopee:""},
-        "hóa": {sheet:"",shopee:""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      },
-      "10": {
-        "toán": {sheet: "https://docs.google.com/spreadsheets/d/your10toan/pubhtml", shopee: "https://shopee.vn/link-toan10"},
-        "lý": {sheet: "https://docs.google.com/spreadsheets/d/your10ly/pubhtml", shopee: "https://shopee.vn/link-ly10"},
-        "hóa": {sheet: "https://docs.google.com/spreadsheets/d/your10hoa/pubhtml", shopee: ""},
-        "sinh": {sheet:"",shopee:""},
-        "sử": {sheet:"",shopee:""},
-        "địa": {sheet:"",shopee:""},
-        "tiếng anh": {sheet:"",shopee:""}
-      }
-    };
-    let freeCurrentClass = freeClassList[0];
-    let freeCurrentSubject = freeSubjectList[0];
-
-    function renderFreeTabs() {
-      const freeClassTabs = document.getElementById("freeClassTabs");
-      freeClassTabs.innerHTML = "";
-      freeClassList.forEach(cls => {
-        const tab = document.createElement("div");
-        tab.className = "free-class-tab" + (cls === freeCurrentClass ? " active" : "");
-        tab.innerText = "Lớp " + cls;
-        tab.onclick = () => {
-          freeCurrentClass = cls;
-          let found = freeSubjectList.find(subj => FREE_SHEET[cls] && FREE_SHEET[cls][subj] && FREE_SHEET[cls][subj].sheet);
-          freeCurrentSubject = found || freeSubjectList[0];
-          renderFreeTabs();
-        };
-        freeClassTabs.appendChild(tab);
-      });
-      const freeSubjectTabs = document.getElementById("freeSubjectTabs");
-      freeSubjectTabs.innerHTML = "";
-      freeSubjectList.forEach(subj => {
-        if (!FREE_SHEET[freeCurrentClass][subj] || !FREE_SHEET[freeCurrentClass][subj].sheet) return;
-        const tab = document.createElement("div");
-        tab.className = "free-subject-tab" + (subj === freeCurrentSubject ? " active" : "");
-        tab.innerText = subj.charAt(0).toUpperCase() + subj.slice(1);
-        tab.onclick = () => {
-          freeCurrentSubject = subj;
-          renderFreeTabs();
-        };
-        freeSubjectTabs.appendChild(tab);
-      });
-      document.getElementById("freeSheetWrap").style.display = "none";
-      document.getElementById("freeSheetBtn").style.display = "";
-    }
-    document.addEventListener("DOMContentLoaded",function(){
-      freeCurrentClass = freeClassList[0];
-      let found = freeSubjectList.find(subj => FREE_SHEET[freeCurrentClass] && FREE_SHEET[freeCurrentClass][subj] && FREE_SHEET[freeCurrentClass][subj].sheet);
-      freeCurrentSubject = found || freeSubjectList[0];
-      renderFreeTabs();
-      document.getElementById("freeSheetBtn").onclick = function(){
-        const cfg = FREE_SHEET[freeCurrentClass][freeCurrentSubject];
-        if(cfg.shopee){
-          window.open(cfg.shopee,"_blank");
-        }
-        document.getElementById("freeSheetIframe").src = cfg.sheet;
-        document.getElementById("freeSheetWrap").style.display = "";
-        this.style.display = "none";
-      };
-    });
-
-    // ==== SHARE TÀI LIỆU TỔNG HỢP ====
-    // Đúng link Google Sheet đã xuất bản lên web:
-    const SHARE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLAOPERPhrrPJ7klzlsNH2d6Nr0Pc7lfZ2uUQDoP68fpqR-oeu-1eyueT5P_hp-atxURvKVGi-Y8_U/pubhtml?gid=0&single=true&widget=true&headers=false";
-    document.getElementById("shareSheetBtn").onclick = function () {
-      document.getElementById("shareSheetIframe").src = SHARE_SHEET_URL;
-      document.getElementById("shareSheetWrap").style.display = "";
-      this.style.display = "none";
-    };
   </script>
 </body>
 </html>
